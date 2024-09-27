@@ -7,6 +7,7 @@ import Testimonials from "./Testimonials";
 import Hero from "./Hero";
 import InputDetails from "./InputDetails";
 import Button from "./Button";
+import Comparison from "./Comparison";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Hero,
   InputDetails,
   Button,
+  Comparison,
 };
