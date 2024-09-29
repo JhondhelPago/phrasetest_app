@@ -1,7 +1,53 @@
-import React from 'react'
-import styles from '../style'
+import React from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import styles from '../style';
+import RedEmphasize from './RedHighlight';
 
 const Comparison = () => {
+
+  //const originalEssayString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod dolor sit amet tellus condimentum, vel vulputate magna vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam at quam vitae tortor volutpat commodo. Integer lacinia dictum massa, nec viverra lectus aliquet et. Mauris a sollicitudin turpis. Cras tincidunt, arcu et ultricies cursus, felis libero dictum risus, nec ultricies libero arcu eget arcu. Nam vel arcu nec urna dapibus scelerisque.'
+
+  const originalEssayString = 'Education plays a crucial role in the developement of individuals and societies. It is a tool that equips people with knowledge, skills, and values that are essential for personal and professional growth. In today’s rapidly changing world, having a good education is more important than ever. Firstly, education helps people to think critically. It teaches students how to analyse information, make informed decisions, and solve problems effectively. In an age where misinformation is rampant, the ability to think critically is invaluable. Students who are educated can discern between reliable and unreliable sources, which is vital for their future success. Moreover, education fosters social cohesion. Schools are often where children learn to interact with others, make friends, and develop social skills. However, not everyone have access to quality education, which can lead to inequality in society. This disparity in education can perpetuate cycles of poverty and limit opportunities for many individuals. Furthermore, the economic impact of education cannot be overstated. A well-educated workforce is essential for economic growth and innovation. Companies tend to prefer hiring individuals with higher levels of education, which often leads to better job prospects and higher salaries. As a result, investing in education is also an investment in a country’s economy. In conclusion, the significance of education in today’s society is clear. It enhances critical thinking skills, promotes social cohesion, and drives economic growth. Therefore, it is imperitive that we continue to prioritize education for all individuals, regardless of their background, in order to create a more equitable and prosperous society.'
+
+  const ErrorEssay = ''
+
+  const SuggestionEssay = ''
+
+
+  const fetchEssayResults = async() => {
+    
+    try{
+
+      const response = await axios.post('http://127.0.0.1:8000/user/essay/check/', 
+        {
+          'composition' : originalEssayString
+        }
+      )
+
+      console.log(response)
+
+    }catch(error){
+      console.log('Error in Comparison component @ fetchEssayResults function');
+      throw error;
+    }
+
+  }
+
+
+  //side effect execute after initial render
+  useEffect(() => {
+
+    //execute here the function for side effects
+    fetchEssayResults()
+
+  }, [])
+
+
+  const EssaySideBySideProcess = () => { // this function will set ErrorEssay and SuggestionEssay baesed from the originalEssayString
+    //{RedEmphasize('Lorem ipsum dolor sit amet')}
+  }
+
   return (
     <>
     <div>
@@ -18,9 +64,9 @@ const Comparison = () => {
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-2xl font-poppins text-white w-5/12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod dolor sit amet tellus condimentum, vel vulputate magna vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam at quam vitae tortor volutpat commodo. Integer lacinia dictum massa, nec viverra lectus aliquet et. Mauris a sollicitudin turpis. Cras tincidunt, arcu et ultricies cursus, felis libero dictum risus, nec ultricies libero arcu eget arcu. Nam vel arcu nec urna dapibus scelerisque.</p>
-              <div className="border-l-2 border-white absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
-            <p className="text-2xl font-poppins text-white w-5/12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod dolor sit amet tellus condimentum, vel vulputate magna vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam at quam vitae tortor volutpat commodo. Integer lacinia dictum massa, nec viverra lectus aliquet et. Mauris a sollicitudin turpis. Cras tincidunt, arcu et ultricies cursus, felis libero dictum risus, nec ultricies libero arcu eget arcu. Nam vel arcu nec urna dapibus scelerisque.</p>
+            <p className="text-2xl font-poppins text-white w-5/12"> {originalEssayString}</p>
+            <div className="border-l-2 border-white absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
+            <p className="text-2xl font-poppins text-white w-5/12">{originalEssayString}</p>
           </div>
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14">Analysis</h1>
