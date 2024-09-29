@@ -25,8 +25,9 @@ function App() {
         <Route path="/" element={<Home isDark={isDark} changeColorTheme={changeColorTheme}></Home>}></Route>
         <Route path="/assessment" element={<Assessment></Assessment>}></Route>
         <Route path="/inputform" element={<InputForm isDark={isDark} changeColorTheme={changeColorTheme}></InputForm>}></Route>
-        <Route path="/examineresults" element={<ExamineResults></ExamineResults>}></Route>
+        <Route path="/examineresults" element={<ExamineResults isDark={isDark} changeColorTheme={changeColorTheme}></ExamineResults>}></Route>
         <Route path="/thankyou" element={<ThankYou></ThankYou>}></Route>
+        
       </Routes>
     </BrowserRouter>
   );
