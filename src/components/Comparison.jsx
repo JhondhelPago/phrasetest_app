@@ -43,7 +43,9 @@ const Comparison = () => {
                 </div>
             </div>
           </div>
-          
+          <div className='flex flex-row items-center justify-center'>
+            
+          </div>
         </div>    
       </div>
     </div>
