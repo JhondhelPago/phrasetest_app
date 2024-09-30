@@ -43,9 +43,11 @@ const Comparison = () => {
                 </div>
             </div>
           </div>
-          <div className='flex flex-row items-center justify-center'>
-            
-          </div>
+          <div className=" flex md:flex md:items-center text-center justify-center mt-11">
+                                    <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" >
+                                    Save 
+                                    </button>
+                            </div>
         </div>    
       </div>
     </div>
