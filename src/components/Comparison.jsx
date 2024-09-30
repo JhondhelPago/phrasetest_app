@@ -39,7 +39,7 @@ const Comparison = () => {
                 <div className='flex flex-row justify-start items-center text-lg text-dark dark:text-white mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-dark dark:text-white mr-4">Solution: Changes this “Verb” D---B to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-dark dark:text-white mr-4">Solution: Changes this “Verb” B====D to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
                 </div>
             </div>
           </div>
