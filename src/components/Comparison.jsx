@@ -45,6 +45,24 @@ const Comparison = () => {
   }
 
 
+  const [OriginalComposition, SetOriginalComposition] = useState([])
+
+  const HighlightSpellErrors = () => {
+    
+    const spelling_errors = result.data.spelling_errors
+    const Original_composition = result.data.
+
+
+    spelling_errors.foreach((Error_dict) => {
+
+
+
+    })
+
+
+  }
+
+
   //side effect execute after initial render
   useEffect(() => {
 
@@ -54,9 +72,6 @@ const Comparison = () => {
   }, [])
 
 
-  const EssaySideBySideProcess = () => { // this function will set ErrorEssay and SuggestionEssay baesed from the originalEssayString
-    //{RedEmphasize('Lorem ipsum dolor sit amet')}
-  }
 
   return (
     <>
@@ -74,7 +89,7 @@ const Comparison = () => {
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-2xl font-poppins text-white w-5/12"> {originalEssayString}</p>
+            <p className="text-2xl font-poppins text-white w-5/12">{RedEmphasize('This is an Error')} {originalEssayString}</p>
             <div className="border-l-2 border-white absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
             <p className="text-2xl font-poppins text-white w-5/12">{originalEssayString}</p>
           </div>
