@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useEffect } from "react"
 const RedSpan = ({string, key}) => {
 
@@ -19,56 +19,28 @@ const GreenSpan = ({string, key}) => {
 
 const NormalSpan = ({Sents, errors_array, original}) => {
 
-    let Sents_list = Sents
+    const [Sents_list, SetSent_lists] = useState(Sents)
     let errors_list = errors_array
+    let current_index = 0
+
+
+    // arrow function here to check return a super for each sentence in Sent_list
+    // if error found on the sent i will be process then modify the span to have an inner span, the inner span is RedSpan or GreenSpan
 
 
     useEffect(() => {
+        console.log(Sents_list)
         console.log(errors_list)
         console.log(Array.isArray(errors_list))
     }, [])
 
     return (
-        <span> 
-            this is a span
-            {/* {Sents_list.map((sent, index) => {
-
-                if (original) {
-
-                    if (index == errors_list[0].sent_index){
-
-                        sent.split(' ').map((word) => {
-
-                            if (word == errors_list[0].original_text){
-
-                                errors_list.shift()
-
-                                (
-                                    (<RedSpan string={word} key={index}></RedSpan>)
-                                )
-
-                            }
-
-                        })
-                    } else {
-                        return (
-                            <span key={index} >{Sents}</span>
-                        )
-                    }
-
-                    // (<RedSpan string={sent} key={index}></RedSpan>)
-
-                }
-                //  else {
-
-                    
-
-                //     (<GreenSpan string={sent} key={index}></GreenSpan>)
-
-                // }
-
-            })} */}
-        </span>
+      <div>
+        <p>
+            {Sents_list}
+          
+        </p>
+      </div>
     )
 
 }
