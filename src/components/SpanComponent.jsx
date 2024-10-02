@@ -12,7 +12,9 @@ const RedSpan = ({string}) => {
 const GreenSpan = ({string, key}) => {
 
     return (
-        <span key={key} className="text-green-600 underline">{string}</span>
+        <span>
+            <span key={key} className="text-green-600 underline">{string}</span> {" "}
+        </span>
     )
 
 }
@@ -123,22 +125,55 @@ const NormalSpan = ({Sents, errors_array, original}) => {
             })}
            */}
 
-            {Sents_list.map((word_list, index) => {
-                if (Array.isArray(word_list)) {
-                    return word_list.map((word, indx) => {
-                        if (typeof word === 'string') {
-                            return (<span key={`${index}-${indx}`}>{word + ' '}</span>);
-                        } else {
-                            return (<RedSpan key={`${index}-${indx}`} string={word.original_text}></RedSpan>);
-                        }
-                    });
-                } else {
-                    // Handle the case where word_list is not an array
-                    console.error('word_list is not an array:', word_list);
-                    return null; // You can choose to render an empty element or a fallback message
-                }
-            })}
+           {
 
+            original ? (
+
+                    Sents_list.map((word_list, index) => {
+                            if (Array.isArray(word_list)) {
+                                return word_list.map((word, indx) => {
+
+                                    if (typeof word === 'string') {
+
+                                        return (<span key={`${index}-${indx}`}>{word + ' '}</span>);
+
+                                    } else {
+
+                                        return (<RedSpan key={`${index}-${indx}`} string={word.original_text}></RedSpan>);
+                                    }
+                                });
+                            } else {
+                                // Handle the case where word_list is not an array
+                                console.error('word_list is not an array:', word_list);
+                                return null; // You can choose to render an empty element or a fallback message
+                            }
+                        })
+                ) : (
+
+                    Sents_list.map((word_list, index) => {
+                        if (Array.isArray(word_list)) {
+                            return word_list.map((word, indx) => {
+
+                                if (typeof word === 'string') {
+
+                                    return (<span key={`${index}-${indx}`}>{word + ' '}</span>);
+
+                                } else {
+
+                                    return (<GreenSpan key={`${index}-${indx}`} string={word.spelling_correction}></GreenSpan>);
+                                }
+                            });
+                        } else {
+                            // Handle the case where word_list is not an array
+                            console.error('word_list is not an array:', word_list);
+                            return null; // You can choose to render an empty element or a fallback message
+                        }
+                    })
+                )
+
+           }
+
+            
 
            
         
