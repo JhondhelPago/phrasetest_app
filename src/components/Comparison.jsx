@@ -94,7 +94,7 @@ const Comparison = () => {
             <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
               {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)}
             </p>
-            <div className="border-l-2 border-white absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
+            <div className="border-l-2 border-gray-500 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
             <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
             {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)}
             </p>
