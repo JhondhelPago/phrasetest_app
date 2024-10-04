@@ -24,6 +24,7 @@ const ExamineResults = ({isDark, changeColorTheme}) => {
                 <div className={`${styles.boxWidth}`}>
                     <Button isDark={isDark} changeColorTheme={changeColorTheme}></Button>
                     <Footer />
+                    
                 </div>
             </div>
         </div>
