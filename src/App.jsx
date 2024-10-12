@@ -27,6 +27,9 @@ function App() {
         <Route path="/inputform" element={<InputForm isDark={isDark} changeColorTheme={changeColorTheme}></InputForm>}></Route>
         <Route path="/examineresults" element={<ExamineResults isDark={isDark} changeColorTheme={changeColorTheme}></ExamineResults>}></Route>
         <Route path="/thankyou" element={<ThankYou></ThankYou>}></Route>
+        {/* path="/signup" -> select user type. student or teacher? */} 
+        {/* path="/signup/student" student signup form */}
+        {/* path="/signup/teacher" teacher signup form */}
         
       </Routes>
     </BrowserRouter>
