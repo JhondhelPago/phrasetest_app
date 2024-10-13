@@ -27,7 +27,7 @@ const Hero = () => (
         </div>
 
         <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-primary dark:text-white ss:leading-[100px] leading-[75px] w-full"></h1>
-        <p className={`${styles.paragraph} max-w-[500px] mt-5 text-primary dark:text-primary`}> Craft messages that captivate and persuade by expanding your vocabulary and applying refined language techniques, ensuring your communication is both precise and influential.</p>
+        <p className={`${styles.paragraph} max-w-[500px] mt-5 text-primary dark:text-white`}> Craft messages that captivate and persuade by expanding your vocabulary and applying refined language techniques, ensuring your communication is both precise and influential.</p>
       </div>
       <div className="relative flex-1 flex items-center justify-center">
           <img src={sitinginchair} alt="sitinginchair" className="w-[100%] h-[100%] relative z-[5]"/>
