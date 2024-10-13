@@ -10,6 +10,10 @@ import ThankYou from './pages/Thankyou';
 import Assessment from './pages/Assessment';
 import ExamineResults from './pages/ExamineResults';
 import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+
+
+
 //import Home from './pages/Home';
 
 function App() {
@@ -29,6 +33,7 @@ function App() {
         <Route path="/examineresults" element={<ExamineResults isDark={isDark} changeColorTheme={changeColorTheme}></ExamineResults>}></Route>
         <Route path="/thankyou" element={<ThankYou></ThankYou>}></Route>
         <Route path="/loginpage" element={<LoginPage isDark={isDark} changeColorTheme={changeColorTheme}></LoginPage>}></Route>
+        <Route path="/signuppage" element={<SignUpPage></SignUpPage>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}

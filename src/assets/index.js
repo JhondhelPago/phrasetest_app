@@ -24,6 +24,8 @@ import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
 import sampleBG from "./sampleBG.png";
+import student from "./student.png";
+import teacher from "./teacher.png";
 
 export {
   airbnb,
@@ -52,4 +54,6 @@ export {
   people02,
   people03,
   sampleBG,
+  student,
+  teacher,
 };

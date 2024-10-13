@@ -9,6 +9,8 @@ import InputDetails from "./InputDetails";
 import Button from "./Button";
 import Comparison from "./Comparison";
 import Login from "./Login";
+import Picking from "./Picking";
+
 
 
 export {
@@ -23,4 +25,6 @@ export {
   Button,
   Comparison,
   Login,
+  Picking,
+  
 };
