@@ -35,7 +35,7 @@ const Login = () => {
                 </div>
 
                 <div className='w-full'>
-                <p className='text-sm cursor-pointer  underline underline-offset-2 text-right'>Forgot Password</p>
+                <p className='text-sm cursor-pointer  underline underline-offset-2 text-right text-primary dark:text-white'>Forgot Password</p>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@ const Login = () => {
                 </div>
                 
 
-                <button className='w-full text-white dark:text-primary bg-primary dark:bg-white rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                <button className='w-full text-primary dark:text-primary bg-white dark:bg-primary border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
                     Sign Up Here
                 </button>
             </div>
