@@ -9,7 +9,7 @@ const Login = () => {
        
         <div className={`${styles.paddingX} ${styles.paddingY}  w-full items-center justify- xs:w-full font-poppins`}>
 
-            <h1 className='text-2xl font-bold mt-14  text-primary mb-10'>
+            <h1 className='text-2xl font-bold mt-14  text-primary dark:text-white mb-10'>
             Welcome! Please Enter Your Details.
             </h1>
 
@@ -18,15 +18,15 @@ const Login = () => {
                     Email<span className='text-red-500'>*</span>
                 </div>
                 <div className='w-full flex flex-col'>
-                    <input type="email" placeholder=" Email" className='w-full text-primary dark:text-white mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                    <input type="email" placeholder=" Email" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                 </div>
 
-                <div className='text-xl font-thin  text-primary '>
+                <div className='text-xl font-thin  text-primary dark:text-white'>
                     Password<span className='text-red-500'>*</span>
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary dark:text-white mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
                 </div>
                 
                 <div className='w-full flex items-center justify-between text-primary dark:text-white mt-4'>
@@ -41,7 +41,7 @@ const Login = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <button className='w-full text-white dark:text-primary bg-primary dark:bg-white rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-full text-white dark:text-white bg-primary dark:bg-dark rounded-lg border-lg border-white border p-4 text-center flex items-center justify-center mt-4'>
                         Log in
                     </button>
                     <div className='w-full flex items-center justify-center mt-4'>
@@ -49,7 +49,7 @@ const Login = () => {
                     </div>
                     
 
-                    <button className='w-full text-primary dark:text-primary bg-white dark:bg-primary border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-full text-primary dark:text-primary bg-white dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
                         Sign Up Here
                     </button>
                 </div>
