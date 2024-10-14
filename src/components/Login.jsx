@@ -69,6 +69,11 @@ const Login = () => {
         navigate('/');
     }
 
+    const routeToSignUpSelect = () => {
+
+        navigate('/signuppage');
+    }
+
 
   return (
 
@@ -85,14 +90,14 @@ const Login = () => {
                     Email<span className='text-red-500'>*</span>
                 </div>
                 <div className='w-full flex flex-col'>
-                    <input type="email" placeholder=" Email" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={EmailFieldUpdateChange} value={Email}/>
+                    <input type="email" placeholder=" Email" className='w-full text-primary pl-2  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={EmailFieldUpdateChange} value={Email}/>
                 </div>
 
                 <div className='text-xl font-thin  text-primary dark:text-white'>
                     Password<span className='text-red-500'>*</span>
                 </div>
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={PasswordFieldUpdateChange} value={Password}/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary pl-2  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={PasswordFieldUpdateChange} value={Password}/>
                 </div>
                 
                 <div className='w-full flex items-center justify-between text-primary dark:text-white mt-4'>
@@ -115,7 +120,7 @@ const Login = () => {
                     </div>
                     
 
-                    <button className='w-full text-primary dark:text-primary bg-white dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-full text-primary dark:text-primary bg-white dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4' onClick={routeToSignUpSelect}>
                         Sign Up Here
                     </button>
                 </div>
