@@ -8,6 +8,11 @@ import Hero from "./Hero";
 import InputDetails from "./InputDetails";
 import Button from "./Button";
 import Comparison from "./Comparison";
+import Login from "./Login";
+import Teacher from "./Teacher";
+import Student from "./Student";
+
+
 
 
 export {
@@ -21,4 +26,8 @@ export {
   InputDetails,
   Button,
   Comparison,
+  Login,
+  Teacher,
+  Student,
+  
 };

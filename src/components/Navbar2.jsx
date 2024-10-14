@@ -1,11 +1,19 @@
 import {useState} from 'react'
-
+import { Navigate, useNavigate, Link } from 'react-router-dom';
 import {close, logo, menu} from '../assets';
 import {navLinks} from '../constants';
 
 const Navbar2 = () => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
 
+  const NavigatePath = (e, path) => {
+    e.preventDefault();
+    
+    navigate(path);
+
+
+  }
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <img src={logo} alt="phrasetest" className="w-[256px] h-[64px]"/>
