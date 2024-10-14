@@ -14,7 +14,7 @@ const Student = () => {
             Welcome! MAH Boi _________ Lapag Your Deets.
             </h1>
 
-            <div className={`${styles.boxWidth}flex flex-col justify-center w-full h-full`}>
+            <div className={`${styles.boxWidth}flex flex-col items-center justify-center w-full h-full`}>
 
                 
                 <div className='flex flex-row w-full items-start'>
@@ -26,7 +26,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Email" className='w-11/12 text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input type="email" placeholder=" Email" className='w-11/12 text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                     </div>
                 </div>
                 
@@ -37,7 +37,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Username" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input type="email" placeholder=" Username" className='w-full text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col '>
-                        <input required type="text" placeholder=" First Name" className='w-11/12 text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                     </div>
                 </div>
                 
@@ -63,7 +63,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Middle Name" className='w-11/12 text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Last Name" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                             </div>
                         </div>
                         
@@ -101,7 +101,7 @@ const Student = () => {
                             </div>
 
                             <div className='w-full flex flex-col '>
-                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4 '>
+                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4 '>
                                 <option value={''} disabled selected> Select your Gender</option>
                                 <option value={1}>Male</option>
                                 <option value={1}>Female</option>
@@ -119,7 +119,7 @@ const Student = () => {
                 </div>
                 
                 <div className='w-full flex flex-col'>
-                    <input type="text" placeholder="SchoolName" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                    <input type="text" placeholder="SchoolName" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                 </div>
                 </div>
 
@@ -132,7 +132,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                             </div>
                         </div>
                         
@@ -144,7 +144,7 @@ const Student = () => {
 
                             <div className='w-full flex flex-col '>
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
                             </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
                 </div>
                 </div>
 
@@ -167,7 +167,7 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
                 </div>
                 </div>
 
