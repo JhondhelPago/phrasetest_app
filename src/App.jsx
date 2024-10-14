@@ -11,6 +11,8 @@ import Assessment from './pages/Assessment';
 import ExamineResults from './pages/ExamineResults';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import StudentSignUp from './pages/StudentSignUp';
+import TeacherSignUp from './pages/TeacherSignUp';
 
 
 
@@ -34,6 +36,8 @@ function App() {
         <Route path="/thankyou" element={<ThankYou></ThankYou>}></Route>
         <Route path="/loginpage" element={<LoginPage isDark={isDark} changeColorTheme={changeColorTheme}></LoginPage>}></Route>
         <Route path="/signuppage" element={<SignUpPage isDark={isDark} changeColorTheme={changeColorTheme}></SignUpPage>}></Route>
+        <Route path="/studentsignup" element={<StudentSignUp isDark={isDark} changeColorTheme={changeColorTheme}></StudentSignUp>}></Route>
+        <Route path="/teachersignup" element={<TeacherSignUp isDark={isDark} changeColorTheme={changeColorTheme}></TeacherSignUp>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}
