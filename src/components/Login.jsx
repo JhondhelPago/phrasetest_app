@@ -1,8 +1,75 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../style';
+import axios from 'axios';
 
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    // setup useState variable here to contain the login credentials
+
+    const [Email, SetEmail] = useState('');
+    const [Password, SetPassword] = useState('');
+
+    // setup a function here handle the login button, a function to submit the required informatin to the axios with post method
+
+    const handleLoginButton = async() => {
+
+        console.log(`Email: ${Email}`);
+        console.log(`Password : ${Password}`)
+
+    
+
+        const response =  await axios.post(`http://127.0.0.1:8000/user/auth/login`, {
+            'email' : Email,
+            'password' : Password
+        });
+
+        const refresh_access = response.data;
+
+        console.log(refresh_access);
+        console.log(refresh_access.refresh);
+        console.log(refresh_access.access);
+
+        if ((refresh_access.refresh !== '') && (refresh_access.access !== '')){
+
+
+            console.log(`save the refresh and acess token to localStrorage`);
+            
+            console.log('route to the homepage');
+
+
+            routeToHome();
+
+        }else{
+            
+            console.log(`clear the useState variable`);
+
+            SetEmail('');
+            SetPassword('');
+
+            alert('in valid login credentials');
+
+            
+        }
+
+    }
+
+    const EmailFieldUpdateChange = (event) => {
+        SetEmail(event.target.value);
+    }
+
+    const PasswordFieldUpdateChange = (event) => {
+        SetPassword(event.target.value);
+    }
+
+    const routeToHome = () => {
+        navigate('/');
+    }
+
+
   return (
 
     <>
@@ -18,15 +85,14 @@ const Login = () => {
                     Email<span className='text-red-500'>*</span>
                 </div>
                 <div className='w-full flex flex-col'>
-                    <input type="email" placeholder=" Email" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                    <input type="email" placeholder=" Email" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={EmailFieldUpdateChange} value={Email}/>
                 </div>
 
                 <div className='text-xl font-thin  text-primary dark:text-white'>
                     Password<span className='text-red-500'>*</span>
                 </div>
-
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary  mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={PasswordFieldUpdateChange} value={Password}/>
                 </div>
                 
                 <div className='w-full flex items-center justify-between text-primary dark:text-white mt-4'>
@@ -41,7 +107,7 @@ const Login = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <button className='w-full text-white dark:text-white bg-primary dark:bg-dark rounded-lg border-lg border-white border p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-full text-white dark:text-white bg-primary dark:bg-dark rounded-lg border-lg border-white border p-4 text-center flex items-center justify-center mt-4' onClick={handleLoginButton}>
                         Log in
                     </button>
                     <div className='w-full flex items-center justify-center mt-4'>
