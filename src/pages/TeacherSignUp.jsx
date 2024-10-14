@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../style';
-import {logo, GirlBook, } from '../assets';
+import {logo, TeacherThink, } from '../assets';
 
 import { Login, Button, Teacher,} from "../components";
 
@@ -12,7 +12,7 @@ const TeacherSignUp = ({isDark, changeColorTheme}) => {
                 <div className='relative w-1/2 h-full  flex-col hidden lg:block'>
                 <div className={`${styles.paddingX} ${styles.flexCenter} `}>
                     <div className={`h-screen flex items-center justify-center`}>
-                        <img src={GirlBook} alt="phrasetest" className="w-full h-1/2"/>
+                        <img src={TeacherThink} alt="phrasetest" className="w-full h-1/2"/>
                     </div>
                 </div>
                 </div>
