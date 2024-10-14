@@ -27,6 +27,8 @@ import sampleBG from "./sampleBG.png";
 import student from "./student.png";
 import teacher from "./teacher.png";
 import GirlBook from "./GirlBook.png";
+import KidJoyful from "./KidJoyful.png";
+import TeacherThink from "./TeacherThink.png";
 
 export {
   airbnb,
@@ -58,4 +60,6 @@ export {
   student,
   teacher,
   GirlBook,
+  KidJoyful,
+  TeacherThink,
 };
