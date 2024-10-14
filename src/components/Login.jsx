@@ -5,7 +5,7 @@ import styles from '../style';
 const Login = () => {
   return (
 
-    <div className={!isDark && 'dark'}>
+    <>
        
         <div className={`${styles.paddingX} ${styles.paddingY}  w-full items-center justify- xs:w-full font-poppins`}>
 
@@ -57,7 +57,7 @@ const Login = () => {
             
         </div>
     
-    </div>
+    </>
     
   )
 }
