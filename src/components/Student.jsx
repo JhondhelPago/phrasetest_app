@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../style';
 import axios from 'axios';
 
 
 const Student = () => {
+
+    const navigate = useNavigate();
 
     const [UserName, SetUserName] = useState('');
     const [Email, SetEmail] = useState('');
@@ -68,22 +71,9 @@ const Student = () => {
     }
 
 
-    const HandleSubmitButton = async() => {
-
-        //logs the useStates
-        // const [UserName, SetUserName] = useState('');
-        // const [Email, SetEmail] = useState('');
-        // const [Password, SetPassword] = useState('');
-        // const [ConfirmPassword, SetConfirmPassword] = useState('');
-        // const [FirstName, SetFirstName] = useState('');
-        // const [MiddleName, SetMiddleName] = useState('');
-        // const [LastName, SetLastName] = useState('');
-        // const [Age, SetAge] = useState(0);
-        // const [Gender, SetGender] = useState('');
-        // const [SchoolName, SetSchoolName] = useState('');
-        // const [GradeLevel, SetGradeLevel] = useState('');
-        // const [Insti_id, SetInsti_id] = useState('');
-
+    const HandleSubmitButton = async(event) => {
+        event.preventDefault();
+        //logs the useState
         console.log('Username', UserName);
         console.log('Email', Email);
         console.log('Password', Password);
@@ -109,10 +99,11 @@ const Student = () => {
 
             alert('password and confirm password did not match.');
 
+
         } else {
             //control flow axios post request
 
-            const response = await axios.post(`auth/student/signup`, {
+            const response = await axios.post(`http://127.0.0.1:8000/user/auth/student/signup`, {
 
                 "username" : UserName,
                 "email" : Email,
@@ -126,6 +117,49 @@ const Student = () => {
                 "school_name" : SchoolName,
                 "institutional_id" : Insti_id
             })
+
+            if (!response.data.email_exist){
+                //then store the the email to the localstorage
+                //route to the otp component
+                
+                localStorage.setItem('email', Email);
+                navigate('/');
+
+            } else {
+                //email existed
+                //render a modal to let the user know that the email is already taken bby another user
+                //clear all the useState
+
+                // const [UserName, SetUserName] = useState('');
+                // const [Email, SetEmail] = useState('');
+                // const [Password, SetPassword] = useState('');
+                // const [ConfirmPassword, SetConfirmPassword] = useState('');
+                // const [FirstName, SetFirstName] = useState('');
+                // const [MiddleName, SetMiddleName] = useState('');
+                // const [LastName, SetLastName] = useState('');
+                // const [Age, SetAge] = useState(0);
+                // const [Gender, SetGender] = useState('');
+                // const [SchoolName, SetSchoolName] = useState('');
+                // const [GradeLevel, SetGradeLevel] = useState('');
+                // const [Insti_id, SetInsti_id] = useState('');
+
+
+                alert('Email already taken by another user.');
+
+                SetUserName('');
+                SetEmail('');
+                SetPassword('');
+                SetConfirmPassword('');
+                SetFirstName('');
+                SetMiddleName('');
+                SetLastName('');
+                SetAge(0);
+                SetGender('');
+                SetSchoolName('');
+                SetGradeLevel('');
+                SetInsti_id('');
+
+            }
 
 
 
@@ -160,7 +194,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Email" className='w-11/12 text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateEmailState}/>
+                        <input type="email" placeholder=" Email" className='w-11/12 text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={Email} onChange={UpdateEmailState}/>
                     </div>
                 </div>
                 
@@ -171,7 +205,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Username" className='w-full text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateUserNameState}/>
+                        <input type="email" placeholder=" Username" className='w-full text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={UserName} onChange={UpdateUserNameState}/>
                     </div>
                 </div>
 
@@ -186,7 +220,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col '>
-                        <input required type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateFirstNameState}/>
+                        <input type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={FirstName} onChange={UpdateFirstNameState}/>
                     </div>
                 </div>
                 
@@ -197,7 +231,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateMiddleNameState}/>
+                        <input type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={MiddleName} onChange={UpdateMiddleNameState}/>
                     </div>
                 </div>
 
@@ -208,7 +242,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateLastNameState}/>
+                        <input type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={LastName} onChange={UpdateLastNameState}/>
                     </div>
                 </div>
 
@@ -224,7 +258,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateAgeState}/>
+                                <input type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={Age} onChange={UpdateAgeState}/>
                             </div>
                         </div>
                         
@@ -235,7 +269,7 @@ const Student = () => {
                             </div>
 
                             <div className='w-full flex flex-col'>
-                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateGenderState}>
+                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={Gender} onChange={UpdateGenderState}>
                                 <option value={''} disabled selected> Select your Gender</option>
                                 <option value={1}>Male</option>
                                 <option value={1}>Female</option>
@@ -253,7 +287,7 @@ const Student = () => {
                 </div>
                 
                 <div className='w-full flex flex-col'>
-                    <input type="text" placeholder="SchoolName" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateSchoolName} />
+                    <input type="text" placeholder="SchoolName" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={SchoolName} onChange={UpdateSchoolName} />
                 </div>
                 </div>
 
@@ -266,7 +300,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateGradeLevel}/>
+                                <input type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={GradeLevel} onChange={UpdateGradeLevel}/>
                             </div>
                         </div>
                         
@@ -278,7 +312,7 @@ const Student = () => {
 
                             <div className='w-full flex flex-col '>
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateInsti_idState}/>
+                                <input type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={Insti_id} onChange={UpdateInsti_idState}/>
                             </div>
                             </div>
                         </div>
@@ -291,7 +325,7 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={UpdatePasswordState}/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' required value={Password} onChange={UpdatePasswordState}/>
                 </div>
                 </div>
 
@@ -301,7 +335,7 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={UpdateConfirmPassword}/>
+                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' required value={ConfirmPassword} onChange={UpdateConfirmPassword}/>
                 </div>
                 </div>
 
