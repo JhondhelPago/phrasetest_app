@@ -101,6 +101,37 @@ const Student = () => {
         // check the Password and ConfirmPassword if identical,
         // do not sent the POST request if the Password and ConfirmPassword
         // setup the axios post request then pass the route to the server that handles the  signup method for the student
+        // check ther return of the reponse.data.email_exist, if the value is True then render a modal to let the user know that the email is already taken, else continue to the otp page
+
+
+        if (Password !== ConfirmPassword){
+            //modals here that will render to let the user know of password and confirmpassword is not match.
+
+            alert('password and confirm password did not match.');
+
+        } else {
+            //control flow axios post request
+
+            const response = await axios.post(`auth/student/signup`, {
+
+                "username" : UserName,
+                "email" : Email,
+                "password" : Password,
+                "first_name" : FirstName,
+                "middle_name" : MiddleName,
+                "last_name" : LastName,
+                "age" : Age,
+                "gender" : Gender,
+                "gradelevel" : GradeLevel,
+                "school_name" : SchoolName,
+                "institutional_id" : Insti_id
+            })
+
+
+
+
+
+        }
 
 
     }
