@@ -98,6 +98,11 @@ const Student = () => {
         console.log('Insti_id', Insti_id);
 
 
+        // check the Password and ConfirmPassword if identical,
+        // do not sent the POST request if the Password and ConfirmPassword
+        // setup the axios post request then pass the route to the server that handles the  signup method for the student
+
+
     }
 
 
