@@ -7,10 +7,10 @@ const Student = () => {
 
     <>
        
-        <div className={`flex flex-col w-full items-center justify-center xs:w-full font-poppins`}>
+        <div className={`flex flex-col w-full items-center justify-center min-h-screen xs:w-full font-poppins`}>
 
-            <h1 className='text-2xl font-bold mt-3
-             text-primary dark:text-white mb-5'>
+            <h1 className='text-2xl font-bold
+             text-primary dark:text-white mb-5 mt-4 xs:mt-24'>
             Welcome! MAH Boi _________ Lapag Your Deets.
             </h1>
 
@@ -173,7 +173,7 @@ const Student = () => {
 
                 <div className='w-full flex flex-col items-center justify-center mt-4'>
                     
-                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4 mb-4'>
                         Submit
                     </button>
                 </div>
