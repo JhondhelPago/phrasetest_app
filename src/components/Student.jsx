@@ -123,7 +123,7 @@ const Student = () => {
                 //route to the otp component
                 
                 localStorage.setItem('email', Email);
-                navigate('/');
+                navigate('/otppage');
 
             } else {
                 //email existed
