@@ -1,9 +1,107 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../style';
+import axios from 'axios';
 
 
 const Student = () => {
-  return (
+
+    const [UserName, SetUserName] = useState('');
+    const [Email, SetEmail] = useState('');
+    const [Password, SetPassword] = useState('');
+    const [ConfirmPassword, SetConfirmPassword] = useState('');
+    const [FirstName, SetFirstName] = useState('');
+    const [MiddleName, SetMiddleName] = useState('');
+    const [LastName, SetLastName] = useState('');
+    const [Age, SetAge] = useState(0);
+    const [Gender, SetGender] = useState('');
+    const [SchoolName, SetSchoolName] = useState('');
+    const [GradeLevel, SetGradeLevel] = useState('');
+    const [Insti_id, SetInsti_id] = useState('');
+    
+
+    const UpdateUserNameState = (event) => {
+        SetUserName(event.target.value);
+    }
+
+    const UpdateEmailState = (event) => {
+        SetEmail(event.target.value);
+    }
+
+    const UpdatePasswordState = (event) => {
+        SetPassword(event.target.value);
+    }
+
+    const UpdateConfirmPassword = (event) => {
+        SetConfirmPassword(event.target.value);
+    }
+
+    const UpdateFirstNameState = (event) => {
+        SetFirstName(event.target.value);
+    }
+
+    const UpdateMiddleNameState = (event) => {
+        SetMiddleName(event.target.value);
+    }
+
+    const UpdateLastNameState = (event) => {
+        SetLastName(event.target.value);
+    }
+
+    const UpdateAgeState = (event) => {
+        SetAge(parseInt(event.target.value));
+    }
+
+    const UpdateGenderState = (event) => {
+        SetGender(event.target.value);
+    }
+
+    const UpdateSchoolName = (event) => {
+        SetSchoolName(event.target.value);
+    }
+
+    const UpdateGradeLevel = (event) => {
+        SetGradeLevel(event.target.value);
+    }
+
+    const UpdateInsti_idState = (event) => {
+        SetInsti_id(event.target.value);
+    }
+
+
+    const HandleSubmitButton = async() => {
+
+        //logs the useStates
+        // const [UserName, SetUserName] = useState('');
+        // const [Email, SetEmail] = useState('');
+        // const [Password, SetPassword] = useState('');
+        // const [ConfirmPassword, SetConfirmPassword] = useState('');
+        // const [FirstName, SetFirstName] = useState('');
+        // const [MiddleName, SetMiddleName] = useState('');
+        // const [LastName, SetLastName] = useState('');
+        // const [Age, SetAge] = useState(0);
+        // const [Gender, SetGender] = useState('');
+        // const [SchoolName, SetSchoolName] = useState('');
+        // const [GradeLevel, SetGradeLevel] = useState('');
+        // const [Insti_id, SetInsti_id] = useState('');
+
+        console.log('Username', UserName);
+        console.log('Email', Email);
+        console.log('Password', Password);
+        console.log('ConfirmPassword', ConfirmPassword);
+        console.log('FirstName', FirstName);
+        console.log('MiddleName', MiddleName);
+        console.log('LastName', LastName);
+        console.log('Age', Age);
+        console.log('Gender', Gender);
+        console.log('SchoolName', SchoolName);
+        console.log('GradeLevel', GradeLevel);
+        console.log('Insti_id', Insti_id);
+
+
+    }
+
+
+    return (
 
     <>
        
@@ -26,7 +124,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Email" className='w-11/12 text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input type="email" placeholder=" Email" className='w-11/12 text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateEmailState}/>
                     </div>
                 </div>
                 
@@ -37,7 +135,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input type="email" placeholder=" Username" className='w-full text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input type="email" placeholder=" Username" className='w-full text-primary pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateUserNameState}/>
                     </div>
                 </div>
 
@@ -52,7 +150,7 @@ const Student = () => {
                     </div>
                 
                     <div className='w-full flex flex-col '>
-                        <input required type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateFirstNameState}/>
                     </div>
                 </div>
                 
@@ -63,7 +161,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateMiddleNameState}/>
                     </div>
                 </div>
 
@@ -74,7 +172,7 @@ const Student = () => {
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input required type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                        <input required type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateLastNameState}/>
                     </div>
                 </div>
 
@@ -90,7 +188,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateAgeState}/>
                             </div>
                         </div>
                         
@@ -100,8 +198,8 @@ const Student = () => {
                                 Gender<span className='text-red-500'>*</span>
                             </div>
 
-                            <div className='w-full flex flex-col '>
-                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4 '>
+                            <div className='w-full flex flex-col'>
+                                <select for="gender" type="email" placeholder=" Username" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateGenderState}>
                                 <option value={''} disabled selected> Select your Gender</option>
                                 <option value={1}>Male</option>
                                 <option value={1}>Female</option>
@@ -119,7 +217,7 @@ const Student = () => {
                 </div>
                 
                 <div className='w-full flex flex-col'>
-                    <input type="text" placeholder="SchoolName" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                    <input type="text" placeholder="SchoolName" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateSchoolName} />
                 </div>
                 </div>
 
@@ -132,7 +230,7 @@ const Student = () => {
                             </div>
                         
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateGradeLevel}/>
                             </div>
                         </div>
                         
@@ -144,7 +242,7 @@ const Student = () => {
 
                             <div className='w-full flex flex-col '>
                             <div className='w-full flex flex-col'>
-                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4'/>
+                                <input required type="number" placeholder="Age"  className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' onChange={UpdateInsti_idState}/>
                             </div>
                             </div>
                         </div>
@@ -157,7 +255,7 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder=" Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder=" Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={UpdatePasswordState}/>
                 </div>
                 </div>
 
@@ -167,13 +265,13 @@ const Student = () => {
                 </div>
 
                 <div className='w-full flex flex-col'>
-                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none'/>
+                    <input type="password" placeholder="Confirm Password" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none' onChange={UpdateConfirmPassword}/>
                 </div>
                 </div>
 
                 <div className='w-full flex flex-col items-center justify-center mt-4'>
                     
-                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4' onClick={HandleSubmitButton}>
                         Submit
                     </button>
                 </div>
