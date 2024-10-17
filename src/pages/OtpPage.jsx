@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import styles from '../style';
 import { logo,} from '../assets';
 
@@ -7,7 +8,38 @@ import { Button } from "../components";
 
 const OtpPage = ({isDark, changeColorTheme}) => {
 
-   
+    
+    const [EmailStored, SetEmailStored] = useState(null);
+
+
+    //get the email value in the localstorage
+    const getEmail = () => {
+        const storedEmail = localStorage.getItem('email');
+
+        SetEmailStored(storedEmail);
+        
+    }
+
+    //submit handlers
+    // const handleSubmit = (event) => {
+
+    //     event.preventDefault();
+
+    //     try{
+
+    //         const response = await axios.post()
+
+    //     }catch{
+
+    //     }
+
+    // }
+
+
+    useEffect(() => {
+        getEmail();
+        
+    }, [])
 
     return (
         <div className={!isDark && 'dark'}>
