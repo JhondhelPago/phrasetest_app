@@ -4,6 +4,8 @@ import axios from 'axios';
 import styles from '../style';
 import { logo,} from '../assets';
 
+import { getCurrentTimestamp } from '../module/utils';
+
 import { Button } from "../components";
 
 const OtpPage = ({isDark, changeColorTheme}) => {
@@ -61,6 +63,7 @@ const OtpPage = ({isDark, changeColorTheme}) => {
 
 
         console.log(Opt_string);
+        console.log(getCurrentTimestamp());
 
 
         // try{
