@@ -7,11 +7,11 @@ const Teacher = () => {
 
     <>
        
-        <div className={`flex flex-col w-full items-center justify-center xs:w-full font-poppins`}>
+        <div className={`flex flex-col w-full items-center justify-center min-h-screen xs:w-full font-poppins`}>
 
-            <h1 className='text-2xl font-bold mt-7
-             text-primary dark:text-white mb-5'>
-            Welcome! Wassup Teacher, _____ Please Enter Your Details.
+            <h1 className='flex items-center text-center justify-center text-2xl font-bold 
+             text-primary dark:text-white mb-5 mt-4 xs:mt-24'>
+            Welcome! Wassup Teacher, Please Enter Your Details.
             </h1>
 
             <div className={`${styles.boxWidth}flex flex-col justify-center w-full h-full`}>
@@ -145,7 +145,7 @@ const Teacher = () => {
 
                 <div className='w-full flex flex-col items-center justify-center mt-4'>
                     
-                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4'>
+                    <button className='w-1/2 text-white dark:text-primary bg-primary dark:bg-white border-lg border-primary border rounded-lg p-4 text-center flex items-center justify-center mt-4 mb-4'>
                         Submit
                     </button>
                 </div>

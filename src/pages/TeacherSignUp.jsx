@@ -8,7 +8,10 @@ const TeacherSignUp = ({isDark, changeColorTheme}) => {
   return (
     <>
         <div className={!isDark && 'dark'}>
-            <section className='bg-primary dark:bg-white w-full h-screen flex items-start'>
+            <section className='bg-primary dark:bg-white w-full items-center justify-center min-h-screen flex'>
+                <div className="absolute top-4 left-4">
+                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] hidden xs:block" />
+                </div>
                 <div className='relative w-1/2 h-full  flex-col hidden lg:block'>
                 <div className={`${styles.paddingX} ${styles.flexCenter} `}>
                     <div className={`h-screen flex items-center justify-center`}>
@@ -19,7 +22,7 @@ const TeacherSignUp = ({isDark, changeColorTheme}) => {
                 <div className=' bg-white dark:bg-primary w-full lg:w-1/2  h-full flex flex-col'>
                 <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth} text-white`}> 
-                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] mt-4"/>
+                    
                     <Teacher isDark={isDark} changeColorTheme={changeColorTheme}/>
                     <Button isDark={isDark} changeColorTheme={changeColorTheme}/>
                     </div>
