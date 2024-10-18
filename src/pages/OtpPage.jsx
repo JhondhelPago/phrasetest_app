@@ -10,9 +10,10 @@ import { Button } from "../components";
 
 const OtpPage = ({isDark, changeColorTheme}) => {
 
+    const navigate = useNavigate();
     
     const [EmailStored, SetEmailStored] = useState(null);
-    const [Otp, SetOtp] = useState(null);
+
 
     const [Digit1, SetDigit1] = useState(null);
     const [Digit2, SetDigit2] = useState(null);
@@ -61,23 +62,64 @@ const OtpPage = ({isDark, changeColorTheme}) => {
 
         const Opt_string = Digit1+Digit2+Digit3+Digit4+Digit5+Digit6;
 
-
+        console.log(EmailStored);
         console.log(Opt_string);
         console.log(getCurrentTimestamp());
 
 
-        // try{
 
-        //     data = {
-        //         "email": EmailStored,
-        //     }
+        try{
 
-        //     const response = await axios.post()
+            const data = {
+                "email": EmailStored,
+                "otp_code" : `${Digit1}${Digit2}${Digit3}${Digit4}${Digit5}${Digit6}`,
+                "time_created" : getCurrentTimestamp()
+            }
 
-        // }catch{
+            const response = await axios.post(`http://127.0.0.1:8000/user/auth/otp/verify`, data);
 
-        // }
+            console.log(response);
 
+            if (response.status == 202){
+                alert('signup successfully verified');
+
+                navigate('/loginpage');
+
+            } else if (response.status = 408) {
+
+                alert('otp time out. resend new otp');
+
+            } else if (response.status = 404) {
+
+                alert('email is not registered.');
+
+            }
+
+        }catch(error){
+            console.log(error)
+            throw error;
+        }
+
+    }
+
+    const handleResend = async(event) => {
+        event.preventDefault();
+
+        const data = {
+            "email": EmailStored
+        }
+
+        const response = await axios.post(`http://127.0.0.1:8000/user/auth/otp/reverify`, data);
+
+        if (response.status = 403){
+            alert('email is already verified');
+
+        } else if (response.status == 200){
+            alert('email has been sent. check your mail');
+        }
+
+
+        
     }
 
 
