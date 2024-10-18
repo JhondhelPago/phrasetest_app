@@ -114,7 +114,7 @@ const OtpPage = ({isDark, changeColorTheme}) => {
                             Submit
                             
                         </button>
-                        <button className='font-semibold  text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-7 text-center mt-4 mb-20' onClick={handleSubmit}>
+                        <button className='font-semibold  text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-7 text-center mt-4 mb-20'>
                             Resend
                             
                         </button>
