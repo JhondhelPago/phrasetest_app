@@ -108,10 +108,20 @@ const OtpPage = ({isDark, changeColorTheme}) => {
                         <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit5} onChange={UpdateDigit5}/>
                         <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit6} onChange={UpdateDigit6}/>
                         </div>
-                        <button className='font-semibold w-auto text-white dark:text-primary bg-primary dark:bg-white rounded-lg border-lg border-white dark:border-primary border p-4 text-center mt-4 mb-20' onClick={handleSubmit}>
+
+                        <div className='w-auto h-auto flex flex-row items-center  justify-center'>
+                        <button className='font-semibold w-11/12 text-white dark:text-primary bg-blue-500 dark:bg-blue-500 rounded-lg border-lg border-white dark:border-primary border mr-4 p-4 px-16 text-center mt-4 mb-20' onClick={handleSubmit}>
                             Submit
-                            <Button isDark={isDark} changeColorTheme={changeColorTheme}/>
+                            
                         </button>
+                        <button className='font-semibold  text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-7 text-center mt-4 mb-20' onClick={handleSubmit}>
+                            Resend
+                            
+                        </button>
+                        </div>
+                        
+
+                        <Button isDark={isDark} changeColorTheme={changeColorTheme}/>
                     </div>
                 </div>
             </section>
