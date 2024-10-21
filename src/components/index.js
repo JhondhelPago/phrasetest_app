@@ -11,6 +11,7 @@ import Comparison from "./Comparison";
 import Login from "./Login";
 import Teacher from "./Teacher";
 import Student from "./Student";
+import TeacherComponent from "./TeacherComponent";
 
 
 
@@ -29,5 +30,5 @@ export {
   Login,
   Teacher,
   Student,
-  
+  TeacherComponent,
 };
