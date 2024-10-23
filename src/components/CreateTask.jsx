@@ -44,14 +44,14 @@ const CreateTask = () => {
 
         </div>
 
-        <div className='flex flex-row items-center  justify-center mt-4'>
-        <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
+        <div className='flex flex-row items-center  justify-center mt-6'>
+        <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white mb-4'>
 
-            <button className='flex font-semibold text-white dark:text-primary bg-blue-500 dark:bg-blue-500 rounded-lg border-lg border-white dark:border-primary border mr-4 p-4 px-16 text-center mt-4 mb-20'>
+            <button className='flex font-semibold text-white dark:text-primary bg-blue-500 dark:bg-blue-500 rounded-lg border-lg border-white dark:border-primary border mr-4 p-4 px-16 text-center'>
                 Add New Question   
             </button>
-        <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
-            <button className='font-semibold  text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-16 text-center mt-4 mb-20'>
+        <div className='flex flex-col items-center justify-evenly text-center text-white dark:text-white mb-4 mt-4'>
+            <button className='flex font-semibold text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-16 text-center'>
                 Post        
             </button>
         </div>
