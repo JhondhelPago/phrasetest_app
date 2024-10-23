@@ -16,7 +16,7 @@ import TeacherSignUp from './pages/TeacherSignUp';
 import OtpPage from './pages/OtpPage';
 import TeacherPage from './pages/TeacherPage';
 import StudentPage from './pages/StudentPage';
-import { Student } from './components';
+import StudentFinishedTask from './pages/StudentFinishedTask';
 
 
 
@@ -45,6 +45,7 @@ function App() {
         <Route path="/otppage" element={<OtpPage isDark={isDark} changeColorTheme={changeColorTheme}></OtpPage>}></Route>
         <Route path="/teacherpage" element={<TeacherPage></TeacherPage>}></Route>
         <Route path="/studentpage" element={<StudentPage></StudentPage>}></Route>
+        <Route path="/studentfinishedtask" element={<StudentFinishedTask></StudentFinishedTask>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}

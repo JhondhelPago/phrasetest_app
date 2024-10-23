@@ -1,17 +1,17 @@
 import React from 'react'
 import styles from '../style'
 
-const StudentComponent = () => {
+const FinishedTask = () => {
   return (
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          Good Morning Sunshine, ___________!
+          Good Day Sunshine, ___________!
       </div>
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex flex-col w-full'> 
           <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
-              Here's your essay Tasks! 
+            Accomplishments!
           </div>
       </div>
       </div>
@@ -51,4 +51,4 @@ const StudentComponent = () => {
   )
 }
 
-export default StudentComponent
+export default FinishedTask

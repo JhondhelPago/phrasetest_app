@@ -13,6 +13,7 @@ import Teacher from "./Teacher";
 import Student from "./Student";
 import TeacherComponent from "./TeacherComponent";
 import StudentComponent from "./StudentComponent";
+import FinishedTask from "./FinishedTask";
 
 
 
@@ -33,4 +34,5 @@ export {
   Student,
   TeacherComponent,
   StudentComponent,
+  FinishedTask,
 };
