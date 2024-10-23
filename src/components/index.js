@@ -12,6 +12,7 @@ import Login from "./Login";
 import Teacher from "./Teacher";
 import Student from "./Student";
 import TeacherComponent from "./TeacherComponent";
+import StudentComponent from "./StudentComponent";
 
 
 
@@ -31,4 +32,5 @@ export {
   Teacher,
   Student,
   TeacherComponent,
+  StudentComponent,
 };
