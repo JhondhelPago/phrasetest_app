@@ -18,6 +18,7 @@ import TeacherPage from './pages/TeacherPage';
 import StudentPage from './pages/StudentPage';
 import StudentFinishedTask from './pages/StudentFinishedTask';
 import TeacherEssayTask from './pages/TeacherEssayTask';
+import StudentEssayTask from './pages/StudentEssayTask';
 
 
 //import Home from './pages/Home';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/studentpage" element={<StudentPage></StudentPage>}></Route>
         <Route path="/studentfinishedtask" element={<StudentFinishedTask></StudentFinishedTask>}></Route>
         <Route path="/teacheressaytask" element={<TeacherEssayTask></TeacherEssayTask>}></Route>
+        <Route path="/studentessaytask" element={<StudentEssayTask></StudentEssayTask>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}

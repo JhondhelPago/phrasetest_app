@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from '../style';
 import {logo, close, menu, } from '../assets';
-import { CreateTask, Button, } from '../components';
+import { Button, OngoingTask, } from '../components';
 
 
-const TeacherEssayTask = () => {
+const StudentEssayTask = () => {
   
 
   return (
@@ -13,15 +13,15 @@ const TeacherEssayTask = () => {
               <div className={`${styles.paddingX}`}>
                 <div className='bg-white dark:bg-primary w-full items-center py-4'>
                 <div className=" flex flex-row w-full items-center justify-around">
-                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px]" />
-                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px]" />
+                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] " />
+                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] " />
                 </div>
                 </div>
               </div>
               
                   <div className='bg-white dark:bg-primary'>
                   
-                  <CreateTask />
+                  <OngoingTask />
                   <Button/>
                   </div>
                   
@@ -30,4 +30,4 @@ const TeacherEssayTask = () => {
   )
 }
 
-export default TeacherEssayTask
+export default StudentEssayTask

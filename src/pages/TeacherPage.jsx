@@ -9,7 +9,7 @@ const TeacherPage = () => {
 
   return (
     <>
-    <div className='bg-white dark:bg-primary w-full justify-center min-h-screen overflow-x-hidden'>
+    <nav className='bg-white dark:bg-primary w-full justify-center min-h-screen overflow-x-hidden'>
               <div className={`${styles.paddingX}`}>
                 <div className='bg-white dark:bg-primary w-full items-center py-4'>
                 <div className=" flex flex-row w-full items-center justify-around">
@@ -25,7 +25,7 @@ const TeacherPage = () => {
                   <Button/>
                   </div>
                   
-    </div>
+    </nav>
     </>
   )
 }

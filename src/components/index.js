@@ -15,6 +15,7 @@ import TeacherComponent from "./TeacherComponent";
 import StudentComponent from "./StudentComponent";
 import FinishedTask from "./FinishedTask";
 import CreateTask from "./CreateTask";
+import OngoingTask from "./OngoingTask";
 
 
 
@@ -37,4 +38,5 @@ export {
   StudentComponent,
   FinishedTask,
   CreateTask,
+  OngoingTask,
 };
