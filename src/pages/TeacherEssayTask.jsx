@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from '../style';
 import {logo, close, menu, } from '../assets';
-import { TeacherComponent, Button, } from '../components';
+import { CreateTask, Button, } from '../components';
 
 
-const TeacherPage = () => {
+const TeacherEssayTask = () => {
   
 
   return (
     <>
-    <div className='bg-white dark:bg-primary w-full justify-center min-h-screen'>
+    <nav className='bg-white dark:bg-primary w-full justify-center min-h-screen'>
               <div className={`${styles.paddingX}`}>
                 <div className='bg-white dark:bg-primary w-full items-center py-4'>
                 <div className=" flex flex-row w-full items-center justify-around">
@@ -21,13 +21,13 @@ const TeacherPage = () => {
               
                   <div className='bg-white dark:bg-primary'>
                   
-                  <TeacherComponent />
+                  <CreateTask />
                   <Button/>
                   </div>
                   
-    </div>
+    </nav>
     </>
   )
 }
 
-export default TeacherPage
+export default TeacherEssayTask
