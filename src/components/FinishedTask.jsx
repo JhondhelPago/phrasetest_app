@@ -21,7 +21,7 @@ const FinishedTask = () => {
         
         {/* Small Gray Divs */}
         <div className='flex flex-row items-center justify-center text-center'>
-          <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-14 w-full text-primary dark:text-white'>
+          <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-14 w-full text-primary'>
             <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
               <p>Essay Activity 1</p>
             </div>

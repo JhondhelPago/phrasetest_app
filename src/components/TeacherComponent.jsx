@@ -1,7 +1,18 @@
 import React from 'react'
 import styles from '../style'
+import { useNavigate } from 'react-router-dom';
 
 const TeacherComponent = () => {
+
+  const navigate = useNavigate();
+
+    const routeToTeacherEssayTask = () => {
+        
+        navigate('/teacheressaytask');
+
+    }
+
+
   return (
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
@@ -18,7 +29,7 @@ const TeacherComponent = () => {
           </select>
         </div>
           <div className='flex items-center text-xs'>
-            <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2'>
+            <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
               Create Essay Task 
             </button>
           </div>
@@ -48,7 +59,7 @@ const TeacherComponent = () => {
         </div>
         {/* Small Gray Divs */}
         <div className='flex flex-row items-center justify-center'>
-          <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary dark:text-white'>
+          <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary'>
             <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl'>
               <p>100%</p>
             </div>

@@ -4,11 +4,11 @@ import {logo, close, menu, } from '../assets';
 import {  Button, StudentComponent, } from '../components';
 
 
-const StudentPage = () => {
+const StudentPage = ({isDark, changeColorTheme}) => {
   
 
   return (
-    <>
+    <div className={!isDark && 'dark'}>
     <nav className='bg-white dark:bg-primary w-full justify-center min-h-screen overflow-x-hidden'>
               <div className={`${styles.paddingX}`}>
                 <div className='bg-white dark:bg-primary w-full items-center py-4'>
@@ -22,11 +22,11 @@ const StudentPage = () => {
                   <div className='bg-white dark:bg-primary'>
                   
                   <StudentComponent />
-                  <Button/>
+                  <Button isDark={isDark} changeColorTheme={changeColorTheme}/>
                   </div>
                   
     </nav>
-    </>
+    </div>
   )
 }
 

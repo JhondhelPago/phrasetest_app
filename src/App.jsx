@@ -44,11 +44,11 @@ function App() {
         <Route path="/studentsignup" element={<StudentSignUp isDark={isDark} changeColorTheme={changeColorTheme}></StudentSignUp>}></Route>
         <Route path="/teachersignup" element={<TeacherSignUp isDark={isDark} changeColorTheme={changeColorTheme}></TeacherSignUp>}></Route>
         <Route path="/otppage" element={<OtpPage isDark={isDark} changeColorTheme={changeColorTheme}></OtpPage>}></Route>
-        <Route path="/teacherpage" element={<TeacherPage></TeacherPage>}></Route>
-        <Route path="/studentpage" element={<StudentPage></StudentPage>}></Route>
-        <Route path="/studentfinishedtask" element={<StudentFinishedTask></StudentFinishedTask>}></Route>
-        <Route path="/teacheressaytask" element={<TeacherEssayTask></TeacherEssayTask>}></Route>
-        <Route path="/studentessaytask" element={<StudentEssayTask></StudentEssayTask>}></Route>
+        <Route path="/teacherpage" element={<TeacherPage isDark={isDark} changeColorTheme={changeColorTheme}></TeacherPage>}></Route>
+        <Route path="/studentpage" element={<StudentPage isDark={isDark} changeColorTheme={changeColorTheme}></StudentPage>}></Route>
+        <Route path="/studentfinishedtask" element={<StudentFinishedTask isDark={isDark} changeColorTheme={changeColorTheme}></StudentFinishedTask>}></Route>
+        <Route path="/teacheressaytask" element={<TeacherEssayTask isDark={isDark} changeColorTheme={changeColorTheme}></TeacherEssayTask>}></Route>
+        <Route path="/studentessaytask" element={<StudentEssayTask isDark={isDark} changeColorTheme={changeColorTheme}></StudentEssayTask>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}
