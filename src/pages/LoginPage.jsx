@@ -8,7 +8,7 @@ const LoginPage = ({isDark, changeColorTheme}) => {
   return (
     <>
         <div className={!isDark && 'dark'}>
-            <section className='bg-primary dark:bg-white w-full h-screen flex items-start'>
+            <section className='bg-primary dark:bg-white w-full min-h-screen flex justify-center'>
                 <div className='relative w-1/2 h-full  flex-col hidden lg:block'>
                 <div className={`${styles.paddingX} ${styles.flexCenter} `}>
                     <div className={`h-screen flex items-center justify-center`}>

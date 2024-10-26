@@ -4,6 +4,7 @@ import styles from '../style';
 import axios from 'axios';
 
 
+
 const Student = () => {
 
     const navigate = useNavigate();

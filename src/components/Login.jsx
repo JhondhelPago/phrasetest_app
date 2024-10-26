@@ -79,7 +79,7 @@ const Login = () => {
 
     <>
        
-        <div className={`${styles.paddingX} ${styles.paddingY}  w-full items-center justify- xs:w-full font-poppins`}>
+        <div className={`${styles.paddingX} ${styles.paddingY}  w-full min-h-screen items-center justify- xs:w-full font-poppins`}>
 
             <h1 className='text-2xl font-bold mt-14  text-primary dark:text-white mb-10'>
             Welcome! Please Enter Your Details.

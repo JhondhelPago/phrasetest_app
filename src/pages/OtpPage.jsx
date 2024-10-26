@@ -143,12 +143,12 @@ const OtpPage = ({isDark, changeColorTheme}) => {
                             <label className='text-3xl text-primary text-center dark:text-white justify-center'>We’ve Sent you the OTP please check your email! </label>
                         </div>
                         <div className='flex flex-row md:flex-row flex-wrap items-center justify-center text-center mt-4 mb-4 font-bold'>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit1} onChange={UpdateDigit1}/>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit2} onChange={UpdateDigit2}/>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit3} onChange={UpdateDigit3}/>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit4} onChange={UpdateDigit4}/>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit5} onChange={UpdateDigit5}/>
-                        <input type="number"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit6} onChange={UpdateDigit6}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit1} onChange={UpdateDigit1} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit2} onChange={UpdateDigit2} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit3} onChange={UpdateDigit3} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit4} onChange={UpdateDigit4} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit5} onChange={UpdateDigit5} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
+                        <input type="text"  className='w-24 text-primary  mt-2 py-2 text-center border rounded-lg border-gray-500 outline-none focus:outline-none mr-4' value={Digit6} onChange={UpdateDigit6} maxLength="1" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')}/>
                         </div>
 
                         <div className='w-auto h-auto flex flex-row items-center  justify-center'>
