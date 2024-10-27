@@ -21,38 +21,55 @@ const Login = () => {
         console.log(`Password : ${Password}`)
 
     
+        //try catch block here to handles the invalid login form input
 
-        const response =  await axios.post(`http://127.0.0.1:8000/user/auth/login`, {
-            'email' : Email,
-            'password' : Password
-        });
+        try{
 
-        const refresh_access = response.data;
+            const response =  await axios.post(`http://127.0.0.1:8000/user/auth/login`, {
+                'email' : Email,
+                'password' : Password
+            });
+    
+            const refresh_access = response.data.token;
+    
+            console.log(refresh_access);
+            console.log(refresh_access.refresh);
+            console.log(refresh_access.access);
+    
+            if ((refresh_access.refresh !== '') && (refresh_access.access !== '')){
+    
+    
+                console.log(`save the refresh and access token to localStrorage`);
+                localStorage.setItem('refresh', refresh_access.refresh);
+    
+                localStorage.setItem('access', refresh_access.access);
+    
+                localStorage.setItem('user_type', response.data.user_type);
+                
+                if (response.data.user_type === "student") {
+                    routeToStudentPage();
+    
+                } else {
+                    routeToTeacherPage();
+    
+                }
+    
+            }else{
+                
+                console.log(`clear the useState variable`);
+    
+                SetEmail('');
+                SetPassword('');
+    
+                alert('in valid login credentials');
+    
+                
+            }
 
-        console.log(refresh_access);
-        console.log(refresh_access.refresh);
-        console.log(refresh_access.access);
+        } catch(error) {
 
-        if ((refresh_access.refresh !== '') && (refresh_access.access !== '')){
+            alert('Invalid email and password');
 
-
-            console.log(`save the refresh and acess token to localStrorage`);
-            
-            console.log('route to the homepage');
-
-
-            routeToHome();
-
-        }else{
-            
-            console.log(`clear the useState variable`);
-
-            SetEmail('');
-            SetPassword('');
-
-            alert('in valid login credentials');
-
-            
         }
 
     }
@@ -68,6 +85,14 @@ const Login = () => {
     const routeToHome = () => {
         navigate('/');
     }
+
+   const routeToStudentPage = () => {
+        navigate('/studentpage');
+   }
+
+   const routeToTeacherPage = () => {
+    navigate('/teacherpage');
+}
 
     const routeToSignUpSelect = () => {
 

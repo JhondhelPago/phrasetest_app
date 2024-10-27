@@ -37,3 +37,7 @@ export const getCurrentTimestamp = () => {
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
 }
+
+
+
+console.log(getCurrentTimestamp());

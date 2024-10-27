@@ -5,6 +5,12 @@ import {  Button, StudentComponent, } from '../components';
 
 
 const StudentPage = ({isDark, changeColorTheme}) => {
+
+
+
+  //function here to check the refresh and access token is validated
+  //if access is invalid get new access using the refresh
+  //if refresh is invalid, route the user to the login
   
 
   return (
