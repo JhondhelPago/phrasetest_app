@@ -45,6 +45,8 @@ const Login = () => {
                 localStorage.setItem('access', refresh_access.access);
     
                 localStorage.setItem('user_type', response.data.user_type);
+
+                localStorage.setItem('email', response.data.email)
                 
                 if (response.data.user_type === "student") {
                     routeToStudentPage();
