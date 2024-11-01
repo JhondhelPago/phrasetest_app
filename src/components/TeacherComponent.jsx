@@ -1,23 +1,149 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../style'
+import { axiosInstance, axiosRefresh } from '../module/axiosInstances';
+import { loadTeacherInfo, TeacherApiCalls } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
 const TeacherComponent = () => {
 
   const navigate = useNavigate();
 
-    const routeToTeacherEssayTask = () => {
+  const [Username, SetUsername] = useState('');
+
+
+  // const loadTeacherInfo = async() => {
+
+  //   let ErrorLog = null;
+   
+
+  //   try{
+
+  //     console.log(`teache access token: ${localStorage.getItem('access')}`);
+
+  //     let response = await axiosInstance.get(`teacher/info`, {
         
-        navigate('/teacheressaytask');
+  //       params : {
+  //         access : localStorage.getItem('access')
+  //       },
+
+  //     });
+
+  //     print(response); 
+
+  //     SetUsername(response.data.username);
+
+  //   } catch(error){
+
+  //     print(response)
+  
+  //     throw error;  
+  //   }
+
+  // }
+
+
+  const TeacherInfo = async () => {
+    let ErrorLog = null;
+    
+
+    try {
+        console.log(`teacher access token: ${localStorage.getItem('access')}`);
+
+        // const response = await axiosInstance.get(`teacher/info`, {
+        //     params: {
+        //         access: localStorage.getItem('access'),
+        //     },
+        // });
+
+        const response = await TeacherApiCalls.loadTeacherInfo();
+
+
+        if (response.status === 200){
+
+          console.log(response); // Log the response
+
+          SetUsername(response.data.username);
+
+        }
+
+    } catch (error) {
+        
+        if (error.response.status === 401){
+
+          console.log('401 control flow');
+
+          // get new access token using the refresh
+          try{
+
+            const response = await axiosRefresh.post(`/user/auth/token/new/access`, 
+              
+              {
+                refresh : localStorage.getItem('refresh'),
+              }
+
+            );
+
+            console.log(`new access token : ${response.data.access}`);
+
+            if (response.status ===  200){
+              localStorage.setItem('access', response.data.access);
+
+              try{
+
+                const response = await axiosInstance.get(`teacher/info`, {
+                    params: {
+                        access: localStorage.getItem('access'),
+                    },
+                });
+        
+                if (response.status === 200){
+        
+                  console.log(response); // Log the response
+        
+                  SetUsername(response.data.username);
+        
+                }
+
+
+              } catch(error) {
+                console.log(error);
+                throw error;
+              }
+
+            }
+
+          } catch(error){
+
+            console.log(`axiosRefresh failed`);
+            console.log(error);
+            throw error;
+
+          }
+
+        }
 
     }
+};
+
+
+  const routeToTeacherEssayTask = () => {
+      
+      navigate('/teacheressaytask');
+
+  }
+
+  useEffect(() => {
+
+    TeacherInfo();
+
+  }, [])
 
 
   return (
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          Good Morning Teacher ___________!
+          Good Morning Teacher {Username && Username}!
       </div>
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex items-center mb-4 sm:mb-0'>

@@ -1,0 +1,33 @@
+import { axiosInstance, axiosRefresh } from "./axiosInstances";
+
+//Teacher calls 
+
+export const loadTeacherInfo = async() => {
+
+
+    const response = await axiosInstance.get(`teacher/info`, {
+        params: {
+            access: localStorage.getItem('access'),
+        },
+    });
+
+    return response;
+
+}
+
+
+export class TeacherApiCalls{
+
+    static loadTeacherInfo = async() => {
+
+        const response = await axiosInstance.get(`teacher/info`, {
+            params: {
+                access: localStorage.getItem('access'),
+            },
+        });
+    
+        return response;
+
+    }
+
+}
