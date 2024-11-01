@@ -10,6 +10,8 @@ const TeacherComponent = () => {
 
   const [Username, SetUsername] = useState('');
 
+  const [SectionList, SetSectionList] = useState([]);
+
 
   // const loadTeacherInfo = async() => {
 
@@ -43,8 +45,6 @@ const TeacherComponent = () => {
 
 
   const TeacherInfo = async () => {
-    let ErrorLog = null;
-    
 
     try {
         console.log(`teacher access token: ${localStorage.getItem('access')}`);
@@ -68,63 +68,82 @@ const TeacherComponent = () => {
 
     } catch (error) {
         
-        if (error.response.status === 401){
+      if (error.response.status === 401){
 
-          console.log('401 control flow');
+        console.log('401 control flow');
 
-          // get new access token using the refresh
-          try{
+        // get new access token using the refresh
+        try{
 
-            const response = await axiosRefresh.post(`/user/auth/token/new/access`, 
-              
-              {
-                refresh : localStorage.getItem('refresh'),
-              }
-
-            );
-
-            console.log(`new access token : ${response.data.access}`);
-
-            if (response.status ===  200){
-              localStorage.setItem('access', response.data.access);
-
-              try{
-
-                const response = await axiosInstance.get(`teacher/info`, {
-                    params: {
-                        access: localStorage.getItem('access'),
-                    },
-                });
-        
-                if (response.status === 200){
-        
-                  console.log(response); // Log the response
-        
-                  SetUsername(response.data.username);
-        
-                }
-
-
-              } catch(error) {
-                console.log(error);
-                throw error;
-              }
-
+          const response = await axiosRefresh.post(`/user/auth/token/new/access`, 
+            
+            {
+              refresh : localStorage.getItem('refresh'),
             }
 
-          } catch(error){
+          );
 
-            console.log(`axiosRefresh failed`);
-            console.log(error);
-            throw error;
+          console.log(`new access token : ${response.data.access}`);
+
+          if (response.status ===  200){
+            localStorage.setItem('access', response.data.access);
+
+            try{
+
+              const response = await axiosInstance.get(`teacher/info`, {
+                  params: {
+                      access: localStorage.getItem('access'),
+                  },
+              });
+      
+              if (response.status === 200){
+      
+                console.log(response); // Log the response
+      
+                SetUsername(response.data.username);
+      
+              }
+
+
+            } catch(error) {
+              console.log(error);
+              throw error;
+            }
 
           }
 
+        } catch(error){
+
+          console.log(`axiosRefresh failed`);
+          console.log(error);
+          throw error;
+
         }
+      }
+      //end block of 401 control flow
 
     }
-};
+  } 
 
+  const TeacherSection = async () => {
+
+    try{
+
+      const response = await TeacherApiCalls.associatedSections();
+
+      if (response.status === 200){
+        console.log(response.data);
+      }
+
+    } catch(error) {
+      
+      if (error.response.status === 401){
+        // get new access token using the refresh token
+      }
+
+    }
+
+  } 
 
   const routeToTeacherEssayTask = () => {
       

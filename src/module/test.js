@@ -1,3 +1,13 @@
-import { getCurrentTimestamp } from "./utils";
+// import { TeacherApiCalls } from "./APIcalls";
 
-console.log(getCurrentTimestamp());
+
+// try{
+
+//     const response = await TeacherApiCalls.associatedSections();
+
+//     console.log(response.data);
+
+// } catch(error){
+//     console.log(error);
+//     throw error;
+// }

@@ -30,6 +30,21 @@ export class TeacherApiCalls {
 
     }
 
+    static associatedSections = async () => {
+
+        const response = await axiosInstance.get('', {
+            headers : {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            },
+            params: {
+                access: localStorage.getItem('access'),
+            }
+        });
+
+        return response;
+
+    }
+
 }
 
 
