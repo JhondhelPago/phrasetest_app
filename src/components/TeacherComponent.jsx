@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../style'
 import { axiosInstance, axiosRefresh } from '../module/axiosInstances';
-import { loadTeacherInfo, TeacherApiCalls } from '../module/APIcalls';
+import { loadTeacherInfo, TeacherApiCalls, ReqAccessToken } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
 const TeacherComponent = () => {
@@ -11,38 +11,6 @@ const TeacherComponent = () => {
   const [Username, SetUsername] = useState('');
 
   const [SectionList, SetSectionList] = useState([]);
-
-
-  // const loadTeacherInfo = async() => {
-
-  //   let ErrorLog = null;
-   
-
-  //   try{
-
-  //     console.log(`teache access token: ${localStorage.getItem('access')}`);
-
-  //     let response = await axiosInstance.get(`teacher/info`, {
-        
-  //       params : {
-  //         access : localStorage.getItem('access')
-  //       },
-
-  //     });
-
-  //     print(response); 
-
-  //     SetUsername(response.data.username);
-
-  //   } catch(error){
-
-  //     print(response)
-  
-  //     throw error;  
-  //   }
-
-  // }
-
 
   const TeacherInfo = async () => {
 
@@ -75,13 +43,7 @@ const TeacherComponent = () => {
         // get new access token using the refresh
         try{
 
-          const response = await axiosRefresh.post(`/user/auth/token/new/access`, 
-            
-            {
-              refresh : localStorage.getItem('refresh'),
-            }
-
-          );
+          const response = await ReqAccessToken();
 
           console.log(`new access token : ${response.data.access}`);
 
@@ -90,11 +52,7 @@ const TeacherComponent = () => {
 
             try{
 
-              const response = await axiosInstance.get(`teacher/info`, {
-                  params: {
-                      access: localStorage.getItem('access'),
-                  },
-              });
+              const response = await TeacherApiCalls.loadTeacherInfo();
       
               if (response.status === 200){
       
@@ -103,7 +61,6 @@ const TeacherComponent = () => {
                 SetUsername(response.data.username);
       
               }
-
 
             } catch(error) {
               console.log(error);
@@ -116,12 +73,14 @@ const TeacherComponent = () => {
 
           console.log(`axiosRefresh failed`);
           console.log(error);
-          throw error;
-
+          
+          if (error.response === 401) {
+            //refresh_toekn expired need to login to obtain pair token
+            navigate('/loginpage');
+          }
         }
       }
       //end block of 401 control flow
-
     }
   } 
 
@@ -133,12 +92,49 @@ const TeacherComponent = () => {
 
       if (response.status === 200){
         console.log(response.data);
+        SetSectionList(response.data.section_list);
       }
 
     } catch(error) {
       
       if (error.response.status === 401){
         // get new access token using the refresh token
+
+        try{
+
+          const response = await ReqAccessToken();
+
+          if (response.status === 200){
+
+            localStorage.setItem('access', response.data.access);
+
+
+            try{
+
+              const response = await TeacherApiCalls.associatedSections();
+
+              if (response.status === 200){
+                console.log(response.data);
+                SetSectionList(response.data);
+              }
+
+            } catch (error) {
+
+            }
+
+
+
+          }
+
+        } catch(error) {
+
+          console.log(error);
+          //refresh token is expired
+          navigate('/loginpage');
+
+        }
+
+        console.log('api call denied');
       }
 
     }
@@ -154,6 +150,7 @@ const TeacherComponent = () => {
   useEffect(() => {
 
     TeacherInfo();
+    TeacherSection();
 
   }, [])
 
@@ -168,9 +165,12 @@ const TeacherComponent = () => {
       <div className='flex items-center mb-4 sm:mb-0'>
           <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
           <select className='w-full text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs'>
-            <option>Section 1</option>
+            {SectionList.map((section_dict, index) => (
+              <option>{section_dict['section_code']}</option>
+            ))}
+            {/* <option>Section 1</option>
             <option>Section 2</option>
-            <option>Section 3</option>
+            <option>Section 3</option> */}
           </select>
         </div>
           <div className='flex items-center text-xs'>
