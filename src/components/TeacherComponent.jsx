@@ -12,6 +12,8 @@ const TeacherComponent = () => {
 
   const [SectionList, SetSectionList] = useState([]);
 
+  const [Current_Section, SetCurrent_Section] = useState(1);
+
   const TeacherInfo = async () => {
 
     try {
@@ -93,6 +95,7 @@ const TeacherComponent = () => {
       if (response.status === 200){
         console.log(response.data);
         SetSectionList(response.data.section_list);
+        SetCurrent_Section(response.data.section_list[0]['section_code']);
       }
 
     } catch(error) {
@@ -116,6 +119,7 @@ const TeacherComponent = () => {
               if (response.status === 200){
                 console.log(response.data);
                 SetSectionList(response.data);
+                SetCurrent_Section(response.data.section_list[0]['section_code']);
               }
 
             } catch (error) {
@@ -147,12 +151,30 @@ const TeacherComponent = () => {
 
   }
 
+  const Update_Current_Section = (event) => {
+
+    SetCurrent_Section(event.target.value);
+
+  }
+
   useEffect(() => {
 
     TeacherInfo();
     TeacherSection();
+    // Current_Section(SectionList[0]['section_code']);
+    
 
-  }, [])
+  }, []);
+
+
+  useEffect(() => {
+
+    localStorage.setItem('Current_Section', Current_Section);
+
+    // alert(`Current_Section is updated to ${Current_Section}`);
+    //fetch the data of the Current_Section
+
+  }, [Current_Section]);
 
 
   return (
@@ -164,7 +186,7 @@ const TeacherComponent = () => {
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex items-center mb-4 sm:mb-0'>
           <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
-          <select className='w-full text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs'>
+          <select className='w-full text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
             {SectionList.map((section_dict, index) => (
               <option>{section_dict['section_code']}</option>
             ))}
