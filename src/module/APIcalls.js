@@ -16,9 +16,9 @@ export const loadTeacherInfo = async() => {
 }
 
 
-export class TeacherApiCalls{
+export class TeacherApiCalls {
 
-    static loadTeacherInfo = async() => {
+    static loadTeacherInfo = async () => {
 
         const response = await axiosInstance.get(`teacher/info`, {
             params: {
@@ -27,6 +27,18 @@ export class TeacherApiCalls{
         });
     
         return response;
+
+    }
+
+}
+
+
+export class StudentAPICalls { 
+
+    static loadStudentInfo = async () => {
+
+
+        return 
 
     }
 
