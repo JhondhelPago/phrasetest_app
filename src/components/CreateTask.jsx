@@ -8,7 +8,7 @@ const CreateTask = () => {
         
         <div className='flex flex-col items-center mb-4 sm:mb-0 justify-start mt-4'>
           <select className='flex w-6/12 sm:2/12 md:2/12 lg:w-2/12 text-white dark:text-primary text-center bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xl'>
-          <option value={''} disabled selected>Select Section</option>
+          <option value={''} disabled selected>{localStorage.getItem('Current_Section')}</option>
             <option>Section 1</option>
             <option>Section 2</option>
             <option>Section 3</option>
