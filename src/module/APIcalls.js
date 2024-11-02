@@ -1,5 +1,5 @@
 import { axiosInstance, axiosRefresh } from "./axiosInstances";
-
+import { useNavigate } from "react-router-dom";
 //Teacher calls 
 
 export const loadTeacherInfo = async() => {
@@ -48,6 +48,22 @@ export class TeacherApiCalls {
 
     }
 
+    static CurrentSectionStateDetails = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`teacher/assignment/info/details`, {
+            
+            headers : {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                assignment_id : assignment_id
+            }
+        });
+
+        return response;
+
+    }
+
 }
 
 
@@ -75,5 +91,42 @@ export const ReqAccessToken = async () => {
 
 
     return response;
+
+}
+
+
+export const ReqAccessTokenSuperScope = async () => {
+
+    let status_code;
+    let response_holder;
+
+    try{
+
+        const response = await ReqAccessToken();
+        status_code = response.status;
+
+        response_holder = response;
+
+    } catch (error) {
+
+        status_code = error.response.status;
+
+        response_holder = error.response;
+
+    } finally {
+
+        return {
+            'status_code' : status_code,
+            'result' : response_holder
+        }
+    }
+
+}
+
+export const DirectToLogin = () => {
+
+    const navigate = useNavigate()
+
+    navigate('/loginpage');
 
 }

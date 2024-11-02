@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../style'
 import { axiosInstance, axiosRefresh } from '../module/axiosInstances';
-import { loadTeacherInfo, TeacherApiCalls, ReqAccessToken } from '../module/APIcalls';
+import { loadTeacherInfo, TeacherApiCalls, ReqAccessToken, ReqAccessTokenSuperScope, DirectToLogin } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
 const TeacherComponent = () => {
@@ -16,19 +16,14 @@ const TeacherComponent = () => {
 
   const [Current_Section, SetCurrent_Section] = useState(1);
 
+  const [Current_AssignmentObj, SetCurrent_AssignmentObj] = useState(null);
+
   const TeacherInfo = async () => {
 
     try {
         console.log(`teacher access token: ${localStorage.getItem('access')}`);
 
-        // const response = await axiosInstance.get(`teacher/info`, {
-        //     params: {
-        //         access: localStorage.getItem('access'),
-        //     },
-        // });
-
         const response = await TeacherApiCalls.loadTeacherInfo();
-
 
         if (response.status === 200){
 
@@ -39,52 +34,43 @@ const TeacherComponent = () => {
         }
 
     } catch (error) {
-        
-      if (error.response.status === 401){
 
-        console.log('401 control flow');
-
-        // get new access token using the refresh
-        try{
-
-          const response = await ReqAccessToken();
-
-          console.log(`new access token : ${response.data.access}`);
-
-          if (response.status ===  200){
-            localStorage.setItem('access', response.data.access);
-
-            try{
-
-              const response = await TeacherApiCalls.loadTeacherInfo();
+      console.log('error scope');
+      console.log(error.response.status);
       
-              if (response.status === 200){
-      
-                console.log(response); // Log the response
-      
-                SetUsername(response.data.username);
-      
-              }
+      if (error.response.status == 401) {
+        //console.log('error 401 scope');
+        let Re_request_access = await ReqAccessTokenSuperScope();
+        // console.log(Re_request_access)
+        // console.log(Re_request_access['status_code']);
 
-            } catch(error) {
-              console.log(error);
-              throw error;
-            }
-
-          }
-
-        } catch(error){
-
-          console.log(`axiosRefresh failed`);
-          console.log(error);
+        if (Re_request_access['status_code'] == 401){
           
-          if (error.response === 401) {
-            //refresh_toekn expired need to login to obtain pair token
-            navigate('/loginpage');
+          console.log('navigating back to login');
+          BackToLogin();
+
+        } else if (Re_request_access['status_code'] == 200){
+          
+          console.log('new access toekn set.');
+          // update the access token here in the localStorage.setItem()
+          localStorage.setItem('access', Re_request_access['result'].data.access);
+
+          try{
+
+            const response = await TeacherApiCalls.loadTeacherInfo();
+            
+            if(response.status == 200){
+              SetUsername(response.data.username);
+            } 
+
+          } catch (error) {
+            console.log(error);
+            BackToLogin();
           }
         }
+
       }
-      //end block of 401 control flow
+      // //end block of 401 control flow
     }
   } 
 
@@ -94,7 +80,7 @@ const TeacherComponent = () => {
 
       const response = await TeacherApiCalls.associatedSections();
 
-      if (response.status === 200){
+      if (response.status == 200){
         console.log(response.data);
         SetSectionList(response.data.section_list);
         SetCurrent_Section(response.data.section_list[0]['section_code']);
@@ -105,54 +91,68 @@ const TeacherComponent = () => {
       if (error.response.status === 401){
         // get new access token using the refresh token
 
-        try{
+        let Re_request_access = await ReqAccessTokenSuperScope();
 
-          const response = await ReqAccessToken();
+        if (Re_request_access['status_code'] == 401){
+          
+          BackToLogin();
 
-          if (response.status === 200){
+        } else if (Re_request_access['status_code'] == 200){
+          // set new access token to the localStorage.setItem()
+          localStorage.setItem('access', Re_request_access['result'].data.access);
 
-            localStorage.setItem('access', response.data.access);
+          try{
 
+            const response = await TeacherApiCalls.associatedSections();
 
-            try{
-
-              const response = await TeacherApiCalls.associatedSections();
-
-              if (response.status === 200){
-                console.log(response.data);
-                SetSectionList(response.data);
-                SetCurrent_Section(response.data.section_list[0]['section_code']);
-              }
-
-            } catch (error) {
-
+            if (response.status == 200) {
+              SetSectionList(response.data.section_list);
+              SetCurrent_Section(response.data.section_list[0]['section_code']);
             }
 
-
-
+          } catch (error) {
+            console.log(error);
+            BackToLogin();
           }
-
-        } catch(error) {
-
-          console.log(error);
-          //refresh token is expired
-          navigate('/loginpage');
-
         }
-
-        console.log('api call denied');
       }
-
     }
-
   } 
 
-  const routeToTeacherEssayTask = () => {
+  const fetch_Current_AssignmentDetails = async () => {
+
+    try{
+
+      const response  = await TeacherApiCalls.CurrentSectionStateDetails(Current_Section);
+
+      if (response.status == 200){
+        console.log(response.data);
+      }
+
+
+    } catch (error) {
+      console.log(error);
+
+      if (error.reponse.status == 401){
+
+
+
+      }
       
-      navigate('/teacheressaytask');
+    }
 
   }
 
+  const fetch_Current_SectionDetails = async () => {
+    
+  }
+
+  
+  const routeToTeacherEssayTask = () => {
+      
+    navigate('/teacheressaytask');
+
+  }
 
   const toggleStudentList = () => {
     setShowStudentList(!showStudentList);
@@ -162,6 +162,10 @@ const TeacherComponent = () => {
 
     SetCurrent_Section(event.target.value);
 
+  }
+
+  const BackToLogin = () => {
+    navigate('/login');
   }
 
   useEffect(() => {
@@ -189,7 +193,7 @@ const TeacherComponent = () => {
       <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
         <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
           <div className='w-full flex flex-col sm:flex-row  items-center justify-evenly text-xl pt-4 text-primary dark:text-white text-center'>
-          <p>Good Morning Teacher, (name of the teacher) !</p>
+          <p>Good Morning Teacher, {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
                     Class Code : 123456 {Current_Section}
                   </button>
@@ -201,7 +205,7 @@ const TeacherComponent = () => {
             <div className='flex items-center space-x-2'>
             <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
               <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
-                {SectionList && SectionList.map((section_obj, index) => (
+                {SectionList.map((section_obj, index) => (
                   <option id={index} key={section_obj['section_code']}>{section_obj['section_code']}</option>
                 ))}                
               </select>
@@ -324,4 +328,4 @@ const TeacherComponent = () => {
 }
 
 
-export default TeacherComponent
+export default TeacherComponent;
