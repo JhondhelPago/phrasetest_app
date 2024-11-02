@@ -106,21 +106,21 @@ const Comparison = () => {
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
           </div>
-          <div className=" h-full flex flex-row justify-center items-center bg-gray-500 rounded-lg font-poppins">
+          <div className=" h-full flex flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
-                  <div className="text-lg text-dark dark:text-white mr-6">Phrase Correction ID : 1</div>
-                  <div className="text-lg text-dark dark:text-white">Error Type: Verb Tense</div>
+                  <div className="text-lg text-primary mr-6">Phrase Correction ID : 1</div>
+                  <div className="text-lg text-primary">Error Type: Verb Tense</div>
                 </div>
-                <div className='flex flex-row justify-start items-center text-lg text-dark dark:text-white mb-4'>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-dark dark:text-white mr-4 mb-4">Explanation : Mauris a sollicitudin turpis. Cras tincidunt,h</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4 mb-4">Explanation : Mauris a sollicitudin turpis. Cras tincidunt,h</div> {/* Align this to Error type: Verb Tense */}
                 </div>
-                <div className='flex flex-row justify-start items-center text-lg text-dark dark:text-white mb-4'>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-dark dark:text-white mr-4">Solution: Changes this “Verb” B====D to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4">Solution: Changes this “Verb” B====D to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
                 </div>
             </div>
           </div>

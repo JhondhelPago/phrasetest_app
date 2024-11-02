@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../style';
-import {logo, close, menu, } from '../assets';
+import {logo} from '../assets';
 import {  Button, StudentComponent, StudentSidebar } from '../components';
 
 

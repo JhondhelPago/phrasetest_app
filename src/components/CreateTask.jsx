@@ -18,6 +18,24 @@ const CreateTask = () => {
       
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
 
+        
+
+        <div className='flex flex-col w-full'> 
+            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
+                Short context of your Question
+            </div>
+        
+            <div>
+                <textarea placeholder="Question Context" className="w-7/12 pl-2 pt-2 pb-7 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+            </div>
+        </div>
+
+      </div>
+
+      <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
+
+        
+
         <div className='flex flex-col w-full'> 
             <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
                 Create An Essay Question
