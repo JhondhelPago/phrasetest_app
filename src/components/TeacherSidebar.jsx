@@ -28,33 +28,17 @@ const TeacherSidebar = ({isDark, changeColorTheme}) => {
             {/* Sidebar content */}
             <div className='mt-32'>
                 
-                <div className='w-full text-primary dark:text-white text-3xl sm:text-3xl md:text-3xl lg:text-4xl text-center font-semibold cursor-pointer'>
+                <div className='w-full text-primary dark:text-white text-3xl sm:text-3xl md:text-3xl lg:text-5xl text-center font-semibold cursor-pointer'>
                     <div className='relative mb-6 group'>
-                        <p>DASHBOARD</p>
+                        <p>HOME</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
                     
                     <div className="relative mb-4 group">
-                        <p> Sections</p>
+                        <p>LOG OUT</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
-
-                    <div className="relative mb-4 group">
-                        <p>• Section 1</p>
-                        <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white w-0 transition-all duration-300 group-hover:w-full"></span>
-                    </div>
-
-                    <div className="relative mb-4 group">
-                        <p>• Section 2</p>
-                        <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white w-0 transition-all duration-300 group-hover:w-full"></span>
-                    </div>
-
-                    <div className="relative mb-4 group">
-                        <p>• Section 3</p>
-                        <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white w-0 transition-all duration-300 group-hover:w-full"></span>
-                    </div>
-                    
-                    
+                                        
                 </div>
             </div>
             
