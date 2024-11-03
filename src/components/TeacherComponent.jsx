@@ -19,7 +19,7 @@ const TeacherComponent = () => {
 
   const [Current_AssignmentObj, SetCurrent_AssignmentObj] = useState(null);
 
-  const [AssingmentOnThisSection, SetAssignmentOnThisSection] = useState([]); // related to the fetch_Current_SectionDetails
+  const [AssignmentOnThisSection, SetAssignmentOnThisSection] = useState([]); // related to the fetch_Current_SectionDetails
 
   const TeacherInfo = async () => {
 
@@ -131,13 +131,14 @@ const TeacherComponent = () => {
 
       if (response.status == 200){
         console.log(response.data);
+        SetCurrent_AssignmentObj(response.data);
       }
 
 
     } catch (error) {
       console.log(error);
 
-      if (error.reponse.status == 401){
+      if (error.response.status == 401){
 
         try{
 
@@ -156,6 +157,7 @@ const TeacherComponent = () => {
 
               if(response.status == 200){
                 console.log(response.data);
+                SetCurrent_AssignmentObj(response.data);
               }
             } catch (error){
               console.log(error);
@@ -166,6 +168,11 @@ const TeacherComponent = () => {
           console.log(error);
           BackToLogin();
         }
+
+      } else if (error.response.status == 404){
+        console.log('401 of CurrentAssingmentStateDetails');
+        //set teh default for the Current_AssignmentObj
+        SetCurrent_AssignmentObj(error.response.data);
       }
     }
   }
@@ -179,10 +186,16 @@ const TeacherComponent = () => {
       if(response.status == 200){
         console.log(response.data);
         SetAssignmentOnThisSection(response.data.assignment_assoc);
+        Empty_Current_AssignmentObj();
+        // SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
+
+        //check first if the response.data.assignment_assoc is not empty, then assign
+        //else, set it to 0
+
       }
 
     } catch (error) {
-
+      console.log(error.response)
       if (error.response.status == 401){
 
         try{
@@ -201,6 +214,7 @@ const TeacherComponent = () => {
               if (response.status == 200) {
                 console.log(response.data);
                 SetAssignmentOnThisSection(response.data.assignment_assoc);
+                SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
               }
             } catch (error) {
               BackToLogin();
@@ -231,6 +245,32 @@ const TeacherComponent = () => {
 
   }
 
+  const Update_Current_Assignment = (assignment_id) => {
+
+    //set the current assignment_id
+    SetCurrent_Assignment_id(assignment_id);
+
+  }
+
+  const Empty_Current_AssignmentObj = () => {
+
+    SetCurrent_AssignmentObj({
+      
+      "message": "",
+      "assignment_details": {
+        "id": 0,
+        "assignment_code": "",
+        "section_key": 0,
+        "date_created": "",
+        "date_due": ""
+      },
+      "student_total_in_section": "",
+      "total_student_submtted": "",
+      "submitted_student": ""
+    })
+
+  }
+
   const BackToLogin = () => {
     navigate('/login');
   }
@@ -254,6 +294,13 @@ const TeacherComponent = () => {
     fetch_Current_SectionDetails();
 
   }, [Current_Section]);
+
+  useEffect(() => {
+
+    fetch_Current_AssignmentDetails();
+
+
+  }, [Current_Assignment_id]);
 
 
   return (
@@ -304,13 +351,13 @@ const TeacherComponent = () => {
         <div className='px-4'>
         <div className='w-full max-w-prose bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-4'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-            <span className='font-semibold '>Assignment: 1</span>
-            <span className='m-1'>Date Created: 11/12/2024</span>
-            <span className='m-1'>Due Date: 11/13/2024</span>
+            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
+            <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
+            <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center mb-2'>
             <span className='m-1'>Understanding The Self</span>
-            <span className='m-1'>Submitted: 45/50</span>
+            <span className='m-1'>Submitted: {Current_AssignmentObj && Current_AssignmentObj.submitted_student}</span>
             <button className='m-1 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm' onClick={toggleStudentList}>View Students</button>
           </div>
           <div className='flex justify-end'>
@@ -328,6 +375,7 @@ const TeacherComponent = () => {
                   {/* Column 1: Student Name */}
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold'>Student Name</div>
+                    {/* use map on this div */}
                     <div>John Doe</div>
                     <div>Jane Smith</div>
                     <div>Mark Johnson</div>
@@ -365,10 +413,11 @@ const TeacherComponent = () => {
           {/* Small Gray Divs */}
           <div className='flex flex-row items-center justify-center'>
             <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary'>
-              ({AssingmentOnThisSection.map((assignment_obj) => (
+              ({AssignmentOnThisSection.map((assignment_obj, index) => ( 
                 // setup and onClick event in this div, when it is clicked it will change the state of the Current_AssignmentObj
-                <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'> 
-                  <p>{assignment_obj.date_created}</p>
+                // assign key and id
+                <div id={index} key={index} className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                  <p>{assignment_obj.date_created} {index}</p> 
                 </div>
               ))})
               
