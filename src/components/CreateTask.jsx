@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { AbstractEssayAssignment } from '../module/EssayTask_utils';
 import styles from '../style'
 
 const CreateTask = () => {
+
+
+  const [Context, SetContext] = useState('');
+  const [Question, SetQuestion] = useState('');
+
+  const Update_ContextState = (event) => {
+    SetContext(event.target.value);
+  }
+
+  const Update_QuestionState = (event) => {
+    SetQuestion(event.target.value);
+  }
+
+  const handlePostButton = async (event) => {
+    event.preventDefault();
+
+    console.log(Context);
+    console.log(Question);
+  }
+
   return (
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
@@ -26,7 +47,7 @@ const CreateTask = () => {
             </div>
         
             <div>
-                <textarea placeholder="Question Context" className="w-7/12 pl-2 pt-2 pb-7 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+                <textarea placeholder="Question Context" className="w-7/12 pl-2 pt-2 pb-7 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" onChange={Update_ContextState}></textarea>
             </div>
         </div>
 
@@ -42,13 +63,13 @@ const CreateTask = () => {
             </div>
         
             <div>
-                <textarea placeholder="Question 1" className="w-7/12 pl-2 pt-2 pb-52 sm:pb-40 md:pb-30 lg:pb-20 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+                <textarea placeholder="Question 1" className="w-7/12 pl-2 pt-2 pb-52 sm:pb-40 md:pb-30 lg:pb-20 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" onChange={Update_QuestionState}></textarea>
             </div>
         </div>
 
       </div>
 
-        <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
+        {/* <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
 
             <div className='flex flex-col w-full'> 
                 <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
@@ -60,7 +81,7 @@ const CreateTask = () => {
                 </div>
             </div>
 
-        </div>
+        </div> */}
 
         <div className='flex flex-row items-center  justify-center mt-6'>
         <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white mb-4'>
@@ -69,7 +90,7 @@ const CreateTask = () => {
                 Add New Question   
             </button>
         <div className='flex flex-col items-center justify-evenly text-center text-white dark:text-white mb-4 mt-4'>
-            <button className='flex font-semibold text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-16 text-center'>
+            <button className='flex font-semibold text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-16 text-center' onClick={handlePostButton}>
                 Post        
             </button>
         </div>

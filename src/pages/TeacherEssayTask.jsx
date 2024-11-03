@@ -5,7 +5,7 @@ import { CreateTask, Button, TeacherSidebar} from '../components';
 
 
 const TeacherEssayTask = ({isDark, changeColorTheme}) => {
-  
+
 
   return (
     <div className={!isDark && 'dark'}>
