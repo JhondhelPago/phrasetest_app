@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import {close, menu} from '../assets';
+import { useNavigate } from 'react-router-dom';
 
 
 const TeacherSidebar = ({isDark, changeColorTheme}) => {
 
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
     const toggleSidebar = () => {
     setIsOpen(!isOpen);
+    };
+
+    const routeToTeacherPage = () => {
+      navigate('/teacherpage');
     };
 
 
@@ -29,7 +34,7 @@ const TeacherSidebar = ({isDark, changeColorTheme}) => {
             <div className='mt-32'>
                 
                 <div className='w-full text-primary dark:text-white text-3xl sm:text-3xl md:text-3xl lg:text-5xl text-center font-semibold cursor-pointer'>
-                    <div className='relative mb-6 group'>
+                    <div className='relative mb-6 group' onClick={routeToTeacherPage}>
                         <p>HOME</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>

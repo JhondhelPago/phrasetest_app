@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { axiosInstance } from '../module/axiosInstances';
 import axios from 'axios';
 import styles from '../style';
-import {logo, close, menu, } from '../assets';
+import {logo} from '../assets';
 import {  Button, StudentComponent, StudentSidebar } from '../components';
 
 

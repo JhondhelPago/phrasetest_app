@@ -82,7 +82,37 @@ const Comparison = () => {
   return (
     <>
     <div>
-      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-11 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
+    <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+        <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
+          <p>Comment of Teacher : Loading... (hide this part when the teacher is still have no comment)</p>
+        </div>
+    </div>
+      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
+
+      <div className='flex flex-row text-center justify-center'>
+      <div className=" w-full flex flex-col bg-violet-500 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+        <div className='flex flex-col text-xl justify-start text-white'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+            <span className='m-1'>Readability 100%</span>
+            <span className='m-1'>Understanding 100%</span>
+            
+          </div>
+        </div>
+        <div className='flex flex-col text-xl justify-start text-white'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+            <span className='m-1'>Macro 90%</span>
+            <span className='m-1'>Damage 999%</span>
+            
+          </div>
+        </div>
+      </div>
+      <div className=" w-1/2 flex flex-row items-center text-center bg-violet-500 border border-violet-500 rounded-lg ml-4 mb-4 p-4 font-poppins">
+        <div className='flex flex-col text-xl justify-start  text-white'>
+          <p className=''>ULTIMATE CHAMPION</p>
+        </div>
+      </div>
+      </div>
+
       <h2 className='flex items-center justify-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: What is your biggest fear?</h2>
     </div> 
     <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-14">
@@ -106,29 +136,29 @@ const Comparison = () => {
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
           </div>
-          <div className=" h-full flex flex-row justify-center items-center bg-gray-500 rounded-lg font-poppins">
+          <div className=" h-full flex flex-col sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
-                  <div className="text-lg text-dark dark:text-white mr-6">Phrase Correction ID : 1</div>
-                  <div className="text-lg text-dark dark:text-white">Error Type: Verb Tense</div>
+                  <div className="text-lg text-primary mr-6">Phrase Correction ID : 1</div>
+                  <div className="text-lg text-primary">Error Type: Verb Tense</div>
                 </div>
-                <div className='flex flex-row justify-start items-center text-lg text-dark dark:text-white mb-4'>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-dark dark:text-white mr-4 mb-4">Explanation : Mauris a sollicitudin turpis. Cras tincidunt,h</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4 mb-4">Explanation : Mauris a sollicitudin turpis. Cras tincidunt,h</div> {/* Align this to Error type: Verb Tense */}
                 </div>
-                <div className='flex flex-row justify-start items-center text-lg text-dark dark:text-white mb-4'>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-dark dark:text-white mr-4">Solution: Changes this “Verb” B====D to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4">Solution: Changes this “Verb” to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
                 </div>
             </div>
           </div>
-          <div className=" flex md:flex md:items-center text-center justify-center mt-11">
-                                    <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" >
-                                    Recompose 
-                                    </button>
-                            </div>
+          <div className=" flex md:flex md:items-center text-center justify-center mt-6">
+            <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" >
+            Recompose 
+            </button>
+          </div>
         </div>    
       </div>
     </div>

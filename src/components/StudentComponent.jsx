@@ -6,7 +6,7 @@ const StudentComponent = () => {
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          Good Day Sunshine, ___________!
+          Good Day Sunshine, (Show Student Name)!
       </div>
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex flex-col w-full'> 
