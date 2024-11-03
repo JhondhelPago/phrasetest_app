@@ -99,13 +99,21 @@ const [showComment, setShowComment] = useState(false);
         </div>
 
         {showComment && (
-        <div className='flex justify-center font-poppins font-semibold'>
-                <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-9/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-80 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+        <div className='flex flex-col justify-center  font-poppins'>
+            <div className='flex item-center justify-center  font-semibold'>
+            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+            </div>
+                
+                <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-10/12 flex justify-end text-sm'>
+                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" >
+                        Send 
+                    </button>
+                </div>
         </div>
         )}
 
         <div className='flex flex-col items-center justify-center text-xl text-primary dark:text-white text-center mb-4 font-poppins'>
-          <div className='w-8/12 flex flex-col sm:flex-row  items-center justify-start text-xl pt-4 text-primary dark:text-white text-center'>
+          <div className='w-8/12 flex flex-col sm:flex-row  items-center justify-start text-xl pt-2 text-primary dark:text-white text-center'>
             <p>Context: Understanding myself</p>
 
           </div>  
