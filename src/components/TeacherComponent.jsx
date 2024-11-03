@@ -14,9 +14,12 @@ const TeacherComponent = () => {
 
   const [SectionList, SetSectionList] = useState([]);
 
-  const [Current_Section, SetCurrent_Section] = useState(1);
+  const [Current_Section, SetCurrent_Section] = useState('');
+  const [Current_Assignment_id, SetCurrent_Assignment_id] = useState(0);
 
   const [Current_AssignmentObj, SetCurrent_AssignmentObj] = useState(null);
+
+  const [AssingmentOnThisSection, SetAssignmentOnThisSection] = useState([]); // related to the fetch_Current_SectionDetails
 
   const TeacherInfo = async () => {
 
@@ -107,7 +110,7 @@ const TeacherComponent = () => {
 
             if (response.status == 200) {
               SetSectionList(response.data.section_list);
-              SetCurrent_Section(response.data.section_list[0]['section_code']);
+              SetCurrent_Section(response.data.section_list[0]['section_code']);  
             }
 
           } catch (error) {
@@ -119,11 +122,12 @@ const TeacherComponent = () => {
     }
   } 
 
+  // this gunctiom is subject to be test
   const fetch_Current_AssignmentDetails = async () => {
 
     try{
 
-      const response  = await TeacherApiCalls.CurrentSectionStateDetails(Current_Section);
+      const response  = await TeacherApiCalls.CurrentAssignmetStateDetails(Current_Assignment_id);
 
       if (response.status == 200){
         console.log(response.data);
@@ -135,16 +139,79 @@ const TeacherComponent = () => {
 
       if (error.reponse.status == 401){
 
+        try{
 
+          const Re_request_access = await ReqAccessTokenSuperScope();
 
+          if (Re_request_access['status_code'] == 401){
+            
+            BackToLogin();
+
+          } else if (Re_request_access['status_code'] == 200) {
+            
+            localStorage.setItem('access', Re_request_access['result'].data.access);
+            
+            try{
+              const response = await TeacherApiCalls.CurrentAssignmetStateDetails(Current_Assignment_id);
+
+              if(response.status == 200){
+                console.log(response.data);
+              }
+            } catch (error){
+              console.log(error);
+              BackToLogin;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+          BackToLogin();
+        }
       }
-      
     }
-
   }
 
   const fetch_Current_SectionDetails = async () => {
-    
+
+    try{
+
+      const response = await TeacherApiCalls.associatedAssignmentsOnCurrentSection(Current_Section);
+      
+      if(response.status == 200){
+        console.log(response.data);
+        SetAssignmentOnThisSection(response.data.assignment_assoc);
+      }
+
+    } catch (error) {
+
+      if (error.response.status == 401){
+
+        try{
+
+          const Re_request_access = ReqAccessTokenSuperScope();
+
+          if (Re_request_access['status_code'] == 401){
+            BackToLogin();
+          } else if (Re_request_access['status_code' == 200]) {
+            localStorage.setItem('access', Re_request_access['result'].data.access);
+
+            try{
+
+              const response = TeacherApiCalls.associatedAssignmentsOnCurrentSection(Current_Section);
+
+              if (response.status == 200) {
+                console.log(response.data);
+                SetAssignmentOnThisSection(response.data.assignment_assoc);
+              }
+            } catch (error) {
+              BackToLogin();
+            }
+          }
+        } catch (error) {
+          console.log(error);
+          BackToLogin()
+        }
+      }
+    }
   }
 
   
@@ -184,6 +251,7 @@ const TeacherComponent = () => {
 
     // alert(`Current_Section is updated to ${Current_Section}`);
     //fetch the data of the Current_Section
+    fetch_Current_SectionDetails();
 
   }, [Current_Section]);
 
@@ -297,27 +365,16 @@ const TeacherComponent = () => {
           {/* Small Gray Divs */}
           <div className='flex flex-row items-center justify-center'>
             <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary'>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
+              ({AssingmentOnThisSection.map((assignment_obj) => (
+                // setup and onClick event in this div, when it is clicked it will change the state of the Current_AssignmentObj
+                <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'> 
+                  <p>{assignment_obj.date_created}</p>
+                </div>
+              ))})
+              
+              {/* <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
                 <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
-              <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
-                <p>100%</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

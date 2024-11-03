@@ -48,7 +48,20 @@ export class TeacherApiCalls {
 
     }
 
-    static CurrentSectionStateDetails = async (assignment_id) => {
+    static associatedAssignmentsOnCurrentSection = async (section_code) => {
+        const response = await axiosInstance.get(`teacher/section/info`, {
+            headers : {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            },
+            params: {
+                section_code: section_code
+            }
+        });
+
+        return response;
+    }
+
+    static CurrentAssignmetStateDetails = async (assignment_id) => {
 
         const response = await axiosInstance.get(`teacher/assignment/info/details`, {
             
