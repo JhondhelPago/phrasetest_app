@@ -1,3 +1,4 @@
+import axios from "axios";
 import { axiosInstance, axiosRefresh } from "./axiosInstances";
 import { useNavigate } from "react-router-dom";
 //Teacher calls 
@@ -77,6 +78,22 @@ export class TeacherApiCalls {
 
     }
 
+    static CreateEssayAssignment = async (section_code, context, question_list) => {
+
+        const  data = {
+            access : localStorage.getItem('access'),
+            section_code : section_code,
+            question_list : question_list
+        }
+
+        const response = await axiosInstance.post(`teacher/create/essay/assignment`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')} `
+            }
+        });
+
+        return response;
+    }
 }
 
 

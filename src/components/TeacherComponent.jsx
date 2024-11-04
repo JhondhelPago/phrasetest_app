@@ -272,7 +272,7 @@ const TeacherComponent = () => {
   }
 
   const BackToLogin = () => {
-    navigate('/login');
+    navigate('/loginpage');
   }
 
   useEffect(() => {

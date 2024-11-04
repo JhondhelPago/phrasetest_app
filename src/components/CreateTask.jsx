@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AbstractEssayAssignment } from '../module/EssayTask_utils';
+import { TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import styles from '../style'
 
 const CreateTask = () => {
 
+  const navigate = useNavigate();
 
   const [Context, SetContext] = useState('');
-  const [Question, SetQuestion] = useState('');
+  const [Question, SetQuestion] = useState([]);
 
   const Update_ContextState = (event) => {
     SetContext(event.target.value);
@@ -21,6 +24,88 @@ const CreateTask = () => {
 
     console.log(Context);
     console.log(Question);
+
+    // if (empty_string_checker(Context)){
+    //   alert(`context field should not be empty`);
+    //   return
+    // }
+
+    // if (empty_string_checker(Question)){
+    //   alert(`question field should not be empty`);
+
+    // }
+
+    // console.log(`context: ${Context}`);
+    // console.log(`question: ${Question}`);
+
+    try{
+
+      const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question]);
+
+      // the api endpoint returns status code 201 created
+      if (response.status == 201){ 
+        console.log('Back  to teacherpage');
+        BackToTeacherPage();
+      } else {
+        console.log('status_code:', response.status)
+      }
+
+    } catch (error) {
+      console.log(error);
+
+      // 401 status handler
+      if (error.response.status == 401) {
+        //unauthorize because of expired token
+        console.log('401 handler block');
+
+        const Re_request_access = await ReqAccessTokenSuperScope();
+
+        if (Re_request_access['status_code'] == 401){
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200){
+
+          localStorage.setItem('access', Re_request_access['result'].data.acess);
+
+          try{
+
+            const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question]);
+
+            // the api endpoint returns status code 201 created
+            if(response.status == 201){
+              alert('Assignment Created');
+              BackToTeacherPage();
+            } else {
+              alert('Assignment  unhandle status: ', response.status);
+              console.log(response.data);
+              BackToTeacherPage();
+            }
+
+          } catch (error){
+            console.log(error);
+          }
+        } else {
+          console.log("Re_request_access status code:", Re_request_access['status_code']);
+          console.log(Re_request_access['result']);
+        }
+      }
+    }
+  }
+
+
+  const empty_string_checker = (string) => {
+    if (string === ''){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  const BackToLogin = () => {
+    navigate('/loginpage');
+  }
+
+  const BackToTeacherPage = () => {
+    navigate('/teacherpage');
   }
 
   return (
