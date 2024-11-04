@@ -132,6 +132,7 @@ const TeacherComponent = () => {
       if (response.status == 200){
         console.log(response.data);
         SetCurrent_AssignmentObj(response.data);
+        //get the three list and store to the useState variable using a sigle function that update the three state
       }
 
 
@@ -158,6 +159,7 @@ const TeacherComponent = () => {
               if(response.status == 200){
                 console.log(response.data);
                 SetCurrent_AssignmentObj(response.data);
+                //get the three list and store to the useState variable using a sigle function that update the three state
               }
             } catch (error){
               console.log(error);
@@ -260,6 +262,7 @@ const TeacherComponent = () => {
       "assignment_details": {
         "id": 0,
         "assignment_code": "",
+        "assignment_no" : "",
         "section_key": 0,
         "date_created": "",
         "date_due": ""
@@ -351,7 +354,7 @@ const TeacherComponent = () => {
         <div className='px-4'>
         <div className='w-full max-w-prose bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-4'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
+            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_no}</span>
             <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
             <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
@@ -417,7 +420,7 @@ const TeacherComponent = () => {
                 // setup and onClick event in this div, when it is clicked it will change the state of the Current_AssignmentObj
                 // assign key and id
                 <div id={index} key={index} className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
-                  <p>{assignment_obj.date_created} {index}</p> 
+                  <p>{assignment_obj.assignment_no}</p> 
                 </div>
               ))})
               
