@@ -4,7 +4,9 @@ import axios from 'axios';
 import styles from '../style';
 import NormalSpan from './SpanComponent';
 
-const Comparison = () => {
+const Comment = () => {
+
+const [showComment, setShowComment] = useState(false);
 
   const [result, setResult] = useState(null)
 
@@ -68,6 +70,11 @@ const Comparison = () => {
   }
 
 
+  const toggleComment = () => {
+    setShowComment(!showComment);
+  };
+
+
   //side effect execute after initial render
   useEffect(() => {
 
@@ -82,14 +89,39 @@ const Comparison = () => {
   return (
     <>
     <div>
-    <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-        <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-          <p>Comment of Teacher : Loading... (hide this part when the teacher is still have no comment)</p>
+        <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
+          <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
+            <p>Student Name: <span className='font-bold'> Jhon Rogelio Solis</span></p>
+                <button className='text-primary dark:text-white bg-green-500  mt-2  md:mt-0 lg:mt-0  rounded-lg p-2 px-4 text-xs' onClick={toggleComment}>
+                    Add Comment
+                </button>
+          </div>  
         </div>
-    </div>
-      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
 
-      <div className='flex flex-col sm:flex-row  text-center justify-center'>
+        {showComment && (
+        <div className='flex flex-col justify-center  font-poppins'>
+            <div className='flex item-center justify-center  font-semibold'>
+            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+            </div>
+                
+                <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-10/12 flex justify-end text-sm'>
+                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" >
+                        Send 
+                    </button>
+                </div>
+        </div>
+        )}
+
+        <div className='flex flex-col items-center justify-center text-xl text-primary dark:text-white text-center mb-4 font-poppins'>
+          <div className='w-8/12 flex flex-col sm:flex-row  items-center justify-start text-xl pt-2 text-primary dark:text-white text-center'>
+            <p>Context: Understanding myself</p>
+
+          </div>  
+        </div>
+    
+      
+
+      <div className='flex flex-col sm:flex-row text-center justify-center'>
       <div className=" w-full flex flex-col bg-violet-500 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-col text-xl justify-start text-white'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
@@ -98,7 +130,7 @@ const Comparison = () => {
             
           </div>
         </div>
-        <div className='flex flex-col text-xl justify-start text-white'>
+        <div className='flex flex-col  text-xl justify-start text-white'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
             <span className='m-1'>Macro 90%</span>
             <span className='m-1'>Damage 999%</span>
@@ -106,16 +138,16 @@ const Comparison = () => {
           </div>
         </div>
       </div>
-      <div className="w-full sm:w-1/2 flex items-center justify-center bg-violet-500 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
+      <div className="w-full sm:w-1/2 flex items-center justify-center bg-violet-500 border border-violet-500 rounded-lg ml-0 sm:ml-4  mb-4 p-4 font-poppins">
         <div className='flex flex-col text-xl justify-start  text-white'>
           <p className=''>ULTIMATE CHAMPION</p>
         </div>
       </div>
       </div>
 
-      <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: What is your biggest fear?</h2>
+      <h2 className='flex items-center justify-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: What is your biggest fear?</h2>
     </div> 
-    <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-14">
+    <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-6">
       
       <div className="relative">
         <div>
@@ -136,7 +168,7 @@ const Comparison = () => {
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
           </div>
-          <div className=" h-full flex flex-col sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins">
+          <div className=" h-full flex flex-col sm:flex-row justify-center items-center bg-gray-200 rounded-lg font-poppins">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
                   <div className="text-lg text-primary mr-6">Phrase Correction ID : 1</div>
@@ -166,4 +198,4 @@ const Comparison = () => {
   )
 }
 
-export default Comparison
+export default Comment

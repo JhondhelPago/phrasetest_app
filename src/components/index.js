@@ -18,6 +18,7 @@ import CreateTask from "./CreateTask";
 import OngoingTask from "./OngoingTask";
 import StudentSidebar from "./StudentSidebar";
 import TeacherSidebar from "./TeacherSidebar";
+import Comment from "./Comment";
 
 
 export {
@@ -41,4 +42,5 @@ export {
   OngoingTask,
   StudentSidebar,
   TeacherSidebar,
+  Comment,
 };

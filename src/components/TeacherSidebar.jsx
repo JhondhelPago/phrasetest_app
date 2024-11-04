@@ -23,7 +23,7 @@ const TeacherSidebar = ({isDark, changeColorTheme}) => {
     </div>
     {isOpen && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex justify-end">
-          <div className="w-full sm:w-full md:w-1/4 lg:w-1/4 h-full bg-white dark:bg-primary p-4 shadow-lg">
+          <div className="w-full sm:w-full md:w-1/4 lg:w-1/4 h-full bg-white dark:bg-primary p-4 shadow-lg border-2 border-violet-400">
           <button 
               onClick={toggleSidebar} 
               className="absolute top-4 mt-4 text-gray-600 dark:text-gray-300"
