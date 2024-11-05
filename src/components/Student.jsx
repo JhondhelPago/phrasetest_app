@@ -215,29 +215,32 @@ const Student = () => {
                 <div className='flex flex-row w-full items-start'>
                 
                 {/*First Name Side*/}
-                <div className='flex flex-col w-1/3'>
+                <div className='flex flex-wrap w-full'>
+
+
+                <div className='flex flex-col w-full md:w-1/2 lg:w-1/3'>
                     <div className=' text-base font-thin  text-primary dark:text-white'>
                         First Name<span className='text-red-500'>*</span>
                     </div>
                 
                     <div className='w-full flex flex-col '>
-                        <input type="text" placeholder=" First Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={FirstName} onChange={UpdateFirstNameState}/>
+                        <input type="text" placeholder=" First Name" className='w-full md:w-11/12 lg:w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={FirstName} onChange={UpdateFirstNameState}/>
                     </div>
                 </div>
                 
                 {/*Middle Name Side*/}
-                <div className='flex flex-col w-1/3 '>
+                <div className='flex flex-col w-full md:w-1/2 lg:w-1/3'>
                     <div className='flex  text-base font-thin text-primary dark:text-white'>
                         Middle Name<span className='text-red-500'>*</span>
                     </div>
 
                     <div className='w-full flex flex-col'>
-                        <input type="text" placeholder=" Middle Name" className='w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={MiddleName} onChange={UpdateMiddleNameState}/>
+                        <input type="text" placeholder=" Middle Name" className='w-full lg:w-11/12 text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={MiddleName} onChange={UpdateMiddleNameState}/>
                     </div>
                 </div>
 
                  {/*Last Name Side*/}
-                 <div className='flex flex-col w-1/3'>
+                 <div className='flex flex-col w-full lg:w-1/3'>
                     <div className='flex  text-base font-thin text-primary dark:text-white'>
                         Last Name<span className='text-red-500'>*</span>
                     </div>
@@ -245,6 +248,7 @@ const Student = () => {
                     <div className='w-full flex flex-col'>
                         <input type="text" placeholder=" Last Name" className='w-full text-primary  pl-2 mt-2 py-2 border rounded-lg border-gray-500 outline-none focus:outline-none mb-4' required value={LastName} onChange={UpdateLastNameState}/>
                     </div>
+                </div>
                 </div>
 
                 </div>

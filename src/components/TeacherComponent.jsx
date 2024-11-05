@@ -352,11 +352,11 @@ const TeacherComponent = () => {
 
         {/* Recent Task Section */}
         <div className='px-4'>
-        <div className='w-full max-w-prose bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-4'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_no}</span>
-            <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
-            <span className='m-1'>{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
+        <div className='w-6/12 bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-4'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-around items-center text-center  mb-2'>
+            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
+            <span className='m-1'>Date Created: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
+            <span className='m-1'>Due Date: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center mb-2'>
             <span className='m-1'>Understanding The Self</span>
@@ -372,7 +372,7 @@ const TeacherComponent = () => {
         {/* Student List Section - Conditionally Rendered */}
         {showStudentList && (
           <div className='px-4'>
-            <div className='w-full max-w-prose bg-gray-200 rounded-xl p-4 mx-auto mb-4'>
+            <div className='w-6/12 bg-gray-200 rounded-xl p-4 mx-auto mb-4'>
                 <div className='flex text-center text-primary'>
         
                   {/* Column 1: Student Name */}

@@ -10,7 +10,7 @@ const StudentSignUp = ({isDark, changeColorTheme}) => {
         <div className={!isDark && 'dark'}>
             <section className='bg-primary dark:bg-white w-full items-center justify-center min-h-screen flex'>
                 <div className="absolute top-4 left-4">
-                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] hidden xs:block" />
+                    <img src={logo} alt="phrasetest" className="w-[256px] h-[64px] " />
                 </div>
                 <div className='relative w-1/2 h-full  flex-col hidden lg:block'>
                 <div className={`${styles.paddingX} ${styles.flexCenter} `}>
