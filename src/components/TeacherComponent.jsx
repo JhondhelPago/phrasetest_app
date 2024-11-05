@@ -416,13 +416,13 @@ const TeacherComponent = () => {
           {/* Small Gray Divs */}
           <div className='flex flex-row items-center justify-center'>
             <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary'>
-              ({AssignmentOnThisSection.map((assignment_obj, index) => ( 
+              {AssignmentOnThisSection.map((assignment_obj, index) => ( 
                 // setup and onClick event in this div, when it is clicked it will change the state of the Current_AssignmentObj
                 // assign key and id
                 <div id={index} key={index} className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
                 </div>
-              ))})
+              ))}
               
               {/* <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
                 <p>100%</p>
