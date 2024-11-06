@@ -10,6 +10,8 @@ const CreateTask = () => {
 
   const [Context, SetContext] = useState('');
   const [Question, SetQuestion] = useState([]);
+  const [DueDate, setDueDate] = useState('');
+  const [DueTime, setDueTime] = useState('');
 
   const Update_ContextState = (event) => {
     SetContext(event.target.value);
@@ -18,6 +20,14 @@ const CreateTask = () => {
   const Update_QuestionState = (event) => {
     SetQuestion(event.target.value);
   }
+
+  const handleDueDateChange = (event) => {
+    setDueDate(event.target.value);
+  };
+
+  const handleDueTimeChange = (event) => {
+    setDueTime(event.target.value);
+  };
 
   const handlePostButton = async (event) => {
     event.preventDefault();
@@ -68,7 +78,7 @@ const CreateTask = () => {
 
           try{
 
-            const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question]);
+            const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question],DueDate,DueTime);
 
             // the api endpoint returns status code 201 created
             if(response.status == 201){
@@ -112,14 +122,12 @@ const CreateTask = () => {
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
         
-        <div className='flex flex-col items-center mb-4 sm:mb-0 justify-start mt-4'>
-          <select className='flex w-6/12 sm:2/12 md:2/12 lg:w-2/12 text-white dark:text-primary text-center bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xl'>
-          <option value={''} disabled selected>{localStorage.getItem('Current_Section')}</option>
-            <option>Section 1</option>
-            <option>Section 2</option>
-            <option>Section 3</option>
-          </select>
-        </div>
+    <div className='w-9/12  flex flex-row items-center justify-end text-xl pt-4 text-primary dark:text-white text-center'>
+          
+            <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
+                    Class Code : 123456 {localStorage.getItem('Current_Section')}
+                  </button>
+          </div>  
         
       
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
@@ -153,7 +161,22 @@ const CreateTask = () => {
         </div>
 
       </div>
+      
+      <div className='flex flex-col xxs:flex-row items-center justify-center my-6'>
+          <div className='flex flex-col mx-4'>
+            <div className='text-primary dark:text-white text-xl font-semibold mb-2 text-center'>
+              Due Date
+            </div>
+            <input type="date" className=" pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueDateChange} />
+          </div>
 
+          <div className='flex flex-col mx-4'>
+            <div className='text-primary dark:text-white text-xl font-semibold mb-2 mt-2 xxs:mt-0 text-center'>
+              Due Time
+            </div>
+            <input type="time" className="pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueTimeChange} />
+          </div>
+        </div>
         {/* <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
 
             <div className='flex flex-col w-full'> 
