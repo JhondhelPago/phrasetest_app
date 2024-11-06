@@ -8,6 +8,8 @@ const TeacherComponent = () => {
 
   const navigate = useNavigate();
   const [showStudentList, setShowStudentList] = useState(false);
+  const [showModalSection, setShowModalSection] = useState(false); // Modal state
+  const [newSectionName, setNewSectionName] = useState(''); // New section name input
   
 
   const [Username, SetUsername] = useState('');
@@ -241,6 +243,20 @@ const TeacherComponent = () => {
     setShowStudentList(!showStudentList);
   };
 
+  const toggleModalSection = () => {
+    setShowModalSection(!showModalSection);
+  };
+
+  const handleSave = () => {
+    if (newSectionName.trim()) {
+      // Save the new section (API call or state update can go here)
+      console.log('New Section Name:', newSectionName);
+      // Hide the modal and reset new section name
+      setShowModalSection(false);
+      setNewSectionName('');
+    }
+  };
+
   const Update_Current_Section = (event) => {
 
     SetCurrent_Section(event.target.value);
@@ -328,13 +344,38 @@ const TeacherComponent = () => {
                 ))}                
               </select>
               <div className='flex items-center ml-2'>
-                  <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs'>
+                  <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs' onClick={toggleModalSection}>
                     add new class +
                   </button>
               </div>
             </div>
+
           </div>
             
+               {/* Add New Class Modal */}
+        {showModalSection && (
+          <div className="text-primary fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-gray-100 p-6 rounded-lg w-80 text-center">
+              <label className="block text-lg font-semibold mb-4">Please Provide Section Name to Create a New Section</label>
+              <textarea
+                className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+                placeholder="Enter section name"
+                value={newSectionName}
+                onChange={(e) => setNewSectionName(e.target.value)}
+              />
+              <div className="flex justify-around">
+                <button className="px-4 py-2 bg-red-500 text-white rounded-lg" onClick={toggleModalSection}>
+                  Cancel
+                </button>
+                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={handleSave}>
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+
             
 
             <div className='flex items-center text-xs'>
