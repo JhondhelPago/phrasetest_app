@@ -140,6 +140,21 @@ export class StudentAPICalls {
         // place here the headers
         
 
+    }
+
+    static CheckEssaySubmit = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`student/check/assignment/submit`, {
+            headers :{
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }, 
+            params : {
+                access : localStorage.getItem('access'),
+                assignment_id : assignment_id
+            }
+        });
+
+        return response;
 
     }
 

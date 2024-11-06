@@ -117,20 +117,75 @@ const StudentComponent = () => {
     }
   }
 
-  const UpdateCurrentOpenedAssignment = (id) => {
+  const UpdateCurrentOpenedAssignment = async(id) => {
 
     localStorage.setItem('assignment_id', id);
     console.log(`current assignment_id : ${id}`);
 
+    //check if the assignment is done
+    //if done get the assignment_composition_id, save to the local Storage then route to the examine result
+    //else route to the studentessaytask
+
+    try{
+
+      const response = await StudentAPICalls.CheckEssaySubmit(id);
+
+      if(response.status == 200){
+
+        if (response.data.found == true){
+          console.log('assignment_submitted');
+          RouteToExamineResult();
+        } else {
+          console.log('assignment_not_submitted');
+          RouteToAnswerAssignment();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+
+      if (error.response.status == 401){
+
+        const Re_request_access = await ReqAccessTokenSuperScope();
+
+        if (Re_request_access['status_code'] == 401){
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200) {
+          localStorage.setItem('access', Re_request_access['result'].data.access);
+
+          try {
+
+            const response = await StudentAPICalls.CheckEssaySubmit(id);
+
+            if(response.status == 200){
+
+              if (response.data.found == true){
+                console.log('assignment_submitted');
+                RouteToExamineResult();
+              } else {
+                console.log('assignment_not_submitted');
+                RouteToAnswerAssignment();
+              }
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } 
+    }
   }
 
   const BackToLogin = () => {
     navigate('/loginpage');
   }
 
-  const RouteToAssignmemt = () => {
-    navigate('/');
+  const RouteToAnswerAssignment = () => {
+    navigate('/studentessaytask');
   }
+
+  const RouteToExamineResult = ()=> {
+    navigate('/examineresults');
+  }
+
   useEffect(() => {
     getUserStudentData();
     
