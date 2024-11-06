@@ -1,53 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { axiosInstance } from '../module/axiosInstances';
 import axios from 'axios';
 import styles from '../style';
 import {logo} from '../assets';
 import {  Button, StudentComponent, StudentSidebar } from '../components';
+import { ReqAccessTokenSuperScope, StudentAPICalls } from '../module/APIcalls';
+import { useNavigate } from 'react-router-dom';
 
 
 const StudentPage = ({isDark, changeColorTheme}) => {
 
-
-
-  //function here to check the refresh and access token is validated, place the function inside the initial render useEffect()
-  //if access is invalid get new access using the refresh
-  //if refresh is invalid, route the user to the login
-
-  const getUserStudentData = async() => {
-
-    try{
-        console.log(localStorage.getItem('email'));
-        console.log(localStorage.getItem('access'));
-
-        const response = await axiosInstance.get('user/student/info', {
-          params: {
-            email: encodeURIComponent(localStorage.getItem('email')),
-            access: encodeURIComponent(localStorage.getItem('access'))
-          }
-        });
-
-        console.log(response.data);
-
-        // set the useState variable from this user information
-
-      
-
-    }catch(error){
-      console.log(`Error in the StudentPage Component @ getUserStudentData() -> void`);
-      throw error;
-    }
-
-    console.log(`getUserData block is running.`)
-
-  }
-
-  useEffect(() => {
-
-    getUserStudentData();
-
-  }, [])
-  
 
   return (
     <div className={!isDark && 'dark'}>

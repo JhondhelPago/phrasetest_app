@@ -101,8 +101,60 @@ export class StudentAPICalls {
 
     static loadStudentInfo = async () => {
 
+        const response = await axiosInstance.get('/student/info', {
+            headers : {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access')
+            }
+        });
 
-        return 
+        return response;
+
+    }
+
+    static Assignment_list = async () => {
+
+        const response = await axiosInstance.get('/student/assignments', {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access')
+            }
+        });
+
+        return response;
+
+    }
+
+    static SubmitEssay = async (question, composition) => {
+
+        data = {
+            question : question,
+            composition : composition
+        }
+
+        const response = await axiosInstance.post(`/user/essay/check`, data)
+        // place here the headers
+        
+
+    }
+
+    static CheckEssaySubmit = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`student/check/assignment/submit`, {
+            headers :{
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }, 
+            params : {
+                access : localStorage.getItem('access'),
+                assignment_id : assignment_id
+            }
+        });
+
+        return response;
 
     }
 
