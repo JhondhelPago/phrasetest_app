@@ -1,12 +1,152 @@
 import React from 'react'
 import styles from '../style'
+import { ReqAccessTokenSuperScope, StudentAPICalls } from '../module/APIcalls';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'
 
 const StudentComponent = () => {
+
+  const navigate = useNavigate();
+
+
+  //function here to check the refresh and access token is validated, place the function inside the initial render useEffect()
+  //if access is invalid get new access using the refresh
+  //if refresh is invalid, route the user to the login
+
+
+  const [Username, SetUsername] = useState('');
+  const [Section, SetSection] = useState('');
+
+  const [AssingnmentList, SetAssignmentList] = useState([]);
+  const [CurrentAssignment, SetCurrentAssignment] = useState(0);
+
+
+  const getUserStudentData = async() => {
+
+    try{
+
+      const response = await StudentAPICalls.loadStudentInfo()
+
+      if (response.status == 200){
+        console.log(response.data);
+        
+        //get the information needed
+        SetUsername(response.data.username);
+        SetSection(response.data.section);
+        localStorage.setItem('section', response.data.section);
+        
+      }
+
+    } catch (error) {
+
+      //unauthorized token
+      if (error.response.status == 401){
+        console.log(`getUserStudentData 401 control flow`);
+
+        const Re_request_access = await ReqAccessTokenSuperScope();
+
+        if (Re_request_access['status_code'] == 401){
+          //back to login
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200){
+          localStorage.setItem('access', Re_request_access['result'].data.access)
+
+          try{
+
+            const response = await StudentAPICalls.loadStudentInfo();
+
+            console.log(`status code of second attemp of StudentAPICalls.loadStudentInfo() : ${response }`)
+
+            if (response.status == 200){
+              SetUsername(response.data.username);
+              SetSection(response.data.section);
+              localStorage.setItem('section', response.data.section);
+            } else {
+              console.log(`status code of second attemp of StudentAPICalls.loadStudentInfo() : ${response.status}`);
+              console.log(response.status);
+            }
+          } catch  (error) {
+            console.log(error);
+          }
+        } else {
+          console.log(error.response.statut);
+        }
+      }
+    }
+  }
+
+  const StudentAssignment = async () => { 
+    
+    try{
+
+      const response = await StudentAPICalls.Assignment_list();
+
+      if (response.status == 200){
+        console.log(response.data.assignments)
+        SetAssignmentList(response.data.assignments);
+      }
+    } catch (error) {
+
+      if (error.response.status == 401){
+        
+        try{
+
+          const Re_request_access = await ReqAccessTokenSuperScope();
+
+          if (Re_request_access['status_code'] == 401){
+            BackToLogin();
+          } else if (Re_request_access['status_code'] == 200){
+            localStorage.setItem('access', Re_request_access['result'].data.access)
+
+            try{
+
+              const response = await StudentAPICalls.Assignment_list();
+
+              if (response.status == 200){
+                console.log(response.data.assignments);
+                SetAssignmentList(response.data.assignments);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        } catch(error) {
+          console.log(error);
+        }
+      }
+    }
+  }
+
+  const UpdateCurrentOpenedAssignment = (id) => {
+
+    localStorage.setItem('assignment_id', id);
+    console.log(`current assignment_id : ${id}`);
+
+  }
+
+  const BackToLogin = () => {
+    navigate('/loginpage');
+  }
+
+  const RouteToAssignmemt = () => {
+    navigate('/');
+  }
+  useEffect(() => {
+    getUserStudentData();
+    
+  }, []);
+
+  useEffect(() => {
+    StudentAssignment();
+
+  }, [Section])
+  
+
   return (
     <>
     <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          Good Day Sunshine, (Show Student Name)!
+          Good Day Sunshine, {Username}!
       </div>
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex flex-col w-full'> 
@@ -22,27 +162,14 @@ const StudentComponent = () => {
         {/* Small Gray Divs */}
         <div className='flex flex-row items-center justify-center text-center'>
           <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-14 w-full text-primary'>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 1</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 2</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 3</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 4</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 5</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 6</p>
-            </div>
-            <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer'>
-              <p>Essay Activity 7</p>
-            </div>
+
+            {AssingnmentList.map((assignmentObj, index) => (
+
+                <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer' onClick={() => {UpdateCurrentOpenedAssignment(assignmentObj.id)}}>
+                  <p>{assignmentObj.assignment_no}</p>
+                </div>
+
+            ))}
           </div>
         </div>
       </div>
