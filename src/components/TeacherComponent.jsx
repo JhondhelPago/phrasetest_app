@@ -8,6 +8,8 @@ const TeacherComponent = () => {
 
   const navigate = useNavigate();
   const [showStudentList, setShowStudentList] = useState(false);
+  const [showModalSection, setShowModalSection] = useState(false); // Modal state
+  const [newSectionName, setNewSectionName] = useState(''); // New section name input
   
 
   const [Username, SetUsername] = useState('');
@@ -241,6 +243,20 @@ const TeacherComponent = () => {
     setShowStudentList(!showStudentList);
   };
 
+  const toggleModalSection = () => {
+    setShowModalSection(!showModalSection);
+  };
+
+  const handleSave = () => {
+    if (newSectionName.trim()) {
+      // Save the new section (API call or state update can go here)
+      console.log('New Section Name:', newSectionName);
+      // Hide the modal and reset new section name
+      setShowModalSection(false);
+      setNewSectionName('');
+    }
+  };
+
   const Update_Current_Section = (event) => {
 
     SetCurrent_Section(event.target.value);
@@ -328,13 +344,38 @@ const TeacherComponent = () => {
                 ))}                
               </select>
               <div className='flex items-center ml-2'>
-                  <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs'>
+                  <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs' onClick={toggleModalSection}>
                     add new class +
                   </button>
               </div>
             </div>
+
           </div>
             
+               {/* Add New Class Modal */}
+        {showModalSection && (
+          <div className="text-primary fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-gray-100 p-6 rounded-lg w-80 text-center">
+              <label className="block text-lg font-semibold mb-4">Please Provide Section Name to Create a New Section</label>
+              <textarea
+                className="w-full p-2 border border-gray-300 rounded-lg mb-4"
+                placeholder="Enter section name"
+                value={newSectionName}
+                onChange={(e) => setNewSectionName(e.target.value)}
+              />
+              <div className="flex justify-around">
+                <button className="px-4 py-2 bg-red-500 text-white rounded-lg" onClick={toggleModalSection}>
+                  Cancel
+                </button>
+                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={handleSave}>
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+
             
 
             <div className='flex items-center text-xs'>
@@ -351,33 +392,40 @@ const TeacherComponent = () => {
         </div>
 
         {/* Recent Task Section */}
-        <div className='px-4'>
-        <div className='w-6/12 bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-4'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-around items-center text-center  mb-2'>
-            <span className='font-semibold '>Assignment: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
-            <span className='m-1'>Date Created: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
-            <span className='m-1'>Due Date: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
+        
+        <div className='flex flex-col sm:flex-col w-10/12 sm:w-6/12 md:w-6/12 lg:w-6/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
+          
+          <div className='flex flex-row sm:flex-col justify-center'>
+          <div className='flex flex-col xxs:flex-col xs:flex-col md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
+            <span className='font-semibold '>Assignment: Number 1 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
+            <span className='m-1'>Date Created: 11/12/2312{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
+            <span className='m-1'>Due Date: 11/13/2312 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center mb-2'>
+          </div>      
+
+          <div className='flex flex-row sm:flex-col justify-center'>
+          <div className='flex flex-col xxs:flex-col xs:flex-col md:flex-row lg-flex-row xs:justify-evenly items-center text-center mb-2'>
             <span className='m-1'>Understanding The Self</span>
-            <span className='m-1'>Submitted: {Current_AssignmentObj && Current_AssignmentObj.submitted_student}</span>
+            <span className='m-1'>Submitted: sample {Current_AssignmentObj && Current_AssignmentObj.submitted_student}</span>
             <button className='m-1 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm' onClick={toggleStudentList}>View Students</button>
           </div>
+          </div>
+
           <div className='flex justify-end'>
             
           </div>
         </div>
-        </div>
+        
         
         {/* Student List Section - Conditionally Rendered */}
         {showStudentList && (
-          <div className='px-4'>
-            <div className='w-6/12 bg-gray-200 rounded-xl p-4 mx-auto mb-4'>
+          <div className=''>
+            <div className='w-11/12 sm:w-6/12 md:w-6/12 lg:w-6/12 bg-gray-200 rounded-xl p-2 mx-auto'>
                 <div className='flex text-center text-primary'>
         
                   {/* Column 1: Student Name */}
                   <div className='flex-1 cursor-pointer'>
-                    <div className='font-semibold'>Student Name</div>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Student Name</div>
                     {/* use map on this div */}
                     <div>John Doe</div>
                     <div>Jane Smith</div>
@@ -389,7 +437,7 @@ const TeacherComponent = () => {
 
                   {/* Column 2: Date Submitted */}
                   <div className='flex-1 cursor-pointer'>
-                    <div className='font-semibold'>Date Submitted</div>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
                     <div>11/12/2024</div>
                     <div>11/12/2024</div>
                     <div>11/12/2024</div>
@@ -400,7 +448,7 @@ const TeacherComponent = () => {
 
                   {/* Column 3: Evaluation */}
                   <div className='flex-1 cursor-pointer'>
-                    <div className='font-semibold'>Evaluation</div>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Evaluation</div>
                     <div>Excellent</div>
                     <div>Good</div>
                     <div>Needs Improvement</div>
