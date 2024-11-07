@@ -129,17 +129,21 @@ export class StudentAPICalls {
 
     }
 
-    static SubmitEssay = async (question, composition) => {
+    static SubmitEssay = async (composition, assignment_id) => {
 
-        data = {
-            question : question,
-            composition : composition
+        const data = {
+            access : localStorage.getItem('access'),
+            composition : [composition], 
+            assignment_id, assignment_id
         }
 
-        const response = await axiosInstance.post(`/user/essay/check`, data)
-        // place here the headers
+        const response = await axiosInstance.post(`/student/submit/assignment/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        });
         
-
+        return response;
     }
 
     static CheckEssaySubmit = async (assignment_id) => {
