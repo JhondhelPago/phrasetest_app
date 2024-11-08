@@ -160,22 +160,26 @@ const Comparison = () => {
       <div className=" w-full flex flex-col bg-violet-500 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-col text-xl justify-start text-white'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-            <span className='m-1'>Ideas {Result && Result.rubrics.ideas}</span>
-            <span className='m-1'>Grammar_Punc {Result && Result.rubrics.gram_punc}</span>
+            <span className='m-1'>Ideas: {Result && Result.rubrics.ideas}</span>
+            <span className='m-1'>Grammar_Punc: {Result && Result.rubrics.gram_punc}</span>
+            <span className='m-1'>Transitions: {Result && Result.rubrics.transition}</span>
+            <span className='m-1'>Clarity: {Result && Result.rubrics.clarity}</span>
             
           </div>
         </div>
         <div className='flex flex-col text-xl justify-start text-white'>
           <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-            <span className='m-1'>Macro 90%</span>
-            <span className='m-1'>Damage 999%</span>
+          <span className='m-1'>Word Choice: {Result && Result.rubrics.word_choice}</span>
+          <span className='m-1'>Structure: {Result && Result.rubrics.structure}</span>
+          <span className='m-1'>Language Mechanics: {Result && Result.rubrics.lang_mechs}</span>
+            
             
           </div>
         </div>
       </div>
       <div className="w-full sm:w-1/2 flex items-center justify-center bg-violet-500 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
         <div className='flex flex-col text-xl justify-start  text-white'>
-          <p className=''>ULTIMATE CHAMPION</p>
+          <p className=''>{Result && Result.rubrics.label}</p>
         </div>
       </div>
       </div>
@@ -205,7 +209,10 @@ const Comparison = () => {
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
           </div>
-          <div className=" h-full flex flex-col sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins">
+        
+          {Result && Result.langtool_suggestion.map((match_obj, index) => (
+          <>
+           <div className=" h-full flex flex-row sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins mb-10">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
                   <div className="text-lg text-primary mr-6">Phrase Correction ID : 1</div>
@@ -223,6 +230,11 @@ const Comparison = () => {
                 </div>
             </div>
           </div>
+          </>      
+          ))}
+
+          
+
           <div className=" flex md:flex md:items-center text-center justify-center mt-6">
             <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" >
             Recompose 
