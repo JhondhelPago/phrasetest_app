@@ -162,6 +162,22 @@ export class StudentAPICalls {
 
     }
 
+    static GetExamineResults = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`student/assignment/results`, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access'),
+                assignment_id : assignment_id,
+            }
+        });
+
+        return response;
+
+    }
+
 }
 
 
