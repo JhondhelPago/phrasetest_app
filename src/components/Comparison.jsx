@@ -215,18 +215,23 @@ const Comparison = () => {
            <div className=" h-full flex flex-row sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins mb-10">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
-                  <div className="text-lg text-primary mr-6">Phrase Correction ID : 1</div>
-                  <div className="text-lg text-primary">Error Type: Verb Tense</div>
+                  <div className="text-lg text-primary mr-6">Phrase Correction @ sentence number: {match_obj.sentence_index+1}</div>
+                  <div className="text-lg text-primary">Hint: {match_obj.message}</div>
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-primary mr-4 mb-4">Explanation : Mauris a sollicitudin turpis. Cras tincidunt,h</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4 mb-4">On sentence : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="flex flex-row"></div>
                   <div className='mr-56'></div>
-                  <div className="text-lg text-primary mr-4">Solution: Changes this “Verb” to this Form “Formated Verb”</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg text-primary mr-4">Replacement: {match_obj.replacements}</div> {/* Align this to Error type: Verb Tense */}
+                </div>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
+                  <div className="flex flex-row"></div>
+                  <div className='mr-56'></div>
+                  <div className="text-lg text-primary mr-4">Suggestion Fix:{match_obj.final_sentence}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
             </div>
           </div>
