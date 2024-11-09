@@ -172,10 +172,37 @@ const Comparison = () => {
           <span className='m-1'>Word Choice: {Result && Result.rubrics.word_choice}</span>
           <span className='m-1'>Structure: {Result && Result.rubrics.structure}</span>
           <span className='m-1'>Language Mechanics: {Result && Result.rubrics.lang_mechs}</span>
-            
-            
           </div>
         </div>
+
+        <div className='flex flex-col text-xl justify-start text-white'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+          <span className='m-1'>Words: {Result && Result.features.word_count}</span>
+          <span className='m-1'>Lexical Density: {Result && Result.features.unique_word_ratio}</span>
+          <span className='m-1'>Readability Score: {Result && Result.features.readability_score}</span>
+          </div>
+        </div>
+
+
+        <div className='flex flex-col text-xl justify-start text-white'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+          <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
+          <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
+          <span className='m-1'>Complex Sentence: {Result && Result.features.sentence_complex}</span>
+          </div>
+        </div>
+{/* 
+        <div className='flex flex-col text-xl justify-start text-white'>
+          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+          <span className='m-1'>Cohesive Frequency: {Result && Result.cohesive_device_count}</span>
+          <span className='m-1'>Used Noun: {Result && Result.features.noun_count}</span>
+          <span className='m-1'>Used Adjective: {Result && Result.features.adj_count}</span>
+          <span className='m-1'>Used Adverb: {Result && Result.features.adv_count}</span>
+          <span className='m-1'>Used Pronoun: {Result && Result.features.pronoun_count}</span>
+          <span className='m-1'>Used Verb: {Result && Result.verb_count}</span>
+          </div>
+        </div> */}
+
       </div>
       <div className="w-full sm:w-1/2 flex items-center justify-center bg-violet-500 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
         <div className='flex flex-col text-xl justify-start  text-white'>
