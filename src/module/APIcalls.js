@@ -88,11 +88,28 @@ export class TeacherApiCalls {
 
         const response = await axiosInstance.post(`teacher/create/essay/assignment`, data, {
             headers : {
-                Authorization : `Bearer ${localStorage.getItem('access')} `
+                Authorization : `Bearer ${localStorage.getItem('access')}`
             }
         });
 
         return response;
+    }
+
+    static AddNewSection = async (section_name) => {
+
+        const data = {
+            'access' : localStorage.getItem('access'),
+            section_name : section_name
+        }
+
+        const response = await axiosInstance.post(`teacher/section/new/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        });
+
+        return response;
+
     }
 }
 

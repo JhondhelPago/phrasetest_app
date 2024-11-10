@@ -4,7 +4,7 @@ import { axiosInstance, axiosRefresh } from '../module/axiosInstances';
 import { loadTeacherInfo, TeacherApiCalls, ReqAccessToken, ReqAccessTokenSuperScope, DirectToLogin } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
-const TeacherComponent = () => {
+const   TeacherComponent = () => {
 
   const navigate = useNavigate();
   const [showStudentList, setShowStudentList] = useState(false);
@@ -232,7 +232,67 @@ const TeacherComponent = () => {
     }
   }
 
+  const CreateNewSection = async () => {
+    
+    try{
+
+      if (newSectionName == '') {
+        alert('Please enter a section name');
+        return;
+      }
+      
+      console.log(`newSectionName current state : ${newSectionName}`);
+
+      const response = await TeacherApiCalls.AddNewSection(newSectionName);
+
+      if (response.status == 200) {
+        //recall the function that gets the section list of the teacher
+        TeacherSection();
+        toggleModalSection();
+      }
+
+    } catch (error) {
+      console.log(error);
+      if (error.response.status == 401) {
+
+        const Re_request_access = await ReqAccessTokenSuperScope();
+
+        if (Re_request_access['status_code'] == 401){
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200){
+          localStorage.setItem('access', Re_request_access['result'].data.access);
+
+          try{
+
+            const response = await TeacherApiCalls.AddNewSection(newSectionName);
+
+            if (response.status == 200) {
+              //recall the function that gets the section list of the teacher
+              TeacherSection();
+              toggleModalSection();
+            } else {
+              //recall the function that gets the section list of the teacher
+              TeacherSection();
+              toggleModalSection();
+            }
+
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } 
+    }
+  }
+
+
+  const Update_newSectionNameState = (event) => {
+    setNewSectionName(event.target.value);
+  }
   
+  const Clear_newSectionNameState = () => {
+    setNewSectionName('');
+  }
+
   const routeToTeacherEssayTask = () => {
       
     navigate('/teacheressaytask');
@@ -245,6 +305,7 @@ const TeacherComponent = () => {
 
   const toggleModalSection = () => {
     setShowModalSection(!showModalSection);
+    Clear_newSectionNameState();
   };
 
   const handleSave = () => {
@@ -361,13 +422,13 @@ const TeacherComponent = () => {
                 className="w-full p-2 border border-gray-300 rounded-lg mb-4"
                 placeholder="Enter section name"
                 value={newSectionName}
-                onChange={(e) => setNewSectionName(e.target.value)}
+                onChange={Update_newSectionNameState}
               />
               <div className="flex justify-around">
                 <button className="px-4 py-2 bg-red-500 text-white rounded-lg" onClick={toggleModalSection}>
                   Cancel
                 </button>
-                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={handleSave}>
+                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={CreateNewSection}>
                   Save
                 </button>
               </div>
