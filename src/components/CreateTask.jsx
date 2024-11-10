@@ -23,10 +23,12 @@ const CreateTask = () => {
 
   const handleDueDateChange = (event) => {
     setDueDate(event.target.value);
+    console.log(`date value : ${event.target.value}`);
   };
 
   const handleDueTimeChange = (event) => {
     setDueTime(event.target.value);
+    console.log(`duetime value : ${event.target.value}`);
   };
 
   const handlePostButton = async (event) => {
@@ -48,9 +50,12 @@ const CreateTask = () => {
     // console.log(`context: ${Context}`);
     // console.log(`question: ${Question}`);
 
+    console.log(DueDate);
+    console.log(DueTime);
+
     try{
 
-      const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question]);
+      const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question], DueDate, DueTime);
 
       // the api endpoint returns status code 201 created
       if (response.status == 201){ 
@@ -74,11 +79,11 @@ const CreateTask = () => {
           BackToLogin();
         } else if (Re_request_access['status_code'] == 200){
 
-          localStorage.setItem('access', Re_request_access['result'].data.acess);
+          localStorage.setItem('access', Re_request_access['result'].data.access);
 
           try{
 
-            const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question],DueDate,DueTime);
+            const response = await TeacherApiCalls.CreateEssayAssignment(localStorage.getItem('Current_Section'), Context, [Question], DueDate, DueTime);
 
             // the api endpoint returns status code 201 created
             if(response.status == 201){

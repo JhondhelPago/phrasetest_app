@@ -390,7 +390,7 @@ const   TeacherComponent = () => {
           <div className='w-full flex flex-col sm:flex-row  items-center justify-evenly text-xl pt-4 text-primary dark:text-white text-center'>
           <p>Good Morning Teacher, {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
-                    Class Code : 123456 {Current_Section}
+                    Class Code : {Current_Section}
                   </button>
           </div>  
         </div>
@@ -401,7 +401,7 @@ const   TeacherComponent = () => {
             <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
               <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
                 {SectionList.map((section_obj, index) => (
-                  <option id={index} key={section_obj['section_code']}>{section_obj['section_code']}</option>
+                  <option id={index} key={section_obj['section_code']} value={section_obj.section_code}>{section_obj.section_name}</option>
                 ))}                
               </select>
               <div className='flex items-center ml-2'>
@@ -459,8 +459,8 @@ const   TeacherComponent = () => {
           <div className='flex flex-row sm:flex-col justify-center'>
           <div className='flex flex-col xxs:flex-col xs:flex-col md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
             <span className='font-semibold '>Assignment: Number 1 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
-            <span className='m-1'>Date Created: 11/12/2312{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
-            <span className='m-1'>Due Date: 11/13/2312 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
+            <span className='m-1'>Date Created: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
+            <span className='m-1'>Due Date: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
           </div>      
 

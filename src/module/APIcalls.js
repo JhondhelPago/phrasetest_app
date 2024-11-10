@@ -78,12 +78,14 @@ export class TeacherApiCalls {
 
     }
 
-    static CreateEssayAssignment = async (section_code, context, question_list) => {
+    static CreateEssayAssignment = async (section_code, context, question_list, date, time) => {
 
         const  data = {
             access : localStorage.getItem('access'),
             section_code : section_code,
-            question_list : question_list
+            question_list : question_list,
+            date : date,
+            time : time
         }
 
         const response = await axiosInstance.post(`teacher/create/essay/assignment`, data, {
