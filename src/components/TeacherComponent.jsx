@@ -333,7 +333,7 @@ const TeacherComponent = () => {
                   </button>
           </div>  
         </div>
-        <div className='flex flex-col sm:flex-row items-center justify-evenly text-center pt-4 text-white dark:text-white'>
+        <div className='flex flex-row sm:flex-row items-start justify-evenly sm:justify-evenly text-center p-4 text-white dark:text-white'>
           
           <div className='flex items-center mb-4 sm:mb-0'>  
             <div className='flex items-center space-x-2'>
@@ -386,17 +386,17 @@ const TeacherComponent = () => {
         </div>
 
         <div className='flex flex-col items-center justify-center text-xl  text-primary dark:text-white text-center'>
-          <div className='w-4/12 sm:w-6/12 md:w-3/12 lg:w-6/12 flex flex-col sm:flex-row  items-center justify-start text-xl pt-4 text-primary dark:text-white text-center'>
+          <div className='w-4/12 sm:w-6/12 md:w-6/12 lg:w-6/12 flex flex-col sm:flex-row  items-center justify-start text-xl  text-primary dark:text-white text-center'>
           <p>Recent Task</p>
           </div>  
         </div>
 
         {/* Recent Task Section */}
         
-        <div className='flex flex-col sm:flex-col w-10/12 sm:w-6/12 md:w-6/12 lg:w-6/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
+        <div className='flex flex-col sm:flex-col w-11/12 sm:w-11/12 md:w-11/12 lg:w-8/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
           
           <div className='flex flex-row sm:flex-col justify-center'>
-          <div className='flex flex-col xxs:flex-col xs:flex-col md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
+          <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
             <span className='font-semibold '>Assignment: Number 1 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
             <span className='m-1'>Date Created: 11/12/2312{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
             <span className='m-1'>Due Date: 11/13/2312 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
@@ -404,7 +404,7 @@ const TeacherComponent = () => {
           </div>      
 
           <div className='flex flex-row sm:flex-col justify-center'>
-          <div className='flex flex-col xxs:flex-col xs:flex-col md:flex-row lg-flex-row xs:justify-evenly items-center text-center mb-2'>
+          <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-evenly items-center text-center mb-2'>
             <span className='m-1'>Understanding The Self</span>
             <span className='m-1'>Submitted: sample {Current_AssignmentObj && Current_AssignmentObj.submitted_student}</span>
             <button className='m-1 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm' onClick={toggleStudentList}>View Students</button>
@@ -419,8 +419,8 @@ const TeacherComponent = () => {
         
         {/* Student List Section - Conditionally Rendered */}
         {showStudentList && (
-          <div className=''>
-            <div className='w-11/12 sm:w-6/12 md:w-6/12 lg:w-6/12 bg-gray-200 rounded-xl p-2 mx-auto'>
+          <div className='mb-2'>
+            <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-8/12 bg-gray-200 rounded-xl p-2 mx-auto'>
                 <div className='flex text-center text-primary'>
         
                   {/* Column 1: Student Name */}

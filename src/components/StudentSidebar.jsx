@@ -48,7 +48,15 @@ const StudentSidebar = () => {
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
 
-                    
+                    <div className='relative mb-6 group'>
+                        <p>ADD SECTION</p>
+                        <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
+                    </div>
+
+                    <div className='relative mb-6 group'>
+                        <p>LOG OUT</p>
+                        <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
+                    </div>
                     
                 </div>
             </div>
