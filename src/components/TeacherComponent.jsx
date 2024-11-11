@@ -92,7 +92,7 @@ const   TeacherComponent = () => {
       }
 
     } catch(error) {
-      
+      console.log('catch block in TeacherSection');
       if (error.response.status === 401){
         // get new access token using the refresh token
 
@@ -142,7 +142,7 @@ const   TeacherComponent = () => {
       console.log(error);
 
       if (error.response.status == 401){
-
+        console.log('catch block of the fetch_current_assingmentDetails');
         try{
 
           const Re_request_access = await ReqAccessTokenSuperScope();
@@ -200,15 +200,16 @@ const   TeacherComponent = () => {
 
     } catch (error) {
       console.log(error.response)
+      console.log('this is the bug');
       if (error.response.status == 401){
-
+        console.log('executing the 401 scope of the catch block');
         try{
 
-          const Re_request_access = ReqAccessTokenSuperScope();
-
+          const Re_request_access = await ReqAccessTokenSuperScope();
+          console.log('status_code', Re_request_access['status_code']);
           if (Re_request_access['status_code'] == 401){
             BackToLogin();
-          } else if (Re_request_access['status_code' == 200]) {
+          } else if (Re_request_access['status_code'] == 200) {
             localStorage.setItem('access', Re_request_access['result'].data.access);
 
             try{
@@ -218,7 +219,8 @@ const   TeacherComponent = () => {
               if (response.status == 200) {
                 console.log(response.data);
                 SetAssignmentOnThisSection(response.data.assignment_assoc);
-                SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
+                Empty_Current_AssignmentObj();
+                //SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
               }
             } catch (error) {
               BackToLogin();
