@@ -4,7 +4,7 @@ import { axiosInstance, axiosRefresh } from '../module/axiosInstances';
 import { loadTeacherInfo, TeacherApiCalls, ReqAccessToken, ReqAccessTokenSuperScope, DirectToLogin } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
-const TeacherComponent = () => {
+const   TeacherComponent = () => {
 
   const navigate = useNavigate();
   const [showStudentList, setShowStudentList] = useState(false);
@@ -20,6 +20,9 @@ const TeacherComponent = () => {
   const [Current_Assignment_id, SetCurrent_Assignment_id] = useState(0);
 
   const [Current_AssignmentObj, SetCurrent_AssignmentObj] = useState(null);
+  const [Names, SetNames] = useState([]);
+  const [Dates, SetDates] = useState([]);
+  const [Labels, SetLabels] = useState([]);
 
   const [AssignmentOnThisSection, SetAssignmentOnThisSection] = useState([]); // related to the fetch_Current_SectionDetails
 
@@ -92,7 +95,7 @@ const TeacherComponent = () => {
       }
 
     } catch(error) {
-      
+      console.log('catch block in TeacherSection');
       if (error.response.status === 401){
         // get new access token using the refresh token
 
@@ -134,6 +137,9 @@ const TeacherComponent = () => {
       if (response.status == 200){
         console.log(response.data);
         SetCurrent_AssignmentObj(response.data);
+        SetNames(response.data.submitted_names);
+        SetDates(response.data.submitted_dates);
+        SetLabels(response.data.submitted_labels);
         //get the three list and store to the useState variable using a sigle function that update the three state
       }
 
@@ -142,7 +148,7 @@ const TeacherComponent = () => {
       console.log(error);
 
       if (error.response.status == 401){
-
+        console.log('catch block of the fetch_current_assingmentDetails');
         try{
 
           const Re_request_access = await ReqAccessTokenSuperScope();
@@ -161,6 +167,9 @@ const TeacherComponent = () => {
               if(response.status == 200){
                 console.log(response.data);
                 SetCurrent_AssignmentObj(response.data);
+                SetNames(response.data.submitted_names);
+                SetDates(response.data.submitted_dates);
+                SetLabels(response.data.submitted_labels);
                 //get the three list and store to the useState variable using a sigle function that update the three state
               }
             } catch (error){
@@ -200,15 +209,16 @@ const TeacherComponent = () => {
 
     } catch (error) {
       console.log(error.response)
+      console.log('this is the bug');
       if (error.response.status == 401){
-
+        console.log('executing the 401 scope of the catch block');
         try{
 
-          const Re_request_access = ReqAccessTokenSuperScope();
-
+          const Re_request_access = await ReqAccessTokenSuperScope();
+          console.log('status_code', Re_request_access['status_code']);
           if (Re_request_access['status_code'] == 401){
             BackToLogin();
-          } else if (Re_request_access['status_code' == 200]) {
+          } else if (Re_request_access['status_code'] == 200) {
             localStorage.setItem('access', Re_request_access['result'].data.access);
 
             try{
@@ -218,7 +228,8 @@ const TeacherComponent = () => {
               if (response.status == 200) {
                 console.log(response.data);
                 SetAssignmentOnThisSection(response.data.assignment_assoc);
-                SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
+                Empty_Current_AssignmentObj();
+                //SetCurrent_Assignment_id(response.data.assignment_assoc[0].id); //this statement set the initial id of Current_Assigment_id after getting the assignment_assoc, the by default value is object[0].id
               }
             } catch (error) {
               BackToLogin();
@@ -232,7 +243,67 @@ const TeacherComponent = () => {
     }
   }
 
+  const CreateNewSection = async () => {
+    
+    try{
+
+      if (newSectionName == '') {
+        alert('Please enter a section name');
+        return;
+      }
+      
+      console.log(`newSectionName current state : ${newSectionName}`);
+
+      const response = await TeacherApiCalls.AddNewSection(newSectionName);
+
+      if (response.status == 200) {
+        //recall the function that gets the section list of the teacher
+        TeacherSection();
+        toggleModalSection();
+      }
+
+    } catch (error) {
+      console.log(error);
+      if (error.response.status == 401) {
+
+        const Re_request_access = await ReqAccessTokenSuperScope();
+
+        if (Re_request_access['status_code'] == 401){
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200){
+          localStorage.setItem('access', Re_request_access['result'].data.access);
+
+          try{
+
+            const response = await TeacherApiCalls.AddNewSection(newSectionName);
+
+            if (response.status == 200) {
+              //recall the function that gets the section list of the teacher
+              TeacherSection();
+              toggleModalSection();
+            } else {
+              //recall the function that gets the section list of the teacher
+              TeacherSection();
+              toggleModalSection();
+            }
+
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } 
+    }
+  }
+
+
+  const Update_newSectionNameState = (event) => {
+    setNewSectionName(event.target.value);
+  }
   
+  const Clear_newSectionNameState = () => {
+    setNewSectionName('');
+  }
+
   const routeToTeacherEssayTask = () => {
       
     navigate('/teacheressaytask');
@@ -245,6 +316,7 @@ const TeacherComponent = () => {
 
   const toggleModalSection = () => {
     setShowModalSection(!showModalSection);
+    Clear_newSectionNameState();
   };
 
   const handleSave = () => {
@@ -290,6 +362,12 @@ const TeacherComponent = () => {
 
   }
 
+  const DefaultEmptyStates = () => {
+    SetNames([]);
+    SetDates([]);
+    SetLabels([]);
+  }
+
   const BackToLogin = () => {
     navigate('/loginpage');
   }
@@ -310,6 +388,7 @@ const TeacherComponent = () => {
 
     // alert(`Current_Section is updated to ${Current_Section}`);
     //fetch the data of the Current_Section
+    DefaultEmptyStates();
     fetch_Current_SectionDetails();
 
   }, [Current_Section]);
@@ -329,7 +408,7 @@ const TeacherComponent = () => {
           <div className='w-full flex flex-col sm:flex-row  items-center justify-evenly text-xl pt-4 text-primary dark:text-white text-center'>
           <p>Good Morning Teacher, {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
-                    Class Code : 123456 {Current_Section}
+                    Class Code : {Current_Section}
                   </button>
           </div>  
         </div>
@@ -340,7 +419,7 @@ const TeacherComponent = () => {
             <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
               <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
                 {SectionList.map((section_obj, index) => (
-                  <option id={index} key={section_obj['section_code']}>{section_obj['section_code']}</option>
+                  <option id={index} key={section_obj['section_code']} value={section_obj.section_code}>{section_obj.section_name}</option>
                 ))}                
               </select>
               <div className='flex items-center ml-2'>
@@ -361,13 +440,13 @@ const TeacherComponent = () => {
                 className="w-full p-2 border border-gray-300 rounded-lg mb-4"
                 placeholder="Enter section name"
                 value={newSectionName}
-                onChange={(e) => setNewSectionName(e.target.value)}
+                onChange={Update_newSectionNameState}
               />
               <div className="flex justify-around">
                 <button className="px-4 py-2 bg-red-500 text-white rounded-lg" onClick={toggleModalSection}>
                   Cancel
                 </button>
-                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={handleSave}>
+                <button className="px-4 py-2 bg-green-500 text-white rounded-lg" onClick={CreateNewSection}>
                   Save
                 </button>
               </div>
@@ -398,8 +477,8 @@ const TeacherComponent = () => {
           <div className='flex flex-row sm:flex-col justify-center'>
           <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
             <span className='font-semibold '>Assignment: Number 1 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.assignment_code}</span>
-            <span className='m-1'>Date Created: 11/12/2312{Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
-            <span className='m-1'>Due Date: 11/13/2312 {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
+            <span className='m-1'>Date Created: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_created}</span>
+            <span className='m-1'>Due Date: {Current_AssignmentObj && Current_AssignmentObj.assignment_details.date_due}</span>
           </div>
           </div>      
 
@@ -427,9 +506,14 @@ const TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Student Name</div>
                     {/* use map on this div */}
-                    <div>John Doe</div>
-                    <div>Jane Smith</div>
-                    <div>Mark Johnson</div>
+                    {/* {Current_AssignmentObj && Current_AssignmentObj.submitted_name.map((names) => (
+                      <div>John Doe</div>
+                    ))} */}
+
+                    {Names.map((names, index) => (
+                      <div>{names}</div>
+                    ))}
+                    
                   </div>
 
         {/* Vertical Line */}
@@ -438,9 +522,10 @@ const TeacherComponent = () => {
                   {/* Column 2: Date Submitted */}
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
-                    <div>11/12/2024</div>
-                    <div>11/12/2024</div>
-                    <div>11/12/2024</div>
+                    {Dates.map((date, index) => (
+                      <div>{date}</div>
+                    ))}
+                   
                   </div>
 
         {/* Vertical Line */}
@@ -449,9 +534,10 @@ const TeacherComponent = () => {
                   {/* Column 3: Evaluation */}
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Evaluation</div>
-                    <div>Excellent</div>
-                    <div>Good</div>
-                    <div>Needs Improvement</div>
+                    {Labels.map((label, index) => (
+                      <div>{label}</div>
+                    ))}
+      
                   </div>
 
                 </div>

@@ -78,21 +78,40 @@ export class TeacherApiCalls {
 
     }
 
-    static CreateEssayAssignment = async (section_code, context, question_list) => {
+    static CreateEssayAssignment = async (section_code, context, question_list, date, time) => {
 
         const  data = {
             access : localStorage.getItem('access'),
             section_code : section_code,
-            question_list : question_list
+            question_list : question_list,
+            date : date,
+            time : time
         }
 
         const response = await axiosInstance.post(`teacher/create/essay/assignment`, data, {
             headers : {
-                Authorization : `Bearer ${localStorage.getItem('access')} `
+                Authorization : `Bearer ${localStorage.getItem('access')}`
             }
         });
 
         return response;
+    }
+
+    static AddNewSection = async (section_name) => {
+
+        const data = {
+            'access' : localStorage.getItem('access'),
+            section_name : section_name
+        }
+
+        const response = await axiosInstance.post(`teacher/section/new/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        });
+
+        return response;
+
     }
 }
 
@@ -101,8 +120,80 @@ export class StudentAPICalls {
 
     static loadStudentInfo = async () => {
 
+        const response = await axiosInstance.get('/student/info', {
+            headers : {
+                Authorization: `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access')
+            }
+        });
 
-        return 
+        return response;
+
+    }
+
+    static Assignment_list = async () => {
+
+        const response = await axiosInstance.get('/student/assignments', {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access')
+            }
+        });
+
+        return response;
+
+    }
+
+    static SubmitEssay = async (composition, assignment_id) => {
+
+        const data = {
+            access : localStorage.getItem('access'),
+            composition : [composition], 
+            assignment_id, assignment_id
+        }
+
+        const response = await axiosInstance.post(`/student/submit/assignment/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        });
+        
+        return response;
+    }
+
+    static CheckEssaySubmit = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`student/check/assignment/submit`, {
+            headers :{
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }, 
+            params : {
+                access : localStorage.getItem('access'),
+                assignment_id : assignment_id
+            }
+        });
+
+        return response;
+
+    }
+
+    static GetExamineResults = async (assignment_id) => {
+
+        const response = await axiosInstance.get(`student/assignment/results`, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                access : localStorage.getItem('access'),
+                assignment_id : assignment_id,
+            }
+        });
+
+        return response;
 
     }
 

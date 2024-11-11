@@ -3,7 +3,6 @@ import styles from '../style';
 import {logo, close, menu, } from '../assets';
 import { Button, OngoingTask, StudentSidebar} from '../components';
 
-
 const StudentEssayTask = ({isDark, changeColorTheme}) => {
   
 
