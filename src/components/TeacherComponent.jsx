@@ -20,6 +20,9 @@ const   TeacherComponent = () => {
   const [Current_Assignment_id, SetCurrent_Assignment_id] = useState(0);
 
   const [Current_AssignmentObj, SetCurrent_AssignmentObj] = useState(null);
+  const [Names, SetNames] = useState([]);
+  const [Dates, SetDates] = useState([]);
+  const [Labels, SetLabels] = useState([]);
 
   const [AssignmentOnThisSection, SetAssignmentOnThisSection] = useState([]); // related to the fetch_Current_SectionDetails
 
@@ -134,6 +137,9 @@ const   TeacherComponent = () => {
       if (response.status == 200){
         console.log(response.data);
         SetCurrent_AssignmentObj(response.data);
+        SetNames(response.data.submitted_names);
+        SetDates(response.data.submitted_dates);
+        SetLabels(response.data.submitted_labels);
         //get the three list and store to the useState variable using a sigle function that update the three state
       }
 
@@ -161,6 +167,9 @@ const   TeacherComponent = () => {
               if(response.status == 200){
                 console.log(response.data);
                 SetCurrent_AssignmentObj(response.data);
+                SetNames(response.data.submitted_names);
+                SetDates(response.data.submitted_dates);
+                SetLabels(response.data.submitted_labels);
                 //get the three list and store to the useState variable using a sigle function that update the three state
               }
             } catch (error){
@@ -353,6 +362,12 @@ const   TeacherComponent = () => {
 
   }
 
+  const DefaultEmptyStates = () => {
+    SetNames([]);
+    SetDates([]);
+    SetLabels([]);
+  }
+
   const BackToLogin = () => {
     navigate('/loginpage');
   }
@@ -373,6 +388,7 @@ const   TeacherComponent = () => {
 
     // alert(`Current_Section is updated to ${Current_Section}`);
     //fetch the data of the Current_Section
+    DefaultEmptyStates();
     fetch_Current_SectionDetails();
 
   }, [Current_Section]);
@@ -490,9 +506,14 @@ const   TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Student Name</div>
                     {/* use map on this div */}
-                    <div>John Doe</div>
-                    <div>Jane Smith</div>
-                    <div>Mark Johnson</div>
+                    {/* {Current_AssignmentObj && Current_AssignmentObj.submitted_name.map((names) => (
+                      <div>John Doe</div>
+                    ))} */}
+
+                    {Names.map((names, index) => (
+                      <div>{names}</div>
+                    ))}
+                    
                   </div>
 
         {/* Vertical Line */}
@@ -501,9 +522,10 @@ const   TeacherComponent = () => {
                   {/* Column 2: Date Submitted */}
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
-                    <div>11/12/2024</div>
-                    <div>11/12/2024</div>
-                    <div>11/12/2024</div>
+                    {Dates.map((date, index) => (
+                      <div>{date}</div>
+                    ))}
+                   
                   </div>
 
         {/* Vertical Line */}
@@ -512,9 +534,10 @@ const   TeacherComponent = () => {
                   {/* Column 3: Evaluation */}
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Evaluation</div>
-                    <div>Excellent</div>
-                    <div>Good</div>
-                    <div>Needs Improvement</div>
+                    {Labels.map((label, index) => (
+                      <div>{label}</div>
+                    ))}
+      
                   </div>
 
                 </div>
