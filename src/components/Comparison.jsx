@@ -157,9 +157,12 @@ const Comparison = () => {
       <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
 
       <div className='flex flex-col sm:flex-row  text-center justify-center'>
-      <div className=" w-full flex flex-col bg-violet-500 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-        <div className='flex flex-col text-xl justify-start text-white'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+
+        
+      <div className='w-full'>
+      <div className=" w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+        <div className='flex flex-col text-xl text-pink-200'>
+          <div className='flex flex-col sm:flex-row  justify-start sm:justify-around items-center sm:items-start text-center  mb-2'>
             <span className='m-1'>Ideas: {Result && Result.rubrics.ideas}</span>
             <span className='m-1'>Grammar_Punc: {Result && Result.rubrics.gram_punc}</span>
             <span className='m-1'>Transitions: {Result && Result.rubrics.transition}</span>
@@ -167,16 +170,19 @@ const Comparison = () => {
             
           </div>
         </div>
-        <div className='flex flex-col text-xl justify-start text-white'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+        <div className='flex flex-col text-xl text-pink-200'>
+          <div className='flex flex-col sm:flex-row  justify-around xs:justify-evenly items-center text-center  mb-2'>
           <span className='m-1'>Word Choice: {Result && Result.rubrics.word_choice}</span>
           <span className='m-1'>Structure: {Result && Result.rubrics.structure}</span>
           <span className='m-1'>Language Mechanics: {Result && Result.rubrics.lang_mechs}</span>
           </div>
         </div>
+      </div>
 
-        <div className='flex flex-col text-xl justify-start text-white'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+
+        <div className=" w-full flex flex-col bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+        <div className='flex flex-col text-xl justify-start text-pink-200'>
+          <div className='flex flex-col sm:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
           <span className='m-1'>Words: {Result && Result.features.word_count}</span>
           <span className='m-1'>Lexical Density: {Result && Result.features.unique_word_ratio}</span>
           <span className='m-1'>Readability Score: {Result && Result.features.readability_score}</span>
@@ -184,31 +190,28 @@ const Comparison = () => {
         </div>
 
 
-        <div className='flex flex-col text-xl justify-start text-white'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
+        <div className='flex flex-col text-xl justify-start text-pink-200'>
+          <div className='flex flex-col sm:flex-row  justify-around xs:justify-evenly items-center text-center  mb-2'>
           <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
           <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
           <span className='m-1'>Complex Sentence: {Result && Result.features.sentence_complex}</span>
           </div>
         </div>
-{/* 
-        <div className='flex flex-col text-xl justify-start text-white'>
-          <div className='flex flex-col xxs:flex-row xs:flex-row justify-around xs:justify-evenly items-center text-center  mb-2'>
-          <span className='m-1'>Cohesive Frequency: {Result && Result.cohesive_device_count}</span>
-          <span className='m-1'>Used Noun: {Result && Result.features.noun_count}</span>
-          <span className='m-1'>Used Adjective: {Result && Result.features.adj_count}</span>
-          <span className='m-1'>Used Adverb: {Result && Result.features.adv_count}</span>
-          <span className='m-1'>Used Pronoun: {Result && Result.features.pronoun_count}</span>
-          <span className='m-1'>Used Verb: {Result && Result.verb_count}</span>
-          </div>
-        </div> */}
+        </div>
+        </div>
+        
 
-      </div>
-      <div className="w-full sm:w-1/2 flex items-center justify-center bg-violet-500 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
-        <div className='flex flex-col text-xl justify-start  text-white'>
+      
+
+      
+
+
+      <div className="w- sm:w-1/2 flex items-center justify-center bg-violet-400 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
+        <div className='flex flex-col text-4xl font-bold justify-start  text-yellow-200'>
           <p className=''>{Result && Result.rubrics.label}</p>
         </div>
       </div>
+
       </div>
 
       <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: {Result && Result.question_composition.question}</h2>
@@ -239,26 +242,20 @@ const Comparison = () => {
         
           {Result && Result.langtool_suggestion.map((match_obj, index) => (
           <>
-           <div className=" h-full flex flex-row sm:flex-row justify-center items-center bg-gray-300 rounded-lg font-poppins mb-10">
+           <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
             <div className={` ${styles.paddingY} w-full px-6`}>
-                <div className="flex flex-row justify-start text-lg text-dark dark:text-white mb-4">
-                  <div className="text-lg text-primary mr-6">Phrase Correction @ sentence number: {match_obj.sentence_index+1}</div>
-                  <div className="text-lg text-primary">Hint: {match_obj.message}</div>
+                <div className="flex flex-row justify-start text-lg text-dark mb-4">
+                  <div className="text-lg mr-6"> <span className='text-green-600'> Phrase Correction sentence number : </span> {match_obj.sentence_index+1}</div>
+                  <div className="text-lg"> <span className='text-green-600'>Hint : </span>{match_obj.message}</div>
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="flex flex-row"></div>
-                  <div className='mr-56'></div>
-                  <div className="text-lg text-primary mr-4 mb-4">On sentence : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg mr-4 mb-4">On sentence : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="flex flex-row"></div>
-                  <div className='mr-56'></div>
-                  <div className="text-lg text-primary mr-4">Replacement: {match_obj.replacements}</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg mr-4"> <span className='text-green-600'>Replacement :</span> {match_obj.replacements}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="flex flex-row"></div>
-                  <div className='mr-56'></div>
-                  <div className="text-lg text-primary mr-4">Suggestion Fix:{match_obj.final_sentence}</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg mr-4"> <span className='text-green-600'>Suggestion Fix :</span> {match_obj.final_sentence}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
             </div>
           </div>
