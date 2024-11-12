@@ -12,8 +12,6 @@ const Comparison = () => {
 
   const [Result, SetResult] = useState(null);
 
-  const IsTeacher = localStorage.getItem('user_type') == 'teacher';
-
   const fetchResult = async () => {
 
     try{
@@ -68,9 +66,22 @@ const Comparison = () => {
   const BackToLogin = () => {
     navigate("/loginpage");
   }
+  
+  const IsCommentNotEmpty = () => {
 
+    if (Result){
+      if(Result.question_composition.comment != ''){
+        return true;
+      }
+    }
 
+    return false;
+
+  }
+
+  //initial render side effect
   useEffect(() => {
+  
     fetchResult();
 
   }, [])
@@ -80,7 +91,7 @@ const Comparison = () => {
     <>
     <div>
 
-    {Result.question_composition.comment != '' && (
+    {IsCommentNotEmpty() && (
       <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
           <p>Teacher comment: {Result.question_composition.comment}</p> 
