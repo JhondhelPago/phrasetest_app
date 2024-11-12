@@ -19,6 +19,7 @@ import OngoingTask from "./OngoingTask";
 import StudentSidebar from "./StudentSidebar";
 import TeacherSidebar from "./TeacherSidebar";
 import Comment from "./Comment";
+import Class from "./Class";
 
 
 export {
@@ -43,4 +44,5 @@ export {
   StudentSidebar,
   TeacherSidebar,
   Comment,
+  Class,
 };
