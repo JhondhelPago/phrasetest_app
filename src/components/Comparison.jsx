@@ -8,81 +8,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Comparison = () => {
 
-  // const [result, setResult] = useState(null)
-
-  // //const originalEssayString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod dolor sit amet tellus condimentum, vel vulputate magna vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam at quam vitae tortor volutpat commodo. Integer lacinia dictum massa, nec viverra lectus aliquet et. Mauris a sollicitudin turpis. Cras tincidunt, arcu et ultricies cursus, felis libero dictum risus, nec ultricies libero arcu eget arcu. Nam vel arcu nec urna dapibus scelerisque.'
-
-  // const question1 = 'What is your biggest fear?'
-
-  
-
-  // //const originalEssayString = 'Education plays a crucial role in the developement of individuals and societies. It is a tool that equips people with knowledge, skills, and values that are essential for personal and professional growth. In today’s rapidly changing world, having a good education is more important than ever. Firstly, education helps people to think critically. It teaches students how to analyse information, make informed decisions, and solve problems effectively. In an age where misinformation is rampant, the ability to think critically is invaluable. Students who are educated can discern between reliable and unreliable sources, which is vital for their future success. Moreover, education fosters social cohesion. Schools are often where children learn to interact with others, make friends, and develop social skills. However, not everyone have access to quality education, which can lead to inequality in society. This disparity in education can perpetuate cycles of poverty and limit opportunities for many individuals. Furthermore, the economic impact of education cannot be overstated. A well-educated workforce is essential for economic growth and innovation. Companies tend to prefer hiring individuals with higher levels of education, which often leads to better job prospects and higher salaries. As a result, investing in education is also an investment in a country’s economy. In conclusion, the significance of education in today’s society is clear. It enhances critical thinking skills, promotes social cohesion, and drives economic growth. Therefore, it is imperitive that we continue to prioritize education for all individuals, regardless of their background.'
-
-  // const originalEssayString = 'The advancments in technolagy have revolutionized the way we comunicate and access information. With the rise of smartphons, tablets, and computers, people can now conect with others around the globe instanly. However, this rapid devlopment also comes with some challenges, such as the increase in cybercrime and the growing dependency on digital devices. As technolagy continues to evolve, it is crucial for societys to find a balance between embracing innovation and ensuring securty.'
-
-  // let ErrorEssay = ''
-
-  // const SuggestionEssay = ''
-
-
-  // const fetchEssayResults = async() => {
-    
-  //   try{
-
-  //     const response = await axios.post('http://127.0.0.1:8000/user/essay/check/', 
-  //       {
-  //         'question1' : question1,
-  //         'composition' : originalEssayString
-  //       }
-  //     );
-      
-  //     setResult(response.data);
-  //     console.log(response);
-      
-  //     //get the spelling error and then highlight it to the original composition
-
-      
-
-  //   }catch(error){
-  //     console.log('Error in Comparison component @ fetchEssayResults function');
-  //     throw error;
-  //   }
-
-  // }
-
-
-  // const [OriginalComposition, SetOriginalComposition] = useState([])
-
-  // const HighlightSpellErrors = () => {
-    
-  //   const spelling_errors = result.data.spelling_errors
-  //   const Original_composition = result.data.Original_Composition
-
-
-  //   spelling_errors.foreach((Error_dict) => {
-
-
-
-
-  //   })
-
-
-  // }
-
-
-  // //side effect execute after initial render
-  // useEffect(() => {
-
-  //   //execute here the function for side effects
-  //   fetchEssayResults()
-
-
-  // }, [])
-
   const navigate = useNavigate();
 
   const [Result, SetResult] = useState(null);
 
+  const IsTeacher = localStorage.getItem('user_type') == 'teacher';
 
   const fetchResult = async () => {
 
@@ -149,11 +79,18 @@ const Comparison = () => {
   return (
     <>
     <div>
-    <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+
+    {Result.question_composition.comment != '' && (
+      <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-          <p>Comment of Teacher : Loading... (hide this part when the teacher is still have no comment)</p>
+          <p>Teacher comment: {Result.question_composition.comment}</p> 
+          {/* instead of p tag textarea for the input of comment */}
         </div>
     </div>
+    // button here to add comment
+    )}
+
+    
       <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
 
       <div className='flex flex-col sm:flex-row  text-center justify-center'>
