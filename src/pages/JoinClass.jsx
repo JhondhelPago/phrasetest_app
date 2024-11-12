@@ -24,7 +24,7 @@ const JoinClass = ({isDark, changeColorTheme}) => {
               </div>
               
                   <div className='bg-white dark:bg-primary'>
-                  <Class/>
+                  <Class />
                   <Button isDark={isDark} changeColorTheme={changeColorTheme}/>
                   </div>
                   

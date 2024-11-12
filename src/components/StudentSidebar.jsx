@@ -18,6 +18,10 @@ const StudentSidebar = () => {
       navigate('/studentfinishedtask');
     };
 
+    const routeJoinClass = () => {
+      navigate('/JoinClass');
+    };
+
 
 
   return (
@@ -37,7 +41,7 @@ const StudentSidebar = () => {
             {/* Sidebar content */}
             <div className='mt-32'>
                 
-            <div className='w-full text-primary dark:text-white text-3xl sm:text-3xl md:text-3xl lg:text-4xl text-center font-semibold cursor-pointer'>
+            <div className='w-full text-primary dark:text-white text-3xl sm:text-3xl md:text-3xl lg:text-4xl text-center font-bold cursor-pointer'>
                     <div className='relative mb-6 group' onClick={routeToAssignedTask}>
                         <p>ASSIGNED TASK</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
@@ -48,8 +52,8 @@ const StudentSidebar = () => {
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
 
-                    <div className='relative mb-6 group'>
-                        <p>ADD SECTION</p>
+                    <div className='relative mb-6 group' onClick={routeJoinClass}>
+                        <p>ADD CLASS CODE</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
 

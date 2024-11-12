@@ -11,39 +11,27 @@ const Class = () => {
 
         </div>
         
-        <div className='w-full flex items-center justify-evenly'>
-        <div className="w-full flex flex-row sm:flex-col justify-evenly items-center text-center">
-          
-          <div className='w-full flex flex-col sm:flex-row items-center justify-evenly p-4'>
-            
-            <div className="w-full sm:w-3/12">
-            <label htmlFor="classCode" className="text-gray-300">Enter class code</label>
-            </div>
-            
-            
-            <div className='w-full'>
-            <input
-              id="classCode"
-              type="text"
-              placeholder="Enter class code"
-              className="p-2 w-1/3 text-center border border-gray-300 rounded mr-4 text-primary bg-white placeholder-gray-500"
-            />
-            </div>
-            
-            <div>
-            <button
-              className="px-12 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none"
-            >
-              Enter
-            </button>
-            </div>
-            
+        <div className='flex flex-col w-full font-poppins text-primary dark:text-white p-44'>
+
+        <div className='flex flex-col sm:flex-row md:flex-row justify-center items-center text-center'>
+
+          <div className='text-center justify-evenly'>
+            <label htmlFor="text" className='text-3xl whitespace-nowrap'>Enter Class Code</label>
           </div>
-        </div>
+
+          <div className='text-primary m-4'>
+            <input type="text" className='py-4 rounded-md p-2 texl-2xl text-center border-2  border-gray-500 '/>
+          </div>
+          
+          <div className='text-center'>
+            <button className='bg-green-500 px-6 py-4 rounded-lg '>
+              Submit
+            </button>
+          </div>
+
+        </div>    
 
         </div>
-        
-        
       
 
     </>

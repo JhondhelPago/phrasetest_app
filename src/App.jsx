@@ -52,7 +52,7 @@ function App() {
         <Route path="/teacheressaytask" element={<TeacherEssayTask isDark={isDark} changeColorTheme={changeColorTheme}></TeacherEssayTask>}></Route>
         <Route path="/studentessaytask" element={<StudentEssayTask isDark={isDark} changeColorTheme={changeColorTheme}></StudentEssayTask>}></Route>
         <Route path="/commentresults" element={<CommentResults isDark={isDark} changeColorTheme={changeColorTheme}></CommentResults>}></Route>
-        <Route path="/joinclass" element={<JoinClass></JoinClass>}></Route>
+        <Route path="/joinclass" element={<JoinClass isDark={isDark} changeColorTheme={changeColorTheme}></JoinClass>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}
