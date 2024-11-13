@@ -13,11 +13,13 @@ const Class = () => {
         
         <div className='flex flex-col w-full font-poppins text-primary dark:text-white p-44'>
 
-        <div className='flex flex-col sm:flex-row md:flex-row justify-center items-center text-center'>
-
-          <div className='text-center justify-evenly'>
+        <div className='flex text-center justify-center'>
             <label htmlFor="text" className='text-3xl font-semibold whitespace-nowrap'>Enter Class Code</label>
           </div>
+
+        <div className='flex flex-col sm:flex-row md:flex-row justify-center items-center text-center'>
+
+          
 
           <div className='text-primary m-4'>
             <input type="text" className='py-4 rounded-md p-2 texl-2xl text-center border-2  border-gray-500 '/>

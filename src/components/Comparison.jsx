@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Comparison = () => {
 
+  const [showComment, setShowComment] = useState(false);
+
   // const [result, setResult] = useState(null)
 
   // //const originalEssayString = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod dolor sit amet tellus condimentum, vel vulputate magna vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam at quam vitae tortor volutpat commodo. Integer lacinia dictum massa, nec viverra lectus aliquet et. Mauris a sollicitudin turpis. Cras tincidunt, arcu et ultricies cursus, felis libero dictum risus, nec ultricies libero arcu eget arcu. Nam vel arcu nec urna dapibus scelerisque.'
@@ -139,6 +141,10 @@ const Comparison = () => {
     navigate("/loginpage");
   }
 
+  const toggleComment = () => {
+    setShowComment(!showComment);
+  };
+
 
   useEffect(() => {
     fetchResult();
@@ -149,6 +155,32 @@ const Comparison = () => {
   return (
     <>
     <div>
+
+    <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
+          <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
+            <p>Student Name: <span className='font-bold'> Jhon Rogelio Solis</span></p>
+                <button className='text-primary dark:text-white bg-green-500  mt-2  md:mt-0 lg:mt-0  rounded-lg p-2 px-4 text-xs' onClick={toggleComment}>
+                    Add Comment
+                </button>
+          </div>  
+        </div>
+
+        {showComment && (
+        <div className='flex flex-col justify-center  font-poppins'>
+            <div className='flex item-center justify-center  font-semibold'>
+            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+            </div>
+                
+                <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-10/12 flex justify-end text-sm mb-2'>
+                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" >
+                        Send 
+                    </button>
+                </div>
+        </div>
+        )}
+
+
+
     <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
           <p>Comment of Teacher : Loading... (hide this part when the teacher is still have no comment)</p>
