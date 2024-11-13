@@ -16,7 +16,7 @@ const Class = () => {
         <div className='flex flex-col sm:flex-row md:flex-row justify-center items-center text-center'>
 
           <div className='text-center justify-evenly'>
-            <label htmlFor="text" className='text-3xl whitespace-nowrap'>Enter Class Code</label>
+            <label htmlFor="text" className='text-3xl font-semibold whitespace-nowrap'>Enter Class Code</label>
           </div>
 
           <div className='text-primary m-4'>
