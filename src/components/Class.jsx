@@ -1,7 +1,76 @@
-import React from 'react';
+import React , { useState }from 'react';
 import styles from '../style';
+import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
+import { useNavigate } from 'react-router-dom';
 
 const Class = () => {
+
+  const navigate = useNavigate();
+
+  const [InputSecCode, SetInputSecCode] = useState('');
+
+
+  const UpdateInputSecCodeState = (event) => {
+
+    SetInputSecCode(event.target.value);
+
+  }
+
+  const SubmiSectionCode = async () => {
+
+    try{
+
+      const access_token = localStorage.getItem('access');
+      console.log(InputSecCode);
+
+      const response = await StudentAPICalls.JoinClass(InputSecCode);
+      console.log(response.data);
+
+      if (response.status == 200){
+        RouteToStudentPage();
+      }
+
+    }catch(error){
+      console.log(error);
+
+      if (error.response.status == 401) {
+
+        try{
+
+          const Re_req_access = await ReqAccessTokenSuperScope();
+          
+          if (Re_req_access['status_code'] == 200){
+            localStorage.setItem('access', Re_req_access['access_token']);
+
+            try{
+
+              const response = await StudentAPICalls.JoinClass(InputSecCode);
+
+              if (response.status = 200){
+                RouteToStudentPage();
+              }
+
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        } catch (error) {
+          console.log(error);
+          BackToLogin();
+        }
+      }
+    }
+  }
+
+  const RouteToStudentPage = () => {
+    navigate('/studentpage');
+  }
+
+  const BackToLogin = () => {
+    navigate('/loginpage');
+  }
+
+
   return (
     
     <>
@@ -22,11 +91,11 @@ const Class = () => {
           
 
           <div className='text-primary m-4'>
-            <input type="text" className='py-4 rounded-md p-2 texl-2xl text-center border-2  border-gray-500 '/>
+            <input type="text" className='py-4 rounded-md p-2 texl-2xl text-center border-2  border-gray-500 ' onChange={UpdateInputSecCodeState}/>
           </div>
           
           <div className='text-center'>
-            <button className='bg-green-500 px-6 py-4 rounded-lg '>
+            <button className='bg-green-500 px-6 py-4 rounded-lg ' onClick={SubmiSectionCode}>
               Submit
             </button>
           </div>

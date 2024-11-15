@@ -197,6 +197,23 @@ export class StudentAPICalls {
 
     }
 
+    static JoinClass = async (section_code) => {
+
+        const data = {
+            'access' : localStorage.getItem('access'),
+            'section_code' : section_code
+        }
+
+        const response = await axiosInstance.post(`student/join/class/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        })
+
+        return response;
+
+    } 
+
 }
 
 
