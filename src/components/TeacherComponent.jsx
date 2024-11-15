@@ -340,6 +340,9 @@ const   TeacherComponent = () => {
     //set the current assignment_id
     SetCurrent_Assignment_id(assignment_id);
 
+    // set the current assingment_id on local storage
+    localStorage.setItem('current_assignment_id', assignment_id);
+
   }
 
   const Empty_Current_AssignmentObj = () => {
@@ -511,7 +514,8 @@ const   TeacherComponent = () => {
                     ))} */}
 
                     {Names.map((names, index) => (
-                      <div>{names}</div>
+                      // onclick here, and passing the parameter at index 1
+                      <div>{names[0]}</div>
                     ))}
                     
                   </div>
@@ -523,7 +527,7 @@ const   TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
                     {Dates.map((date, index) => (
-                      <div>{date}</div>
+                      <div>{date[0]  + "  " +date[1]}</div>
                     ))}
                    
                   </div>
@@ -535,7 +539,7 @@ const   TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Evaluation</div>
                     {Labels.map((label, index) => (
-                      <div>{label}</div>
+                      <div>{label[0]}</div>
                     ))}
       
                   </div>
