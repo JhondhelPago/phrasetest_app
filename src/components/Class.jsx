@@ -58,6 +58,11 @@ const Class = () => {
           console.log(error);
           BackToLogin();
         }
+      } else if (error.response.status == 400) {
+
+        //function here to display the modal that notify the section code is invalid
+        alert(`The invalid section code. ${InputSecCode} do not match any section code. `)
+
       }
     }
   }

@@ -435,7 +435,7 @@ const   TeacherComponent = () => {
           </div>
             
                {/* Add New Class Modal */}
-        {showModalSection && (
+          {showModalSection && (
           <div className="text-primary fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-gray-100 p-6 rounded-lg w-80 text-center">
               <label className="block text-lg font-semibold mb-4">Please Provide Section Name to Create a New Section</label>
