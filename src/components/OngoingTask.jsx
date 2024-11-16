@@ -3,6 +3,8 @@ import styles from '../style'
 import { StudentAPICalls, TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
+import { NotificationModal, AlertModal } from '../modal';
+
 
 const OngoingTask = () => {
 
@@ -12,6 +14,12 @@ const OngoingTask = () => {
 
 
   const [EssayComposition, SetEssayComposition] = useState('');
+
+  const [showNotificationModal, setShowNotificationModal] = useState(false);
+
+  const toggleNotificationModal = () => {
+    setShowNotificationModal(!showNotificationModal);
+  };
 
   const UpdateEssayComposition = (event) => {
     SetEssayComposition(event.target.value);
@@ -59,7 +67,7 @@ const OngoingTask = () => {
 
   const SubmitHandler = async (event) => {
     event.preventDefault();
-
+    toggleNotificationModal();
     try{
       
       const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
@@ -139,12 +147,14 @@ const OngoingTask = () => {
         <div className='flex flex-col items-center justify-evenly text-center text-white dark:text-white'>
             <button className='flex font-semibold text-white dark:text-primary bg-green-600 dark:bg-green-600 rounded-lg border-lg border-white dark:border-primary border p-4 px-16 text-center' onClick={SubmitHandler}>
                 Submit        
-            </button>
+            </button >
         </div>
         </div>
         </div>
-        
-
+        {/* {showNotificationModal && (
+        // <NotificationModal toggleNotificationModal={toggleNotificationModal} setShowNotificationModal={setShowNotificationModal} />
+        <AlertModal message={'invalid section code'} setShowNotificationModal={setShowNotificationModal}></AlertModal>
+      )} */}
     </div>
     </>
   )
