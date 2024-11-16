@@ -3,7 +3,7 @@ import styles from '../style'
 import { StudentAPICalls, TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
-import { NotificationModal } from '../modal';
+import { NotificationModal, AlertModal } from '../modal';
 
 
 const OngoingTask = () => {
@@ -68,45 +68,45 @@ const OngoingTask = () => {
   const SubmitHandler = async (event) => {
     event.preventDefault();
     toggleNotificationModal();
-    // try{
+    try{
       
-    //   const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
+      const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
 
-    //   if (response.status == 200){
+      if (response.status == 200){
 
-    //     //navigate to examineresults path and then fetch the information using the assignment_id,  and the student_id from access token
-    //     RouteToExamineResult();
+        //navigate to examineresults path and then fetch the information using the assignment_id,  and the student_id from access token
+        RouteToExamineResult();
 
-    //   }
+      }
 
-    // } catch (error) {
-    //   console.log(error);
+    } catch (error) {
+      console.log(error);
 
-    //   if (error.response.status == 401){
+      if (error.response.status == 401){
 
-    //     const Re_request_access = await ReqAccessTokenSuperScope();
+        const Re_request_access = await ReqAccessTokenSuperScope();
 
-    //     if (Re_request_access['status_code'] == 401){
-    //       BackToLogin();
-    //     } else if (Re_request_access['status_code'] == 200){
-    //       localStorage.setItem('access', Re_request_access['result'].data.access)
+        if (Re_request_access['status_code'] == 401){
+          BackToLogin();
+        } else if (Re_request_access['status_code'] == 200){
+          localStorage.setItem('access', Re_request_access['result'].data.access)
 
-    //       try{
+          try{
 
-    //         const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
+            const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
 
-    //         if (response.status == 200){
-    //            //navigate to examineresults path and then fetch the information using the assignment_id,  and the student_id from access token
-    //           RouteToExamineResult();
-    //         }
-    //       } catch (error) {
-    //         console.log(error);
-    //       }
-    //     }
-    //   } else {
-    //     console.log(error);
-    //   }
-    // }
+            if (response.status == 200){
+               //navigate to examineresults path and then fetch the information using the assignment_id,  and the student_id from access token
+              RouteToExamineResult();
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } else {
+        console.log(error);
+      }
+    }
   }
 
   const BackToLogin = () => {
@@ -151,9 +151,10 @@ const OngoingTask = () => {
         </div>
         </div>
         </div>
-        {showNotificationModal && (
-        <NotificationModal toggleNotificationModal={toggleNotificationModal} setShowNotificationModal={setShowNotificationModal} />
-      )}
+        {/* {showNotificationModal && (
+        // <NotificationModal toggleNotificationModal={toggleNotificationModal} setShowNotificationModal={setShowNotificationModal} />
+        <AlertModal message={'invalid section code'} setShowNotificationModal={setShowNotificationModal}></AlertModal>
+      )} */}
     </div>
     </>
   )
