@@ -152,7 +152,7 @@ const OngoingTask = () => {
         </div>
         </div>
         {showNotificationModal && (
-        <NotificationModal toggleNotificationModal={toggleNotificationModal} />
+        <NotificationModal toggleNotificationModal={toggleNotificationModal} setShowNotificationModal={setShowNotificationModal} />
       )}
     </div>
     </>
