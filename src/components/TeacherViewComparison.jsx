@@ -16,6 +16,8 @@ const TeacherViewComparison = () => {
 
   const [Comment, SetComment] = useState('');
 
+  const [IsPostCommentSuccess, SetIsPostCommentSuccess] = useState(0);
+
   // const fetchResult = async () => {
   //   //parameter needed to run this function 
   //   //student id 
@@ -83,6 +85,7 @@ const TeacherViewComparison = () => {
       if (response.status == 200){
         console.log(response.data);
         SetResult(response.data);
+        SetComment(response.data.question_composition.comment)
       }
 
     } catch (error) {
@@ -107,6 +110,7 @@ const TeacherViewComparison = () => {
               if (response.status == 200) {
                 console.log(response.data);
                 SetResult(response.data);
+                SetComment(response.data.question_composition.comment)
               }
             } catch (error) {
               console.log(error);
@@ -120,13 +124,56 @@ const TeacherViewComparison = () => {
   }
 
   const PostCommentHandler = async () => {
+
+    if (Comment == ''){
+      alert('Can not submit empty comment');
+      return;
+    }
+
+    console.log(Comment);
     
     try{
 
-    } catch (error){
+      const response = await TeacherApiCalls.AddComment(localStorage.getItem('current_selected_stud_id'), localStorage.getItem('assignment_id'), Comment);
 
+      if (response.status == 200){
+        alert('Comment submitted successfully');
+        SetIsPostCommentSuccess(prevVal => prevVal + 1);
+      }
+
+    } catch (error){
+      console.log(error);
+      if (error.response.status == 401) {
+        
+        try{
+          const Re_request_access = await ReqAccessTokenSuperScope();
+
+          if (Re_request_access['status'] == 401) {
+            BackToLogin();
+          } else if (Re_request_access['status'] == 200) {
+            localStorage.setItem('access', Re_request_access['result'].data.access);
+
+            try{
+
+              const response = await TeacherApiCalls.AddComment(localStorage.getItem('current_selected_stud_id'), localStorage.getItem('assignment_id'), Comment);
+
+              if (response.status == 200){
+                alert('Comment submitted successfully');
+                SetIsPostCommentSuccess(prevVal => prevVal + 1);
+              }
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        } catch (error){
+          console.log(error);
+        }
+      }
     }
-    
+  }
+
+  const UpdateCommentState = (event) => {
+    SetComment(event.target.value);
   }
 
   const BackToLogin = () => {
@@ -157,6 +204,14 @@ const TeacherViewComparison = () => {
   }, [])
 
 
+  useEffect(() => {
+
+    fetchResult();
+    setShowComment(false);
+
+  }, [IsPostCommentSuccess])
+
+
   return (
     <>
 
@@ -172,11 +227,11 @@ const TeacherViewComparison = () => {
         {showComment && (
         <div className='flex flex-col justify-center  font-poppins'>
             <div className='flex item-center justify-center  font-semibold'>
-            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
+            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" value={Comment} onChange={UpdateCommentState}></textarea>
             </div>
                 
                 <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-10/12 flex justify-end text-sm mb-2'>
-                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" >
+                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" onClick={PostCommentHandler}>
                         Send 
                     </button>
                 </div>

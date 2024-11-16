@@ -1,6 +1,7 @@
 import axios from "axios";
 import { axiosInstance, axiosRefresh } from "./axiosInstances";
 import { useNavigate } from "react-router-dom";
+import { student } from "../assets";
 //Teacher calls 
 
 export const loadTeacherInfo = async() => {
@@ -127,6 +128,23 @@ export class TeacherApiCalls {
 
         return response;
     }
+
+    static AddComment = async (student_id, assignment_id, comment) => {
+        const data = {
+            "student_id" : student_id,
+            "assignment_id" : assignment_id,
+            "comment" : comment
+        }
+
+        const response = await axiosInstance.post(`teacher/add/comment/`, data, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }
+        });
+
+        return response;
+    }
+
 }
 
 
