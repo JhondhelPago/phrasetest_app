@@ -341,7 +341,7 @@ const   TeacherComponent = () => {
     SetCurrent_Assignment_id(assignment_id);
 
     // set the current assingment_id on local storage
-    localStorage.setItem('current_assignment_id', assignment_id);
+    localStorage.setItem('assignment_id', assignment_id);
 
   }
 
@@ -373,6 +373,12 @@ const   TeacherComponent = () => {
 
   const BackToLogin = () => {
     navigate('/loginpage');
+  }
+
+  const SetLocalSelected_Stud_id = (id) => {
+    localStorage.setItem('current_selected_stud_id', id);
+    //navigate here to the teacher/examineresults
+    navigate('/teacher/examineresults');
   }
 
   useEffect(() => {
@@ -515,7 +521,7 @@ const   TeacherComponent = () => {
 
                     {Names.map((names, index) => (
                       // onclick here, and passing the parameter at index 1
-                      <div>{names[0]}</div>
+                      <div onClick={() => {SetLocalSelected_Stud_id(names[1])}}>{names[0]}</div>
                     ))}
                     
                   </div>
@@ -527,7 +533,7 @@ const   TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
                     {Dates.map((date, index) => (
-                      <div>{date[0]  + "  " +date[1]}</div>
+                      <div onClick={() => {SetLocalSelected_Stud_id(date[1])}}>{date[0]  + "  " +date[1]}</div>
                     ))}
                    
                   </div>
@@ -539,7 +545,7 @@ const   TeacherComponent = () => {
                   <div className='flex-1 cursor-pointer'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Evaluation</div>
                     {Labels.map((label, index) => (
-                      <div>{label[0]}</div>
+                      <div onClick={() => {SetLocalSelected_Stud_id(label[1])}}>{label[0]}</div>
                     ))}
       
                   </div>

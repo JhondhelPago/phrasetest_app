@@ -21,6 +21,7 @@ import TeacherEssayTask from './pages/TeacherEssayTask';
 import StudentEssayTask from './pages/StudentEssayTask';
 import CommentResults from './pages/CommentResults';
 import JoinClass from './pages/JoinClass';
+import TeacherExamineResults from './pages/TeacherExamineResult';
 
 
 //import Home from './pages/Home';
@@ -53,6 +54,7 @@ function App() {
         <Route path="/studentessaytask" element={<StudentEssayTask isDark={isDark} changeColorTheme={changeColorTheme}></StudentEssayTask>}></Route>
         <Route path="/commentresults" element={<CommentResults isDark={isDark} changeColorTheme={changeColorTheme}></CommentResults>}></Route>
         <Route path="/joinclass" element={<JoinClass isDark={isDark} changeColorTheme={changeColorTheme}></JoinClass>}></Route>
+        <Route path="/teacher/examineresults" element={<TeacherExamineResults isDark={isDark} changeColorTheme={changeColorTheme}></TeacherExamineResults>}></Route>
         {/* path="/signup" -> select user type. student or teacher? */} 
         {/* path="/signup/student" student signup form */}
         {/* path="/signup/teacher" teacher signup form */}

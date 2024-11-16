@@ -16,6 +16,15 @@ const TeacherSidebar = ({isDark, changeColorTheme}) => {
     };
 
 
+    const RouteToLogin = () => {
+      navigate('/loginpage');
+      ClearLocalStorage();
+    }
+
+    const ClearLocalStorage = () => {
+      localStorage.clear();
+    }
+
   return (
     <div >
     <div className='cursor-pointer' onClick={toggleSidebar}>
@@ -39,7 +48,7 @@ const TeacherSidebar = ({isDark, changeColorTheme}) => {
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
                     
-                    <div className="relative mb-4 group">
+                    <div className="relative mb-4 group" onClick={RouteToLogin}>
                         <p>LOG OUT</p>
                         <span className="absolute left-1/2 transform -translate-x-1/2 h-1 mt-1 bg-primary dark:bg-white  w-0 transition-all duration-300 group-hover:w-full"></span>
                     </div>
