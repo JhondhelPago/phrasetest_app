@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../style';
 import NormalSpan from './SpanComponent';
-import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
+import { StudentAPICalls, TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
 const TeacherViewComparison = () => {
@@ -14,6 +14,63 @@ const TeacherViewComparison = () => {
 
   const [Result, SetResult] = useState(null);
 
+  const [Comment, SetComment] = useState('');
+
+  // const fetchResult = async () => {
+  //   //parameter needed to run this function 
+  //   //student id 
+  //   //assignment id
+
+  //   try{
+
+  //     console.log(`fetchResult function is executng on the initial render useEffect`);
+  //     console.log(`assignment_id: ${localStorage.getItem('assignment_id')}`);
+
+  //     const response = await StudentAPICalls.GetExamineResults(localStorage.getItem('assignment_id'));
+
+  //     if (response.status == 200){
+  //       console.log(response.data);
+  //       SetResult(response.data);
+  //     } else {
+  //       console.log(`status_code: ${response.status}`);
+  //       SetResult(response.data);
+  //     }
+  //   } catch (error) {
+
+  //     if (error.response.status == 401){
+  //       try{
+  //         const Re_request_access = await ReqAccessTokenSuperScope();
+
+  //          if (Re_request_access['status_code'] == 401){
+  //           BackToLogin();
+  //          } else if (Re_request_access['status_code'] == 200){
+  //           localStorage.setItem('access', Re_request_access['result'].data.access);
+
+  //           try{
+
+  //             const response = await StudentAPICalls.GetExamineResults(localStorage.getItem('assignment_id'));
+
+  //             if (response.status == 200){
+  //               console.log(response.data);
+  //               SetResult(response.data);
+  //             } else {
+  //               console.log(`status_code: ${response.data}`);
+  //               SetResult(response.data);
+  //             }
+  //           } catch (error) {
+  //             console.log(error);
+  //           }
+  //          } else {
+  //           console.log(`Re_request_access status_code: ${Re_request_access['status_code']}`);
+  //          }
+  //       } catch (error) {
+  //         BackToLogin();
+  //       }
+  //     }
+  //   }
+  // }
+
+
   const fetchResult = async () => {
     //parameter needed to run this function 
     //student id 
@@ -21,51 +78,55 @@ const TeacherViewComparison = () => {
 
     try{
 
-      console.log(`fetchResult function is executng on the initial render useEffect`);
-      console.log(`assignment_id: ${localStorage.getItem('assignment_id')}`);
-
-      const response = await StudentAPICalls.GetExamineResults(localStorage.getItem('assignment_id'));
+      const response = await TeacherApiCalls.ViewStudentExamineResult(localStorage.getItem('current_selected_stud_id'), localStorage.getItem('assignment_id'));
 
       if (response.status == 200){
         console.log(response.data);
         SetResult(response.data);
-      } else {
-        console.log(`status_code: ${response.status}`);
-        SetResult(response.data);
       }
+
     } catch (error) {
+      console.log(error);
 
       if (error.response.status == 401){
+
         try{
+
           const Re_request_access = await ReqAccessTokenSuperScope();
 
-           if (Re_request_access['status_code'] == 401){
+          if (Re_request_access['status_code'] == 401){
             BackToLogin();
-           } else if (Re_request_access['status_code'] == 200){
+          } else if (Re_request_access['status_code'] == 200){
+
             localStorage.setItem('access', Re_request_access['result'].data.access);
 
             try{
+              
+              const response = await TeacherApiCalls.ViewStudentExamineResult(localStorage.getItem('current_selected-stud_id', localStorage.getItem('assignment_id')));
 
-              const response = await StudentAPICalls.GetExamineResults(localStorage.getItem('assignment_id'));
-
-              if (response.status == 200){
+              if (response.status == 200) {
                 console.log(response.data);
-                SetResult(response.data);
-              } else {
-                console.log(`status_code: ${response.data}`);
                 SetResult(response.data);
               }
             } catch (error) {
               console.log(error);
             }
-           } else {
-            console.log(`Re_request_access status_code: ${Re_request_access['status_code']}`);
-           }
-        } catch (error) {
-          BackToLogin();
+          }
+        } catch (error){
+          console.log(error);
         }
       }
     }
+  }
+
+  const PostCommentHandler = async () => {
+    
+    try{
+
+    } catch (error){
+
+    }
+    
   }
 
   const BackToLogin = () => {
@@ -101,7 +162,7 @@ const TeacherViewComparison = () => {
 
     <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
           <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
-            <p>Student Name: <span className='font-bold'> Jhon Rogelio Solis</span></p>
+            <p>Student Name: <span className='font-bold'>{Result && Result.student_name}</span></p>
                 <button className='text-primary dark:text-white bg-green-500  mt-2  md:mt-0 lg:mt-0  rounded-lg p-2 px-4 text-xs' onClick={toggleComment}>
                     Add Comment
                 </button>

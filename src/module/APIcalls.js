@@ -111,7 +111,21 @@ export class TeacherApiCalls {
         });
 
         return response;
+    }
 
+    static ViewStudentExamineResult = async (student_id, assignment_id) => {
+
+        const response = await axiosInstance.get(`teacher/view/examineresults`, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            },
+            params : {
+                student_id : student_id,
+                assignment_id : assignment_id
+            }
+        });
+
+        return response;
     }
 }
 
