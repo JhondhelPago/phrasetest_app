@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AlertModal = ({message, setShowNotificationModal}) => {
+const AlertModal = ({message, alter_boolean_state}) => {
 
   
 
@@ -8,8 +8,8 @@ const AlertModal = ({message, setShowNotificationModal}) => {
     
   // };
 
-  const CancelHadler = () => {
-    setShowNotificationModal(false);
+  const OK_close_modal = () => {
+    alter_boolean_state(false);
   }
 
 
@@ -19,7 +19,7 @@ const AlertModal = ({message, setShowNotificationModal}) => {
               <label className="block text-lg font-semibold mb-4">{message}</label>
               
               <div className="flex justify-around">
-                <button className="px-6 py-2 bg-blue-500 text-white rounded-lg" onClick={CancelHadler}>
+                <button className="px-6 py-2 bg-blue-500 text-white rounded-lg" onClick={OK_close_modal}>
                   OK
                 </button>
               </div>

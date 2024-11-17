@@ -3,10 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../style';
 import axios from 'axios';
 
+import { AlertModal } from '../modal';
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const [IsAlertModalShow, SetIsAlertModalShow] = useState(false);
+
 
     // setup useState variable here to contain the login credentials
 
@@ -70,7 +73,11 @@ const Login = () => {
 
         } catch(error) {
 
-            alert('Invalid email and password');
+            if (error.response.status == 401){
+                console.log(error.response.data);
+                SetIsAlertModalShow(true);
+            }
+
 
         }
 
@@ -152,8 +159,14 @@ const Login = () => {
                     </button>
                 </div>
             </div>
+
+            {IsAlertModalShow && (
+                <AlertModal message={'Invalid email and password.'} alter_boolean_state={SetIsAlertModalShow}></AlertModal>
+            )}
             
         </div>
+
+
     
     </>
     
