@@ -2,10 +2,15 @@ import React , { useState }from 'react';
 import styles from '../style';
 import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
+import Input from 'postcss/lib/input';
+import { AlertModal, LoadingModal } from '../modal';
 
 const Class = () => {
 
   const navigate = useNavigate();
+  const [IsAlertModalShow, SetIsAlertModalShow] = useState(false);
+  const [ModalMessage, SetModalMessage] = useState('');
+  const [IsLoadingModalShow, SetIsLoadingModalShow] = useState(false);
 
   const [InputSecCode, SetInputSecCode] = useState('');
 
@@ -14,9 +19,20 @@ const Class = () => {
 
     SetInputSecCode(event.target.value);
 
+
   }
 
   const SubmiSectionCode = async () => {
+
+    //check first if the InputSecCode is an empty string, then show Alertmodal
+
+    if (InputSecCode == ''){
+      SetModalMessage('Please enter your section code.');
+      SetIsAlertModalShow(true);
+      return;
+    }
+
+    SetIsLoadingModalShow(true);
 
     try{
 
@@ -36,14 +52,14 @@ const Class = () => {
       if (error.response.status == 401) {
 
         try{
-
+          
           const Re_req_access = await ReqAccessTokenSuperScope();
           
           if (Re_req_access['status_code'] == 200){
-            localStorage.setItem('access', Re_req_access['access_token']);
+            localStorage.setItem('access', Re_req_access['result'].data.access);
 
             try{
-
+              
               const response = await StudentAPICalls.JoinClass(InputSecCode);
 
               if (response.status = 200){
@@ -51,7 +67,17 @@ const Class = () => {
               }
 
             } catch (error) {
-              console.log(error);
+
+              if (error.response.status == 400) {
+                setTimeout(() => {
+                  SetIsLoadingModalShow(false);
+                }, 3000)
+
+                SetModalMessage('Invalid class code.');
+                SetIsAlertModalShow(true);
+              } else {
+                console.log(error);
+              }
             }
           }
         } catch (error) {
@@ -59,10 +85,12 @@ const Class = () => {
           BackToLogin();
         }
       } else if (error.response.status == 400) {
+        setTimeout(() => {
+          SetIsLoadingModalShow(false);
+        }, 3000)
 
-        //function here to display the modal that notify the section code is invalid
-        alert(`The invalid section code. ${InputSecCode} do not match any section code. `)
-
+        SetModalMessage('Invalid class code.');
+        SetIsAlertModalShow(true);
       }
     }
   }
@@ -106,6 +134,14 @@ const Class = () => {
           </div>
 
         </div>    
+
+        {IsAlertModalShow && (
+          <AlertModal message={ModalMessage} alter_boolean_state={SetIsAlertModalShow}></AlertModal>
+        )}
+
+        {IsLoadingModalShow && (
+          <LoadingModal></LoadingModal>
+        )}
 
         </div>
       

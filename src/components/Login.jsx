@@ -76,6 +76,9 @@ const Login = () => {
             if (error.response.status == 401){
                 console.log(error.response.data);
                 SetIsAlertModalShow(true);
+            } else {
+                console.log(error);
+                alert('server is not responding.');
             }
 
 
