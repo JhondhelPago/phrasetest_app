@@ -16,10 +16,27 @@ const OngoingTask = () => {
   const [EssayComposition, SetEssayComposition] = useState('');
 
   const [showNotificationModal, setShowNotificationModal] = useState(false);
+  const [Confirmation, SetConfirmation] = useState(false);
+
+  const [IsAlertModalShow, SetIsAlertModalShow] = useState(false);
+  const [AlertModalMessage, SetAlertModalMessage] = useState('');
+
+  const [IsLoadingModalShow, SetIsLoadingModalShow] = useState(false); 
 
   const toggleNotificationModal = () => {
     setShowNotificationModal(!showNotificationModal);
-  };
+  }
+
+  const SetConfirmationTrueAndCloseModal = () => {
+    SetConfirmation(true);
+    setShowNotificationModal(false);
+    SubmitHandlerMain();
+  }
+
+  const SetConfirmationFalseAndCloseModal = () => {
+
+    setShowNotificationModal(false);
+  }
 
   const UpdateEssayComposition = (event) => {
     SetEssayComposition(event.target.value);
@@ -67,7 +84,21 @@ const OngoingTask = () => {
 
   const SubmitHandler = async (event) => {
     event.preventDefault();
-    toggleNotificationModal();
+
+    if (EssayComposition == '') {
+      SetAlertModalMessage('you can not submit empty composition');
+      SetIsAlertModalShow(true);
+      return;
+    }
+
+    //contion here to for submission confirmation using the modal
+
+    setShowNotificationModal(true);
+
+  }
+
+  const SubmitHandlerMain = async () => {
+    SetIsLoadingModalShow(true);
     try{
       
       const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));
@@ -154,8 +185,16 @@ const OngoingTask = () => {
         {showNotificationModal && (
         // <NotificationModal toggleNotificationModal={toggleNotificationModal} setShowNotificationModal={setShowNotificationModal} />
         // <AlertModal message={'invalid section code'} setShowNotificationModal={setShowNotificationModal}></AlertModal>
-          <LoadingModal></LoadingModal>
-      )}
+          <NotificationModal message={'Confirm submission of composition?'} callback_cancel={SetConfirmationFalseAndCloseModal} callback_confirm={SetConfirmationTrueAndCloseModal}></NotificationModal>
+        )}
+
+        {IsAlertModalShow && (
+          <AlertModal message={AlertModalMessage} alter_boolean_state={SetIsAlertModalShow}></AlertModal>
+        )}
+
+        {IsLoadingModalShow && (
+          <LoadingModal message={'Examining the compositon. It may take a short while thereupon please wait.'}></LoadingModal>
+        )}
     </div>
     </>
   )
