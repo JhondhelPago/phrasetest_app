@@ -67,7 +67,7 @@ const OngoingTask = () => {
 
   const SubmitHandler = async (event) => {
     event.preventDefault();
-    // toggleNotificationModal();
+    toggleNotificationModal();
     try{
       
       const response = await StudentAPICalls.SubmitEssay(EssayComposition, localStorage.getItem('assignment_id'));

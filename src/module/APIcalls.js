@@ -177,7 +177,6 @@ export class StudentAPICalls {
         });
 
         return response;
-
     }
 
     static SubmitEssay = async (composition, assignment_id) => {
@@ -210,7 +209,6 @@ export class StudentAPICalls {
         });
 
         return response;
-
     }
 
     static GetExamineResults = async (assignment_id) => {
@@ -226,7 +224,6 @@ export class StudentAPICalls {
         });
 
         return response;
-
     }
 
     static JoinClass = async (section_code) => {
@@ -243,8 +240,21 @@ export class StudentAPICalls {
         })
 
         return response;
+    }
 
-    } 
+    static FinishedTask = async () => {
+
+        const response = await axiosInstance.get(`student/assignment/finished`, {
+            headers : {
+                Authorization : `Bearer ${localStorage.getItem('access')}`
+            }, 
+            params : {
+                access : localStorage.getItem('access')
+            }
+        });
+
+        return response;
+    }
 
 }
 
