@@ -421,10 +421,18 @@ const   TeacherComponent = () => {
                   </button>
           </div>  
         </div>
-        <div className='w-full flex flex-col sm:flex-row items-center text-center p-4 text-white dark:text-white'>
+        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-4 text-white dark:text-white'>
           
-          <div className='w-full flex mb-0 sm:mb-0 justify-end pl-3 mt-2 sm:mt-0'>  
-            <div className='w-10/12 flex flex-row items-start justify-start space-x-2 '>
+          <div className='w-full flex items-center'>
+
+          
+          <div className='w-full flex mb-0 sm:mb-0 justify-end mt-2 sm:mt-0'>  
+
+            <div className='flex w-10/12'>
+
+            
+            <div className='w-full flex flex-row items-start justify-start space-x-2 '>
+
             <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
               <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
                 {SectionList.map((section_obj, index) => (
@@ -439,7 +447,7 @@ const   TeacherComponent = () => {
             </div>
 
 
-            
+            </div>
           </div>
             
                {/* Add New Class Modal */}
@@ -468,12 +476,20 @@ const   TeacherComponent = () => {
 
             
             
-            <div className='w-full flex flex-col items-center sm:items-end text-xs pt-2'>
-              <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
-                Create Essay Task 
-              </button>
+            <div className='w-full flex flex-col text-xs pt-2 justify-end items-end'>
+              <div className='flex w-full'>
+                <div className='flex flex-row sm:flex-col w-10/12 items-end justify-end'>
+                <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
+                  Create Essay Task 
+                </button>
+                </div>
+              </div>
+
+            </div>
             </div>
         </div>
+
+
 
         <div className='flex flex-col items-center justify-center text-xl  text-primary dark:text-white text-center'>
           <div className='w-4/12 sm:w-6/12 md:w-6/12 lg:w-6/12 flex flex-col sm:flex-row  items-center justify-start text-xl  text-primary dark:text-white text-center'>
