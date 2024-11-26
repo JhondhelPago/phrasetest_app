@@ -390,6 +390,8 @@ const   TeacherComponent = () => {
 
   }, []);
 
+  
+
 
   useEffect(() => {
 
@@ -413,37 +415,44 @@ const   TeacherComponent = () => {
   return (
     <>
       <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
-        <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
+        <div className=' flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
           <div className='w-10/12 flex flex-col sm:flex-row  items-center sm:items-start justify-between text-xl pt-4 text-primary dark:text-white text-center'>
-          <p>Good Morning Teacher, {Username} !</p>
-            <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
+          <p className='text-pretty'>Good Morning Teacher, {Username} !</p>
+            <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 sm:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
                     Class Code : {Current_Section}
                   </button>
           </div>  
         </div>
-        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-4 text-white dark:text-white'>
+        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-2 text-white dark:text-white'>
           
-          <div className='w-full flex items-center'>
+          <div className='w-full flex flex-col sm:flex-row'>
 
           
-          <div className='w-full flex mb-0 sm:mb-0 justify-end mt-2 sm:mt-0'>  
-
-            <div className='flex w-10/12'>
+          <div className='w-full flex mb-0 sm:mb-0 justify-center sm:justify-end mt-2 sm:mt-0'>  
 
             
-            <div className='w-full flex flex-row items-start justify-start space-x-2 '>
+            <div className='flex w-10/12 '>
 
-            <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
-              <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
-                {SectionList.map((section_obj, index) => (
-                  <option id={index} key={section_obj['section_code']} value={section_obj.section_code}>{section_obj.section_name}</option>
-                ))}                
-              </select>
-              <div className='flex items-center ml-2'>
-                  <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs' onClick={toggleModalSection}>
-                    add new class +
-                  </button>
-              </div>
+            
+            <div className='w-full flex flex-row items-center justify-start  '>
+
+            
+            <div className='flex w-full sm:w-10/12 justify-center sm:justify-start'>
+            <label className='text-xl text-primary dark:text-white hidden sm:block pr-2'>Filter:</label>
+            
+            
+            <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
+              {SectionList.map((section_obj, index) => (
+                <option id={index} key={section_obj['section_code']} value={section_obj.section_code}>{section_obj.section_name}</option>
+              ))}                
+            </select>
+            <div className='flex items-center ml-2'>
+                <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs' onClick={toggleModalSection}>
+                  add new class +
+                </button>
+            </div>
+            </div>
+            
             </div>
 
 
@@ -476,12 +485,15 @@ const   TeacherComponent = () => {
 
             
             
-            <div className='w-full flex flex-col text-xs pt-2 justify-end items-end'>
+            <div className='w-full flex flex-col text-xs   mt-2 sm:mt-0'>
               <div className='flex w-full'>
-                <div className='flex flex-row sm:flex-col w-10/12 items-end justify-end'>
-                <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
+                <div className='flex flex-row sm:flex-col w-full'>
+                  <div className='flex w-full sm:w-10/12 justify-center sm:justify-end'>
+                  <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
                   Create Essay Task 
                 </button>
+                  </div>
+                
                 </div>
               </div>
 
@@ -492,7 +504,7 @@ const   TeacherComponent = () => {
 
 
         <div className='flex flex-col items-center justify-center text-xl  text-primary dark:text-white text-center'>
-          <div className='w-4/12 sm:w-6/12 md:w-6/12 lg:w-6/12 flex flex-col sm:flex-row  items-center justify-start text-xl  text-primary dark:text-white text-center'>
+          <div className='w-10/12 mt-4 flex flex-col sm:flex-row  items-center justify-start text-lg  text-primary dark:text-white text-center'>
           <p>Recent Task</p>
           </div>  
         </div>
@@ -584,7 +596,7 @@ const   TeacherComponent = () => {
                 // assign key and id
                 
                 <div className='w-full flex flex-row'>
-                <div id={index} key={index} className='w-full h-52 bg-gray-300  flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                <div id={index} key={index} className='w-full h-52 bg-white border border-blue-900 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
                 </div>
                 </div>
