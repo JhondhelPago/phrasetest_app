@@ -417,13 +417,13 @@ const   TeacherComponent = () => {
       <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
         <div className=' flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
           <div className='w-10/12 flex flex-col sm:flex-row  items-center sm:items-start justify-between text-xl pt-4 text-primary dark:text-white text-center'>
-          <p className='text-pretty'>Good Morning Teacher, {Username} !</p>
+          <p className='text-ellipsis'>Good Morning Teacher, {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 sm:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
                     Class Code : {Current_Section}
                   </button>
           </div>  
         </div>
-        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-2 text-white dark:text-white'>
+        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-0 sm:pt-2  text-white dark:text-white'>
           
           <div className='w-full flex flex-col sm:flex-row'>
 
@@ -505,7 +505,7 @@ const   TeacherComponent = () => {
 
         <div className='flex flex-col items-center justify-center text-xl  text-primary dark:text-white text-center'>
           <div className='w-10/12 mt-4 flex flex-col sm:flex-row  items-center justify-start text-lg  text-primary dark:text-white text-center'>
-          <p>Recent Task</p>
+          <p>Tasks</p>
           </div>  
         </div>
 
