@@ -38,6 +38,25 @@ export const getCurrentTimestamp = () => {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
 }
 
+export const rubricsScorePercentile = (score) => {
+    //expected input {1, 2, 3, 4}
+
+    const int_value =  parseInt((Number(score) / 4) * 100);
+
+    return int_value;
+}
+
+export const continuousScorePercetile = (float_score) => {
+
+    if (float_score >= 100) {
+        return "100%";
+    }
+
+    const int_value = parseInt(parseFloat(float_score) * 100);
+
+    return int_value;
+
+}
 
 
 console.log(getCurrentTimestamp());

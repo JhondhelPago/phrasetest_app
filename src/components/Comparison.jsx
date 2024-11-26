@@ -5,6 +5,7 @@ import styles from '../style';
 import NormalSpan from './SpanComponent';
 import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
+import { rubricsScorePercentile, continuousScorePercetile } from '../module/utils';
 
 import ProgressBar from "@ramonak/react-progress-bar";
 
@@ -143,6 +144,10 @@ const Comparison = () => {
     navigate("/loginpage");
   }
 
+  const RouteToHome = () => {
+    navigate("/studentfinishedtask");
+  }
+
   const toggleComment = () => {
     setShowComment(!showComment);
   };
@@ -201,23 +206,23 @@ const Comparison = () => {
           
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Ideas: {Result && Result.rubrics.ideas}</span>
-              <ProgressBar completed="60" className="w-full  p-2" />
+              <span className="mb-1">Ideas</span>
+              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.ideas)} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Grammar_Punc: {Result && Result.rubrics.gram_punc}</span>
-              <ProgressBar completed="60" className="w-full p-2" />
+              <span className="mb-1">Grammar_Punc</span>
+              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.gram_punc)} className="w-full p-2" />
             </div>
          </div>
 
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1">Transitions: {Result && Result.rubrics.transition}</span>
-            <ProgressBar completed="60" className="w-full p-2" />
+            <span className="mb-1">Transitions</span>
+            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.transition)} className="w-full p-2" />
           </div>
           <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1">Clarity: {Result && Result.rubrics.clarity}</span>
-            <ProgressBar completed="60" className="w-full p-2" />
+            <span className="mb-1">Clarity</span>
+            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.clarity)} className="w-full p-2" />
           </div>
         </div>
 
@@ -228,19 +233,27 @@ const Comparison = () => {
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1'>Word Choice: {Result && Result.rubrics.word_choice}</span>
-              <ProgressBar completed="60" className="w-full  p-2" />
+            <span className='m-1'>Word Choice</span>
+              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.word_choice)} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1'>Structure: {Result && Result.rubrics.structure}</span>
-              <ProgressBar completed="60" className="w-full p-2" />
+            <span className='m-1'>Structure</span>
+              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.structure)} className="w-full p-2" />
             </div>
          </div>
 
         <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full">
-          <span className='m-1'>Language Mechanics: {Result && Result.rubrics.lang_mechs}</span>
-            <ProgressBar completed="60" className="w-full p-2" />
+          <span className='m-1'>Language Mechanics</span>
+            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.lang_mechs)} className="w-full p-2" />
+          </div>
+  
+        </div>
+
+        <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
+          <div className="flex flex-col items-start w-full">
+          <span className='m-1'>Vocabulary Score</span>
+            <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" />
           </div>
   
         </div>
@@ -271,27 +284,27 @@ const Comparison = () => {
                 <ProgressBar completed="60" className="w-full  p-2" />
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Lexical Density: {Result && Result.features.unique_word_ratio}</span>
+              <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
                 <ProgressBar completed="60" className="w-full p-2" />
               </div>
           </div>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Readability Score: {Result && Result.features.readability_score}</span>
-                <ProgressBar completed="60" className="w-full  p-2" />
+              <span className='m-1'>Readability Score</span>
+                <ProgressBar completed={continuousScorePercetile(Result && Result.features.readability_score)} className="w-full  p-2" />
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
-                <ProgressBar completed="60" className="w-full p-2" />
+              <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
+                <ProgressBar completed="60" className="w-full  p-2" />
               </div>
           </div>
           
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
-                <ProgressBar completed="60" className="w-full  p-2" />
+              <span className='m-1'>Topic Relevance </span>
+                <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Complex Sentence: {Result && Result.features.sentence_complex}</span>
@@ -360,8 +373,8 @@ const Comparison = () => {
           
 
           <div className=" flex md:flex md:items-center text-center justify-center mt-6">
-            <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" >
-            Recompose 
+            <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" onClick={RouteToHome}>
+              Back to Home
             </button>
           </div>
         </div>    
