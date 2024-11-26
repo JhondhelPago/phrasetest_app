@@ -414,17 +414,17 @@ const   TeacherComponent = () => {
     <>
       <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
         <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          <div className='w-full flex flex-col sm:flex-row  items-center justify-evenly text-xl pt-4 text-primary dark:text-white text-center'>
+          <div className='w-10/12 flex flex-col sm:flex-row  items-center sm:items-start justify-between text-xl pt-4 text-primary dark:text-white text-center'>
           <p>Good Morning Teacher, {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
                     Class Code : {Current_Section}
                   </button>
           </div>  
         </div>
-        <div className='flex flex-row sm:flex-row items-start justify-evenly sm:justify-evenly text-center p-4 text-white dark:text-white'>
+        <div className='w-full flex flex-col sm:flex-row items-center text-center p-4 text-white dark:text-white'>
           
-          <div className='flex items-center mb-4 sm:mb-0'>  
-            <div className='flex items-center space-x-2'>
+          <div className='w-full flex mb-0 sm:mb-0 justify-end pl-3 mt-2 sm:mt-0'>  
+            <div className='w-10/12 flex flex-row items-start justify-start space-x-2 '>
             <label className='text-xl text-primary dark:text-white mr-2 hidden sm:block'>Filter:</label>
               <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
                 {SectionList.map((section_obj, index) => (
@@ -438,6 +438,8 @@ const   TeacherComponent = () => {
               </div>
             </div>
 
+
+            
           </div>
             
                {/* Add New Class Modal */}
@@ -465,8 +467,8 @@ const   TeacherComponent = () => {
 
 
             
-
-            <div className='flex items-center text-xs'>
+            
+            <div className='w-full flex flex-col items-center sm:items-end text-xs pt-2'>
               <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
                 Create Essay Task 
               </button>
@@ -481,7 +483,7 @@ const   TeacherComponent = () => {
 
         {/* Recent Task Section */}
         
-        <div className='flex flex-col sm:flex-col w-11/12 sm:w-11/12 md:w-11/12 lg:w-8/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
+        <div className='flex flex-col sm:flex-col w-10/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
           
           <div className='flex flex-row sm:flex-col justify-center'>
           <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
@@ -508,7 +510,7 @@ const   TeacherComponent = () => {
         {/* Student List Section - Conditionally Rendered */}
         {showStudentList && (
           <div className='mb-2'>
-            <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-8/12 bg-gray-200 rounded-xl p-2 mx-auto'>
+            <div className='w-10/12  bg-gray-200 rounded-xl p-2 mx-auto'>
                 <div className='flex text-center text-primary'>
         
                   {/* Column 1: Student Name */}
@@ -558,14 +560,19 @@ const   TeacherComponent = () => {
 
         <div className='flex flex-col items-center mb-4'>
           {/* Small Gray Divs */}
-          <div className='flex flex-row items-center justify-center'>
-            <div className='grid grid-cols-2 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 items-center gap-4 w-full text-primary'>
+          <div className='w-full flex flex-row items-center justify-center'>
+            {/*flex flex-col sm:flex-col w-11/12 sm:w-11/12 md:w-11/12 lg:w-8/12  bg-gray-300 rounded-xl p-4  mx-auto mt-2 mb-2 text-center */}
+            <div className='w-10/12 grid grid-cols-2 gap-4 xs:grid-cols-2 ss:grid-cols-2 sm:grid-cols-3 md:grid-cols-4  lg:grid-cols-4 items-center pt-4 justify-center text-primary'>
               {AssignmentOnThisSection.map((assignment_obj, index) => ( 
                 // setup and onClick event in this div, when it is clicked it will change the state of the Current_AssignmentObj
                 // assign key and id
-                <div id={index} key={index} className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                
+                <div className='w-full flex flex-row'>
+                <div id={index} key={index} className='w-full h-52 bg-gray-300  flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
                 </div>
+                </div>
+                
               ))}
               
               {/* <div className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-62 lg:h-52 flex items-center justify-center rounded-xl'>
