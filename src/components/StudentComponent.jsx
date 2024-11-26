@@ -199,7 +199,20 @@ const StudentComponent = () => {
 
   return (
     <>
-    <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
+
+    <div className='relative'>
+    <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+       style={{ bottom: '10%', right: '100%' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '40%', transform: 'translate(-50%, -30%)' }}></div>
+       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '60%', transform: 'translate(-50%, -30%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+       style={{ top: '80%', left: '100%' }}></div>
+
+    <div className=' relative z-10 flex flex-col font-poppins bg-transparent flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
           Good Day Sunshine, {Username}!
       </div>
@@ -211,7 +224,7 @@ const StudentComponent = () => {
       </div>
       </div>
 
-      <div className='flex flex-col items-center'>
+      <div className=' relative z-10 flex flex-col items-center'>
         {/* Large Gray Div */}
         
         {/* Small Gray Divs */}
@@ -228,6 +241,7 @@ const StudentComponent = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
     </>
   )

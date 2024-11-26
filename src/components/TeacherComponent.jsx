@@ -414,16 +414,30 @@ const   TeacherComponent = () => {
 
   return (
     <>
-      <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
-        <div className=' flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
+      <div className='relative'>
+      <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+       style={{ bottom: '30%', right: '100%' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '40%', transform: 'translate(-50%, -50%)' }}></div>
+       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '60%', transform: 'translate(-50%, -50%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+       style={{ top: '80%', left: '100%' }}></div>
+      
+      
+      <div className='relative z-10 flex flex-col font-poppins bg-transparent dark:bg-trasparent flex-grow-0'>
+        <div className='relative flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
+        
           <div className='w-10/12 flex flex-col sm:flex-row  items-center sm:items-start justify-between text-xl pt-4 text-primary dark:text-white text-center'>
-          <p className='text-ellipsis'>Good Morning Teacher, {Username} !</p>
+          <p className='text-ellipsis font-extralight'> <span className='font-bold'>Good Morning Teacher,</span>  {Username} !</p>
             <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 sm:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
-                    Class Code : {Current_Section}
+                    <span className='font-bold'>Class Code : </span>{Current_Section}
                   </button>
           </div>  
         </div>
-        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-0 sm:pt-2  text-white dark:text-white'>
+        <div className='w-full flex flex-row sm:flex-col items-center text-center pt-0 sm:pt-2 font-poppins  text-white dark:text-white'>
           
           <div className='w-full flex flex-col sm:flex-row'>
 
@@ -441,13 +455,13 @@ const   TeacherComponent = () => {
             <label className='text-xl text-primary dark:text-white hidden sm:block pr-2'>Filter:</label>
             
             
-            <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs' onChange={Update_Current_Section}>
+            <select className='w-auto text-primary dark:text-white bg-blue-500 border border-blue-500 rounded-lg p-2 px-4 text-xs font-bold' onChange={Update_Current_Section}>
               {SectionList.map((section_obj, index) => (
                 <option id={index} key={section_obj['section_code']} value={section_obj.section_code}>{section_obj.section_name}</option>
               ))}                
             </select>
             <div className='flex items-center ml-2'>
-                <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs' onClick={toggleModalSection}>
+                <button className='text-primary dark:text-white bg-green-500 border border-green-500 rounded-lg p-2 px-4 text-xs font-bold' onClick={toggleModalSection}>
                   add new class +
                 </button>
             </div>
@@ -489,7 +503,7 @@ const   TeacherComponent = () => {
               <div className='flex w-full'>
                 <div className='flex flex-row sm:flex-col w-full'>
                   <div className='flex w-full sm:w-10/12 justify-center sm:justify-end'>
-                  <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2' onClick={routeToTeacherEssayTask}>
+                  <button className=' text-primary dark:text-white bg-green-500 border border-green-500 border-lg px-4 rounded-lg p-2 font-bold' onClick={routeToTeacherEssayTask}>
                   Create Essay Task 
                 </button>
                   </div>
@@ -525,7 +539,7 @@ const   TeacherComponent = () => {
           <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-evenly items-center text-center mb-2'>
             <span className='m-1'>Understanding The Self</span>
             <span className='m-1'>Submitted: sample {Current_AssignmentObj && Current_AssignmentObj.submitted_student}</span>
-            <button className='m-1 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm' onClick={toggleStudentList}>View Students</button>
+            <button className='m-1 bg-blue-500 text-white rounded-lg px-4 py-2 text-sm font-bold' onClick={toggleStudentList}>View Students</button>
           </div>
           </div>
 
@@ -596,7 +610,7 @@ const   TeacherComponent = () => {
                 // assign key and id
                 
                 <div className='w-full flex flex-row'>
-                <div id={index} key={index} className='w-full h-52 bg-white border border-blue-900 flex items-center justify-center rounded-xl' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                <div id={index} key={index} className='w-full h-52 bg-white border border-blue-900 flex items-center justify-center rounded-xl font-semibold' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
                 </div>
                 </div>
@@ -609,6 +623,7 @@ const   TeacherComponent = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   )

@@ -9,7 +9,7 @@ const StudentFinishedTask = ({isDark, changeColorTheme}) => {
 
   return (
     <div className={!isDark && 'dark'}>
-    <nav className='bg-white dark:bg-primary w-full justify-center min-h-screen overflow-x-hidden'>
+    <nav className='bg-white dark:bg-primary w-full justify-center min-h-screen overflow-x-hidden z-10'>
               <div className={`${styles.paddingX}`}>
                 <div className='bg-white dark:bg-primary w-full items-center py-4'>
                 <div className=" flex flex-row w-full items-center justify-around">

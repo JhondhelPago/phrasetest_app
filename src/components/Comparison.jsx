@@ -161,9 +161,26 @@ const Comparison = () => {
 
   return (
     <>
-    <div>
+    <div className='relative'>
 
-    <div className='flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
+    <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+       style={{ bottom: '30%', right: '100%', transform: 'translate(-50%, -50%)'}}></div>
+       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+       style={{ bottom: '0%', right: '100%', transform: 'translate(-50%, -50%)'}}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '40%', transform: 'translate(-50%, -50%)' }}></div>
+       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+       style={{ top: '60%', left: '60%', transform: 'translate(-50%, -50%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+       style={{ top: '70%', left: '120%', transform: 'translate(-0%, -50%)' }}></div>
+       <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+       style={{ top: '40%', left: '120%', transform: 'translate(-0%, -50%)' }}></div>
+
+    <div className='relative z-10'>
+
+    <div className='relative z-10 flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
           <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
             <p>Student Name: <span className='font-bold'> Jhon Rogelio Solis</span></p>
                 <button className='text-primary dark:text-white bg-green-500  mt-2  md:mt-0 lg:mt-0  rounded-lg p-2 px-4 text-xs' onClick={toggleComment}>
@@ -379,6 +396,7 @@ const Comparison = () => {
           </div>
         </div>    
       </div>
+    </div>
     </div>
     </>
   )

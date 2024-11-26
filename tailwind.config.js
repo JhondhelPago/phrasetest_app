@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        
       },
       boxShadow: {
         'glow-t': '0 -5px 10px 2px rgba(0, 112, 244, 0.6)', // Custom glow shadow
