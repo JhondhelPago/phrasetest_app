@@ -216,9 +216,9 @@ const Comparison = () => {
 
         
       <div className='w-full'>
-      <div className=" w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+      <div className="w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         
-        <div className='flex flex-col text-xl text-pink-200'>
+        <div className='flex flex-col text-xl text-pink-200 font-bold'>
 
           
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -227,7 +227,7 @@ const Comparison = () => {
               <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.ideas)} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Grammar_Punc</span>
+              <span className="mb-1">Grammar Punctuation</span>
               <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.gram_punc)} className="w-full p-2" />
             </div>
          </div>
@@ -245,7 +245,7 @@ const Comparison = () => {
 
         </div>
 
-        <div className='flex flex-col text-xl text-pink-200'>
+        <div className='flex flex-col text-xl text-pink-200 font-bold'>
 
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -293,7 +293,7 @@ const Comparison = () => {
 
 
       <div className=" w-full flex flex-col bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-          <div className='flex flex-col text-xl justify-start text-pink-200'>
+          <div className='flex flex-col text-xl justify-start text-pink-200 font-bold'>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
