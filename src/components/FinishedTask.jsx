@@ -138,20 +138,19 @@ const FinishedTask = () => {
     <div className='relative'>
 
     <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
-       style={{ bottom: '30%', right: '100%' }}></div>
+      style={{ top: '70%', right: '100%', transform: 'translate(-0%, -10%)' }}></div>
 
       <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
-       style={{ top: '60%', left: '40%', transform: 'translate(-50%, -30%)' }}></div>
-       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
-       style={{ top: '60%', left: '60%', transform: 'translate(-50%, -30%)' }}></div>
+      style={{ top: '60%', left: '40%', transform: 'translate(-50%, -0%)' }}></div>
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '60%', left: '60%', transform: 'translate(-50%, -0%)' }}></div>
 
       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
-       style={{ top: '80%', left: '100%' }}></div>
-
+      style={{ top: '70%', left: '100%', transform: 'translate(-0%, -20%)' }}></div>
 
     <div className='relative z-10 flex flex-col font-poppins bg-transparent flex-grow-0'>
       <div className='flex items-center justify-center text-xl pt-4 text-primary dark:text-white text-center'>
-          Good Job, (student name)!
+          <span className='font-bold'>Good Job,</span>  (student name)!
       </div>
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center p-4 text-white dark:text-white'>
       <div className='flex flex-col w-full'> 
@@ -170,7 +169,7 @@ const FinishedTask = () => {
             
             {AssingmentList.map((assignmentObj, index) => (
 
-               <div id={index} key={index} className='w-28 h-28 bg-gray-300 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer' onClick={() => {UpdateCurrentOpenedAssignment(assignmentObj.id)}}>
+               <div id={index} key={index} className='w-28 h-28 bg-gray-200 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer font-bold border border-blue-900' onClick={() => {UpdateCurrentOpenedAssignment(assignmentObj.id)}}>
                   <p>{assignmentObj.assignment_no}</p>
                 </div>
 

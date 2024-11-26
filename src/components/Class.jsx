@@ -110,15 +110,15 @@ const Class = () => {
         <div className='relative'>
 
         <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
-       style={{ bottom: '30%', right: '100%' }}></div>
+      style={{ top: '30%', right: '100%', transform: 'translate(-0%, -10%)' }}></div>
 
       <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
-       style={{ top: '60%', left: '40%', transform: 'translate(-50%, -50%)' }}></div>
-       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
-       style={{ top: '60%', left: '60%', transform: 'translate(-50%, -50%)' }}></div>
+      style={{ top: '30%', left: '40%', transform: 'translate(-50%, -0%)' }}></div>
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '30%', left: '60%', transform: 'translate(-50%, -0%)' }}></div>
 
       <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
-       style={{ top: '80%', left: '100%' }}></div>
+      style={{ top: '30%', left: '100%', transform: 'translate(-0%, -20%)' }}></div>
 
 
 
