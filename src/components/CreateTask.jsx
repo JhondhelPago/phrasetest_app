@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AbstractEssayAssignment } from '../module/EssayTask_utils';
 import { TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import styles from '../style'
+import { AlertModal, LoadingModal } from '../modal';
 
 const CreateTask = () => {
 
@@ -13,6 +14,15 @@ const CreateTask = () => {
   const [DueDate, setDueDate] = useState('');
   const [DueTime, setDueTime] = useState('');
 
+  const [IsShowAlertModal, SetIsShowAlertModal] = useState(false);
+  const CloseAlertModal = () => {
+    SetIsShowAlertModal(false);
+  }
+
+  const [IsShowLoadingModal, SetIsShowLoadingModal] = useState(false);
+  
+
+  
   const Update_ContextState = (event) => {
     SetContext(event.target.value);
   }
@@ -52,6 +62,14 @@ const CreateTask = () => {
 
     console.log(DueDate);
     console.log(DueTime);
+
+    if (DueTime == '' || DueDate == ''){
+      SetIsShowAlertModal(true);
+      return;
+    }
+
+    SetIsShowLoadingModal(true);
+    
 
     try{
 
@@ -172,14 +190,14 @@ const CreateTask = () => {
             <div className='text-primary dark:text-white text-xl font-semibold mb-2 text-center'>
               Due Date
             </div>
-            <input type="date" className=" pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueDateChange} />
+            <input required type="date" className=" pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueDateChange} />
           </div>
 
           <div className='flex flex-col mx-4'>
             <div className='text-primary dark:text-white text-xl font-semibold mb-2 mt-2 xxs:mt-0 text-center'>
               Due Time
             </div>
-            <input type="time" className="pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueTimeChange} />
+            <input required type="time" className="pl-2 pt-2 pb-2 border rounded-lg text-start text-primary dark:text-white bg-white dark:bg-primary border-violet-500" onChange={handleDueTimeChange} />
           </div>
         </div>
         {/* <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
@@ -210,6 +228,13 @@ const CreateTask = () => {
         </div>
         </div>
         
+        {IsShowAlertModal && (
+          <AlertModal message={'Please provide due date and dute time'} alter_boolean_state={SetIsShowAlertModal}></AlertModal>
+        )}
+
+        {IsShowLoadingModal && (
+          <LoadingModal message={'Posting the Essay Task to the class stream.'}></LoadingModal>
+        )}
 
     </div>
     </>
