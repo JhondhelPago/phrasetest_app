@@ -155,7 +155,7 @@ const CreateTask = () => {
         
 
         <div className='flex flex-col w-full'> 
-            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
+            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-bold p-4 sm:text-center md:text-center'>
                 Short context of your Question
             </div>
         
@@ -171,7 +171,7 @@ const CreateTask = () => {
         
 
         <div className='flex flex-col w-full'> 
-            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
+            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-bold p-4 sm:text-center md:text-center'>
                 Create An Essay Question
             </div>
         
