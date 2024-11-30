@@ -4,7 +4,8 @@ import {logo} from '../assets';
 
 import { Footer, Button, Comparison, TeacherSidebar} from '../components';
 
-import TeacherViewComparison from '../components/TeacherViewComparison';
+// import TeacherViewComparison from '../components/TeacherViewComparison';
+
 import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 
 const TeacherExamineResults = ({isDark, changeColorTheme}) => {

@@ -169,7 +169,7 @@ const FinishedTask = () => {
             
             {AssingmentList.map((assignmentObj, index) => (
 
-               <div id={index} key={index} className='w-28 h-28 bg-gray-200 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer font-bold border border-blue-900' onClick={() => {UpdateCurrentOpenedAssignment(assignmentObj.id)}}>
+               <div id={index} key={index} className='w-28 h-28 bg-violet-300 bg-opacity-60 dark:bg-blue-300 dark:bg-opacity-60 border border-violet-900 dark:border-blue-900 ss:w-40 ss:h-40 sm:w-48 sm:h-48 md:w-64 md:h-48 lg:w-72 lg:h-48 flex items-center justify-center rounded-xl cursor-pointer font-bold transition-transform duration-300 hover:scale-105' onClick={() => {UpdateCurrentOpenedAssignment(assignmentObj.id)}}>
                   <p>{assignmentObj.assignment_no}</p>
                 </div>
 
