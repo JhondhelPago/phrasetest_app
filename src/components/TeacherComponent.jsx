@@ -610,8 +610,9 @@ const   TeacherComponent = () => {
                 // assign key and id
                 
                 <div className='w-full flex flex-row'>
-                <div id={index} key={index} className='w-full h-52 text-primary dark:text-white bg-pink-300 bg-opacity-60 border border-blue-900 flex items-center justify-center rounded-3xl font-semibold transition-transform duration-300 hover:scale-105' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                <div id={index} key={index} className='w-full h-52 text-primary dark:text-white bg-pink-300 dark:bg-blue-300 bg-opacity-60 dark:bg-opacity-60 border border-blue-900 flex items-center justify-center rounded-3xl font-semibold transition-transform duration-300 hover:scale-105 hover:animate-borderLoading' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
+                  
                 </div>
                 </div>
                 
