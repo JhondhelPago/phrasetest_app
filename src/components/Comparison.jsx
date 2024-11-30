@@ -218,7 +218,7 @@ const Comparison = () => {
       <div className='w-full'>
       <div className="w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         
-        <div className='flex flex-col text-xl text-pink-200 font-bold'>
+        <div className='flex flex-col text-md md:text-lg  text-pink-200 font-bold'>
 
           
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -245,7 +245,7 @@ const Comparison = () => {
 
         </div>
 
-        <div className='flex flex-col text-xl text-pink-200 font-bold'>
+        <div className='flex flex-col text-md md:text-lg  text-pink-200 font-bold'>
 
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -293,7 +293,7 @@ const Comparison = () => {
 
 
       <div className=" w-full flex flex-col bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-          <div className='flex flex-col text-xl justify-start text-pink-200 font-bold'>
+          <div className='flex flex-col text-md md:text-lg justify-start text-pink-200 font-bold'>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
@@ -351,12 +351,12 @@ const Comparison = () => {
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
+            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
               essay composition here {Result && Result.question_composition.composition}
             </p>
-            <div className="border-l-2 border-gray-500 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
-            <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
+            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
+            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
             essay composition here {Result && Result.question_composition.composition}
             </p>
