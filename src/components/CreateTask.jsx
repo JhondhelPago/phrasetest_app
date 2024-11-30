@@ -143,7 +143,22 @@ const CreateTask = () => {
 
   return (
     <>
-    <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
+
+    <div className='relative'>
+
+    <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+      style={{ top: '30%', right: '100%', transform: 'translate(-0%, -10%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '30%', left: '40%', transform: 'translate(-50%, -0%)' }}></div>
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '30%', left: '60%', transform: 'translate(-50%, -0%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+      style={{ top: '30%', left: '100%', transform: 'translate(-0%, -20%)' }}></div>
+
+    
+    <div className='relative z-10 flex flex-col font-poppins bg-transparent flex-grow-0'>
         
     <div className='w-9/12  flex flex-row items-center justify-end text-xl pt-4 text-primary dark:text-white text-center'>
           
@@ -158,7 +173,7 @@ const CreateTask = () => {
         
 
         <div className='flex flex-col w-full'> 
-            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
+            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-bold p-4 sm:text-center md:text-center'>
                 Short context of your Question
             </div>
         
@@ -174,7 +189,7 @@ const CreateTask = () => {
         
 
         <div className='flex flex-col w-full'> 
-            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-semibold p-4 sm:text-center md:text-center'>
+            <div className='text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12 justify-start font-bold p-4 sm:text-center md:text-center'>
                 Create An Essay Question
             </div>
         
@@ -236,6 +251,7 @@ const CreateTask = () => {
           <LoadingModal message={'Posting the Essay Task to the class stream.'}></LoadingModal>
         )}
 
+    </div>
     </div>
     </>
   )
