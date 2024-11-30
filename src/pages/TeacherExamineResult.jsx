@@ -24,7 +24,7 @@ const TeacherExamineResults = ({isDark, changeColorTheme}) => {
 
                 <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth}`}>
-                        <TeacherViewComparison/>
+                        <Comparison/>
                     </div>
                 </div>
 

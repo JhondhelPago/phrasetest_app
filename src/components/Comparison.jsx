@@ -216,9 +216,9 @@ const Comparison = () => {
 
         
       <div className='w-full'>
-      <div className="w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+      <div className="w-full flex flex-col  bg-violet-400 border border-violet-500 bg-opacity-70 rounded-lg mb-4 p-4 font-poppins">
         
-        <div className='flex flex-col text-md md:text-lg  text-pink-200 font-bold'>
+        <div className='flex flex-col text-sm md:text-lg  text-pink-200 font-bold'>
 
           
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -245,7 +245,7 @@ const Comparison = () => {
 
         </div>
 
-        <div className='flex flex-col text-md md:text-lg  text-pink-200 font-bold'>
+        <div className='flex flex-col text-sm md:text-lg  text-pink-200 font-bold'>
 
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
@@ -283,7 +283,7 @@ const Comparison = () => {
         </div>
         
       
-      <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-violet-400 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
+      <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-violet-400 bg-opacity-70 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
         <div className='flex flex-col text-4xl font-bold justify-start  text-yellow-200'>
           <p className=''>{Result && Result.rubrics.label}</p>
         </div>
@@ -293,7 +293,7 @@ const Comparison = () => {
 
 
       <div className=" w-full flex flex-col bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-          <div className='flex flex-col text-md md:text-lg justify-start text-pink-200 font-bold'>
+          <div className='flex flex-col text-sm md:text-lg justify-start text-pink-200 font-bold'>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
@@ -332,7 +332,7 @@ const Comparison = () => {
           </div>
         </div>
 
-        <div className="flex sm:hidden w-full items-center justify-center bg-violet-400 border border-violet-500 rounded-lg mt-4 p-4 font-poppins">
+        <div className="flex sm:hidden w-full items-center justify-center bg-violet-400 bg-opacity-70 border border-violet-500 rounded-lg mt-4 p-4 font-poppins">
               <div className="flex flex-col text-4xl font-bold justify-start text-yellow-200">
                 <p>{Result && Result.rubrics.label}</p>
               </div>

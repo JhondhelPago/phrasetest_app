@@ -571,10 +571,10 @@ const   TeacherComponent = () => {
                   </div>
 
         {/* Vertical Line */}
-        <div className='w-px bg-gray-400 mx-4'></div>
+        <div className='w-px bg-violet-900 mx-4 hidden sm:block'></div>
 
                   {/* Column 2: Date Submitted */}
-                  <div className='flex-1 cursor-pointer'>
+                  <div className='flex-1 cursor-pointer hidden sm:block'>
                     <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base'>Date Submitted</div>
                     {Dates.map((date, index) => (
                       <div onClick={() => {SetLocalSelected_Stud_id(date[1])}}>{date[0]  + "  " +date[1]}</div>
@@ -583,7 +583,7 @@ const   TeacherComponent = () => {
                   </div>
 
         {/* Vertical Line */}
-        <div className='w-px bg-gray-400 mx-4'></div>
+        <div className='w-px bg-violet-900 mx-4'></div>
 
                   {/* Column 3: Evaluation */}
                   <div className='flex-1 cursor-pointer'>
