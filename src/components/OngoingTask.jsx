@@ -172,7 +172,7 @@ const OngoingTask = () => {
 
         <div className='flex flex-col w-full'> 
             <div className='flex justify-center text-center align-center text-primary dark:text-white text-xl w-full  font-semibold p-7'>
-            Context 1 :  {AssignmentDetails && AssignmentDetails.context_question.context} 
+            {AssignmentDetails && AssignmentDetails.context_question.context} 
             </div>
         
             <div className='w-full flex flex-row items-center justify-center'>
