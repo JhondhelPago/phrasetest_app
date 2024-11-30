@@ -227,11 +227,11 @@ const TeacherViewComparison = () => {
         {showComment && (
         <div className='flex flex-col justify-center  font-poppins'>
             <div className='flex item-center justify-center  font-semibold'>
-            <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" value={Comment} onChange={UpdateCommentState}></textarea>
+            <textarea placeholder="Comment to Student" className="w-10/12 lg:w-8/12 pl-2 pt-2 pb-60 sm:pb-60 md:pb-42 lg:pb-24 text-sm border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" value={Comment} onChange={UpdateCommentState}></textarea>
             </div>
                 
                 <div className='w-11/12 sm:w-11/12 md:w-11/12 lg:w-10/12 flex justify-end text-sm mb-2'>
-                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-2 rounded-lg items-end" onClick={PostCommentHandler}>
+                    <button type="submit" className="bg-green-600 text-primary dark:text-white px-[40px] py-2 mt-3 rounded-lg items-end" onClick={PostCommentHandler}>
                         Send 
                     </button>
                 </div>
@@ -260,10 +260,10 @@ const TeacherViewComparison = () => {
         
       <div className='w-full'>
       <div className=" w-full flex flex-col  bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-        <div className='flex flex-col text-xl text-pink-200'>
+        <div className='flex flex-col text-sm  text-pink-200'>
           <div className='flex flex-col sm:flex-row  justify-start sm:justify-around items-center sm:items-start text-center  mb-2'>
             <span className='m-1'>Ideas: {Result && Result.rubrics.ideas}</span>
-            <span className='m-1'>Grammar_Punc: {Result && Result.rubrics.gram_punc}</span>
+            <span className='m-1'>Grammar Punctuation: {Result && Result.rubrics.gram_punc}</span>
             <span className='m-1'>Transitions: {Result && Result.rubrics.transition}</span>
             <span className='m-1'>Clarity: {Result && Result.rubrics.clarity}</span>
             
@@ -313,26 +313,33 @@ const TeacherViewComparison = () => {
 
       </div>
 
-      <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: {Result && Result.question_composition.question}</h2>
-    </div> 
-    <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-14">
       
+      
+    </div> 
+
+
+    <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-6">
+      
+    <div className='flex text-sm item-center justify-center m-4'>
+      <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-lg font-semibold p-2'>Question: {Result && Result.question_composition.question}</h2>
+      </div>
+
       <div className="relative">
         <div>
           <div className="flex flex-row justify-around items-start relative mb-4 text-center xs:text-center md:text-center">
-            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Original Composition</h1> {/* Fix margin : DONE */}
-            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1>
+            <h1 className="text-lg font-poppins text-dark dark:text-white font-semibold">Original Composition</h1> {/* Fix margin : DONE */}
+            <h1 className="text-lg font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1>
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
+            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-              essay composition here {Result && Result.question_composition.composition}
+              {Result && Result.question_composition.composition}
             </p>
             <div className="border-l-2 border-gray-500 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
-            <p className="text-2xl font-poppins text-dark dark:text-white w-5/12">
+            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-            essay composition here {Result && Result.question_composition.composition}
+            {Result && Result.question_composition.composition}
             </p>
           </div>
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">

@@ -143,7 +143,7 @@ const Class = () => {
           </div>
           
           <div className='text-center'>
-            <button className='bg-green-500 px-6 py-4 rounded-lg ' onClick={SubmiSectionCode}>
+            <button className='bg-green-500 px-6 py-4 rounded-lg font-bold ' onClick={SubmiSectionCode}>
               Submit
             </button>
           </div>

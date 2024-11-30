@@ -160,13 +160,15 @@ const CreateTask = () => {
     
     <div className='relative z-10 flex flex-col font-poppins bg-transparent flex-grow-0'>
         
-    <div className='w-9/12  flex flex-row items-center justify-end text-xl pt-4 text-primary dark:text-white text-center'>
+        <div className='flex flex-row justify-center items-center w-full'>
+        <div className='w-9/12  flex flex-row items-center justify-center text-xl p-4 text-primary dark:text-white text-center'>
           
-            <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
-                    Class Code : 123456 {localStorage.getItem('Current_Section')}
-                  </button>
-          </div>  
-        
+          <button className='text-primary dark:text-white bg-white dark:bg-primary border mt-2 md:mt-0 lg:mt-0 border-violet-500 rounded-lg p-2 px-4 text-xs'>
+                  Class Code : {localStorage.getItem('Current_Section')}
+                </button>
+        </div>  
+        </div>
+  
       
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
 
