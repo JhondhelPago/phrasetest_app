@@ -176,7 +176,7 @@ const OngoingTask = () => {
             </div>
         
             <div className='w-full flex flex-row items-center justify-center'>
-                <textarea placeholder="Question 1" className="w-10/12 h-full sm:w-9/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-96 sm:pb-80 md:pb-72 lg:pb-60 border rounded-lg justify-start text-start text-white  bg-primary bg-opacity-60  border-gray-300" type="text" onChange={UpdateEssayComposition}></textarea>
+                <textarea placeholder="Question 1" className="w-10/12 h-full sm:w-9/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-96 sm:pb-80 md:pb-72 lg:pb-[500px] border rounded-lg justify-start text-start text-white  bg-primary bg-opacity-60  border-gray-300" type="text" onChange={UpdateEssayComposition}></textarea>
             </div>
         </div>
 
