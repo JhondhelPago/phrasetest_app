@@ -12,6 +12,19 @@ module.exports = {
         dimBlue: "rgba(9, 151, 124, 0.1)",
          
       },
+
+      borderLoading: {
+        '0%': { borderColor: 'blue' },
+        '25%': { borderColor: 'green' },
+        '50%': { borderColor: 'yellow' },
+        '75%': { borderColor: 'orange' },
+        '100%': { borderColor: 'blue' },
+      },
+
+      animation: {
+        borderLoading: 'borderLoading 2s linear infinite',
+      },
+
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         

@@ -525,7 +525,7 @@ const   TeacherComponent = () => {
 
         {/* Recent Task Section */}
         
-        <div className='flex flex-col sm:flex-col w-10/12  bg-violet-300 dark:bg-blue-300 border border-violet-400 bg-opacity-60 dark:bg-opacity-60 rounded-xl p-4  mx-auto mt-2 mb-3 text-center'>
+        <div className='flex flex-col sm:flex-col w-10/12 text-primary dark:text-white bg-violet-300 bg-opacity-60 dark:bg-blue-300 dark:bg-opacity-60 border border-violet-900 dark:border-blue-900 rounded-xl p-4  mx-auto mt-2 mb-2 text-center'>
           
           <div className='flex flex-row sm:flex-col justify-center text-primary dark:text-white'>
           <div className='flex flex-col xxs:flex-col xs:flex-row md:flex-row lg-flex-row xs:justify-around items-center text-center  mb-2'>
@@ -551,13 +551,13 @@ const   TeacherComponent = () => {
         
         {/* Student List Section - Conditionally Rendered */}
         {showStudentList && (
-          <div className='mb-4 w-full'>
-            <div className='w-10/12  bg-violet-300 dark:bg-blue-300  border border-violet-400 bg-opacity-60 dark:bg-opacity-60 rounded-xl p-2 mx-auto '>
-                <div className='flex text-center text-primary'>
+          <div className='mb-2'>
+            <div className='w-10/12 text-primary dark:text-white bg-violet-300 bg-opacity-60 dark:bg-blue-300 dark:bg-opacity-60 border border-violet-900 dark:border-blue-900 rounded-xl p-2 mx-auto'>
+                <div className='flex text-center text-primary dark:text-white'>
         
                   {/* Column 1: Student Name */}
-                  <div className='flex-1 cursor-pointer  text-primary dark:text-white'>
-                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base pb-1'>Student Name</div>
+                  <div className='flex-1 cursor-pointer'>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base p-2'>Student Name</div>
                     {/* use map on this div */}
                     {/* {Current_AssignmentObj && Current_AssignmentObj.submitted_name.map((names) => (
                       <div>John Doe</div>
@@ -565,7 +565,7 @@ const   TeacherComponent = () => {
 
                     {Names.map((names, index) => (
                       // onclick here, and passing the parameter at index 1
-                      <div className='p-2' onClick={() => {SetLocalSelected_Stud_id(names[1])}}>{names[0]}</div>
+                      <div className='pb-2' onClick={() => {SetLocalSelected_Stud_id(names[1])}}>{names[0]}</div>
                     ))}
                     
                   </div>
@@ -574,22 +574,22 @@ const   TeacherComponent = () => {
         <div className='w-px bg-violet-900 mx-4 hidden sm:block'></div>
 
                   {/* Column 2: Date Submitted */}
-                  <div className='flex-1 cursor-pointer  text-primary dark:text-white hidden sm:block'>
-                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base pb-1'>Date Submitted</div>
+                  <div className='flex-1 cursor-pointer hidden sm:block'>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base p-2'>Date Submitted</div>
                     {Dates.map((date, index) => (
-                      <div className='p-2' onClick={() => {SetLocalSelected_Stud_id(date[1])}}>{date[0]  + "  " +date[1]}</div>
+                      <div className='pb-2' onClick={() => {SetLocalSelected_Stud_id(date[1])}}>{date[0]  + "  " +date[1]}</div>
                     ))}
                    
                   </div>
 
         {/* Vertical Line */}
-        <div className='w-px bg-violet-900 mx-4  text-primary dark:text-white'></div>
+        <div className='w-px bg-violet-900 mx-4'></div>
 
                   {/* Column 3: Evaluation */}
-                  <div className='flex flex-col flex-1 cursor-pointer  text-primary dark:text-white pr-3'>
-                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base pb-1'>Evaluation</div>
+                  <div className='flex-1 cursor-pointer'>
+                    <div className='font-semibold text-xs sm:text-base md:text-sm lg:text-base p-2'>Evaluation</div>
                     {Labels.map((label, index) => (
-                      <div className='p-2' onClick={() => {SetLocalSelected_Stud_id(label[1])}}>{label[0]}</div>
+                      <div className='pb-2' onClick={() => {SetLocalSelected_Stud_id(label[1])}}>{label[0]}</div>
                     ))}
       
                   </div>
@@ -610,8 +610,9 @@ const   TeacherComponent = () => {
                 // assign key and id
                 
                 <div className='w-full flex flex-row'>
-                <div id={index} key={index} className='w-full h-52 bg-pink-200 dark:bg-blue-300 bg-opacity-60 dark:bg-opacity-60  text-primary dark:text-white border border-blue-900 dark:border-blue-400 flex items-center justify-center rounded-xl font-semibold' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
+                <div id={index} key={index} className='w-full h-52 text-primary dark:text-white bg-pink-300 dark:bg-blue-300 bg-opacity-60 dark:bg-opacity-60 border border-blue-900 flex items-center justify-center rounded-3xl font-semibold transition-transform duration-300 hover:scale-105 hover:animate-borderLoading' onClick={() => {Update_Current_Assignment(assignment_obj.id)}}> 
                   <p>{assignment_obj.assignment_no}</p> 
+                  
                 </div>
                 </div>
                 

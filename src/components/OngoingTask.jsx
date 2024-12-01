@@ -154,17 +154,29 @@ const OngoingTask = () => {
 
   return (
     <>
-    <div className='flex flex-col font-poppins bg-white dark:bg-primary flex-grow-0'>
+    <div className='relative'>
+    <div className="absolute w-[590px] h-[400px] bg-blue-400 rounded-full z-0 blur-3xl" 
+      style={{ top: '30%', right: '100%', transform: 'translate(-0%, -10%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-indigo-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '30%', left: '40%', transform: 'translate(-50%, -0%)' }}></div>
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-[150px]" 
+      style={{ top: '30%', left: '60%', transform: 'translate(-50%, -0%)' }}></div>
+
+      <div className="absolute w-[590px] h-[400px] bg-pink-400 rounded-full z-0 blur-3xl" 
+      style={{ top: '30%', left: '100%', transform: 'translate(-0%, -20%)' }}></div>
+    
+    <div className='relative z-10 flex flex-col font-poppins bg-transparent flex-grow-0'>
         
       <div className='flex flex-col sm:flex-row items-center justify-evenly text-center text-white dark:text-white'>
 
         <div className='flex flex-col w-full'> 
-            <div className='flex justify-center text-center align-center text-primary dark:text-white text-xl w-full sm:w-full md:w-7/12  font-semibold p-7'>
-            Context 1 :  {AssignmentDetails && AssignmentDetails.context_question.context} 
+            <div className='flex justify-center text-center align-center text-primary dark:text-white text-xl w-full  font-semibold p-7'>
+            {AssignmentDetails && AssignmentDetails.context_question.context} 
             </div>
         
-            <div>
-                <textarea placeholder="Question 1" className="w-10/12 h-full sm:w-9/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-96 sm:pb-80 md:pb-72 lg:pb-60 border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text" onChange={UpdateEssayComposition}></textarea>
+            <div className='w-full flex flex-row items-center justify-center'>
+                <textarea placeholder="Question 1" className="w-10/12 h-full sm:w-9/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-96 sm:pb-80 md:pb-72 lg:pb-[500px] border rounded-lg justify-start text-start text-white  bg-primary bg-opacity-60  border-gray-300" type="text" onChange={UpdateEssayComposition}></textarea>
             </div>
         </div>
 
@@ -195,6 +207,7 @@ const OngoingTask = () => {
         {IsLoadingModalShow && (
           <LoadingModal message={'Examining the compositon. It may take a short while thereupon please wait.'}></LoadingModal>
         )}
+    </div>
     </div>
     </>
   )
