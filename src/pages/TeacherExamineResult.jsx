@@ -4,9 +4,12 @@ import {logo} from '../assets';
 
 import { Footer, Button, Comparison, TeacherSidebar} from '../components';
 
+
 // import TeacherViewComparison from '../components/TeacherViewComparison';
 
 import { StudentAPICalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
+import TeacherViewComparison from '../components/TeacherViewComparison';
+import TeacherViewComparison2 from '../components/TeacherViewComparison2';
 
 const TeacherExamineResults = ({isDark, changeColorTheme}) => {
 
@@ -25,7 +28,8 @@ const TeacherExamineResults = ({isDark, changeColorTheme}) => {
 
                 <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                     <div className={`${styles.boxWidth}`}>
-                        <Comparison/>
+                        {/* <TeacherViewComparison></TeacherViewComparison> */}
+                        <TeacherViewComparison2></TeacherViewComparison2>
                     </div>
                 </div>
 

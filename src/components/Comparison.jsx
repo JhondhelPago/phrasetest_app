@@ -181,15 +181,15 @@ const Comparison = () => {
     <div className='relative z-10'>
 
     <div className='relative z-10 flex flex-col items-center justify-center text-xl pt-4 text-primary dark:text-white text-center font-poppins'>
-          <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
+          {/* <div className='w-full flex flex-col sm:flex-row  items-center justify-around text-xl pt-4 mb-4 text-primary dark:text-white text-center'>
             <p>Student Name: <span className='font-bold'> Jhon Rogelio Solis</span></p>
                 <button className='text-primary dark:text-white bg-green-500  mt-2  md:mt-0 lg:mt-0  rounded-lg p-2 px-4 text-xs' onClick={toggleComment}>
                     Add Comment
                 </button>
-          </div>  
+          </div>   */}
         </div>
 
-        {showComment && (
+        {/* {showComment && (
         <div className='flex flex-col justify-center  font-poppins'>
             <div className='flex item-center justify-center  font-semibold'>
             <textarea placeholder="Comment to Student" className="w-10/12 h-full sm:w-10/12 md:w-10/12 lg:w-8/12 pl-2 pt-2 pb-72 sm:pb-60 md:pb-42 lg:pb-24 text-lg border rounded-lg justify-start text-start text-primary dark:text-white bg-white dark:bg-primary border-gray-300" type="text"></textarea>
@@ -201,13 +201,13 @@ const Comparison = () => {
                     </button>
                 </div>
         </div>
-        )}
+        )} */}
 
 
 
     <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-          <p>Comment of Teacher : Loading... (hide this part when the teacher is still have no comment)</p>
+          <p>{Result && Result.question_composition.comment}</p>
         </div>
     </div>
       <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
