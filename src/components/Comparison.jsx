@@ -353,7 +353,7 @@ const Comparison = () => {
           <div className="flex flex-row justify-evenly text-justify relative"> 
             <p className="text-lg font-poppins text-dark dark:text-white w-10/12">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-              essay composition here {Result && Result.question_composition.composition}
+              {Result && Result.question_composition.composition}
             </p>
             {/* <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div>  */}
             {/* <p className="text-lg font-poppins text-dark dark:text-white w-5/12"> */}
