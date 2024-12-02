@@ -235,7 +235,7 @@ const Comparison = () => {
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full sm:w-1/2">
             <span className="mb-1">Transitions</span>
-            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.transition)} className="w-full p-2" />
+            <ProgressBar completed={Result && Result.rubrics.transition} className="w-full p-2" />
           </div>
           <div className="flex flex-col items-start w-full sm:w-1/2">
             <span className="mb-1">Clarity</span>
