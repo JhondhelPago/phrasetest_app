@@ -58,5 +58,25 @@ export const continuousScorePercetile = (float_score) => {
 
 }
 
+// export const ClarityScoreForamat = (float_score) => {
+
+//     const int_score = parseInt(float_score);
+
+//     let range = 3;
+
+//     let lowerbound = [];
+
+//     for (let iter = range; iter > (int_score - range); iter -= 1) {
+
+//         lowerbound.push(iter);
+        
+//     }
+
+
+//     for (let iter = (int_score + range); iter <)
+
+
+// }
+
 
 console.log(getCurrentTimestamp());

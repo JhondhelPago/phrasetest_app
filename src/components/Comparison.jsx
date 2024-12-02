@@ -224,7 +224,7 @@ const Comparison = () => {
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className="mb-1">Ideas</span>
-              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.ideas)} className="w-full  p-2" />
+              <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className="mb-1">Grammar Punctuation</span>
@@ -239,7 +239,7 @@ const Comparison = () => {
           </div>
           <div className="flex flex-col items-start w-full sm:w-1/2">
             <span className="mb-1">Clarity</span>
-            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.clarity)} className="w-full p-2" />
+            <ProgressBar completed={parseInt(Result && Result.features.readability_score)} className="w-full p-2" />
           </div>
         </div>
 
@@ -309,7 +309,7 @@ const Comparison = () => {
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Readability Score</span>
-                <ProgressBar completed={continuousScorePercetile(Result && Result.features.readability_score)} className="w-full  p-2" />
+                <ProgressBar completed={parseInt((Result && Result.features.readability_score))} className="w-full  p-2" />
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
