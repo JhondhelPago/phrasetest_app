@@ -207,7 +207,7 @@ const Comparison = () => {
 
     <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-          <p> Teacher's comment:  {Result && Result.question_composition.comment}</p>
+          <p> Teacher's comment :  {Result && Result.question_composition.comment}</p>
         </div>
     </div>
       <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>Examine Result</h1>
@@ -216,7 +216,7 @@ const Comparison = () => {
 
         
       <div className='w-full'>
-      <div className="w-full flex flex-col  bg-violet-400 border border-violet-500 bg-opacity-70 rounded-lg mb-4 p-4 font-poppins">
+      <div className="w-full flex flex-col  bg-violet-400 border-4 border-violet-500 bg-opacity-70 rounded-xl mb-4 p-4 font-poppins">
         
         <div className='flex flex-col text-sm md:text-lg  text-pink-200 font-bold'>
 
@@ -283,7 +283,7 @@ const Comparison = () => {
         </div>
         
       
-      <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-violet-400 bg-opacity-70 border border-violet-500 rounded-lg ml-0 sm:ml-4 mb-4 p-4 font-poppins">
+      <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-violet-400 bg-opacity-70 border-4 border-violet-500 rounded-xl ml-0 sm:ml-4 mb-4 p-4 font-poppins">
         <div className='flex flex-col text-4xl font-bold justify-start  text-yellow-200'>
           <p className=''>{Result && Result.rubrics.label}</p>
         </div>
@@ -292,41 +292,60 @@ const Comparison = () => {
       </div>
 
 
-      <div className=" w-full flex flex-col bg-violet-400 border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+      <div className=" w-full flex flex-col bg-violet-400 border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins">
           <div className='flex flex-col text-sm md:text-lg justify-start text-pink-200 font-bold'>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <div className="flex flex-col items-start w-full sm:w-8/12">
               <span className='m-1'>Words: {Result && Result.features.word_count}</span>
                 <ProgressBar completed={parseInt(Result && Result.features.word_count).toString()} className="w-full  p-2" />
               </div>
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
+              <div className="flex flex-col items-center text-nowrap w-full sm:w-3/12">
+              <div className="flex flex-col items-center justify-center w-full sm:w-1/3">
+              <span className='m-1'>Simple Sentences</span>
+              <div className='text-3xl'>
+              {Result && Result.features.sentence_simple}
+              </div>
                 {/* <ProgressBar completed="60" className="w-full p-2" /> */}
               </div>
+              </div>
+             
           </div>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <div className="flex flex-col items-start w-full sm:w-8/12">
               <span className='m-1'>Readability Score</span>
                 <ProgressBar completed={parseInt((Result && Result.features.readability_score))} className="w-full  p-2" />
               </div>
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
+              <div className="flex flex-col items-center justify-center text-nowrap w-full sm:w-3/12">
+              <div className="flex flex-col items-center justify-center w-1/2 sm:w-1/3">
+              <span className='m-1'>Compound Sentence</span>
+              <div className='text-3xl'>
+              {Result && Result.features.sentence_compound}
+              </div>
                 {/* <ProgressBar completed="60" className="w-full  p-2" /> */}
               </div>
+              </div>
+              
           </div>
           
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Topic Relevance </span>
+              <div className="flex flex-col items-start w-full sm:w-8/12">
+              <span className='m-1'>Topic Relevance</span>
                 <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
               </div>
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>Complex Sentence: {Result && Result.features.sentence_complex}</span>
+
+              <div className="flex flex-col items-center text-nowrap w-full sm:w-3/12">
+              <div className="flex flex-col items-center justify-center w-full sm:w-1/3">
+              <span className='m-1'>Complex Sentence</span>
                 {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+                <div className='text-3xl'>
+                {Result && Result.features.sentence_complex}
+                </div>
               </div>
+              </div>
+              
           </div>
 
           </div>
