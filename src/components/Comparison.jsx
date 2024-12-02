@@ -251,11 +251,11 @@ const Comparison = () => {
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
             <span className='m-1'>Word Choice</span>
-              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.word_choice)} className="w-full  p-2" />
+              <ProgressBar completed={Result && Result.rubrics.word_choice} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
             <span className='m-1'>Structure</span>
-              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.structure)} className="w-full p-2" />
+              <ProgressBar completed={Result && Result.rubrics.structure} className="w-full p-2" />
             </div>
          </div>
 
