@@ -259,13 +259,13 @@ const Comparison = () => {
             </div>
          </div>
 
-        <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
+        {/* <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full">
           <span className='m-1'>Language Mechanics</span>
             <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.lang_mechs)} className="w-full p-2" />
           </div>
   
-        </div>
+        </div> */}
 
         <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full">
@@ -339,27 +339,27 @@ const Comparison = () => {
           </div>
 
 
-      <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold'>Question: {Result && Result.question_composition.question}</h2>
+      <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold'>{Result && Result.question_composition.question}</h2>
     </div> 
     <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-14">
       
       <div className="relative">
         <div>
           <div className="flex flex-row justify-around items-start relative mb-4 text-center xs:text-center md:text-center">
-            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Original Composition</h1> {/* Fix margin : DONE */}
-            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1>
+            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Composition</h1> {/* Fix margin : DONE */}
+            {/* <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1> */}
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
+            <p className="text-lg font-poppins text-dark dark:text-white w-10/12">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
               essay composition here {Result && Result.question_composition.composition}
             </p>
-            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> {/* Vertical Line */}
-            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
+            {/* <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div>  */}
+            {/* <p className="text-lg font-poppins text-dark dark:text-white w-5/12"> */}
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-            essay composition here {Result && Result.question_composition.composition}
-            </p>
+            {/* essay composition here {Result && Result.question_composition.composition} */}
+            {/* </p> */}
           </div>
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
