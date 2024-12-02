@@ -207,10 +207,10 @@ const Comparison = () => {
 
     <div className=" w-full flex flex-col bg-white dark:bg-primary border border-violet-500 rounded-lg mb-4 p-4 font-poppins">
         <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-          <p>{Result && Result.question_composition.comment}</p>
+          <p> Teacher's comment:  {Result && Result.question_composition.comment}</p>
         </div>
     </div>
-      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>CHECK EXAMINED QUESTION ESSAY 1</h1>
+      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>Examine Result</h1>
 
       <div className='flex flex-col sm:flex-row  text-center justify-center'>
 
@@ -298,11 +298,11 @@ const Comparison = () => {
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Words: {Result && Result.features.word_count}</span>
-                <ProgressBar completed="60" className="w-full  p-2" />
+                <ProgressBar completed={parseInt(Result && Result.features.word_count).toString()} className="w-full  p-2" />
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Simple Sentences: {Result && Result.features.sentence_simple}</span>
-                <ProgressBar completed="60" className="w-full p-2" />
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
               </div>
           </div>
 
@@ -313,7 +313,7 @@ const Comparison = () => {
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Compound Sentence: {Result && Result.features.sentence_compound}</span>
-                <ProgressBar completed="60" className="w-full  p-2" />
+                {/* <ProgressBar completed="60" className="w-full  p-2" /> */}
               </div>
           </div>
           
@@ -325,7 +325,7 @@ const Comparison = () => {
               </div>
               <div className="flex flex-col items-start w-full sm:w-1/2">
               <span className='m-1'>Complex Sentence: {Result && Result.features.sentence_complex}</span>
-                <ProgressBar completed="60" className="w-full p-2" />
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
               </div>
           </div>
 
