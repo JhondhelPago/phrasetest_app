@@ -227,8 +227,8 @@ const Comparison = () => {
               <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Grammar Punctuation</span>
-              <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.gram_punc)} className="w-full p-2" />
+              <span className="mb-1">Punctuation</span>
+              <ProgressBar completed={Result && Result.rubrics.gram_punc} className="w-full p-2" />
             </div>
          </div>
 
