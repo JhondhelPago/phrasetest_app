@@ -313,6 +313,127 @@ const Comparison = () => {
              
           </div>
 
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
+          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+              <div className="flex flex-col items-start w-full sm:w-1/2">
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
+                
+              </div>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
+            
+                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
+              
+              </div>
+             
+          </div>
+
           
 
           </div>
