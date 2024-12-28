@@ -295,38 +295,25 @@ const Comparison = () => {
 
       <h1 className='flex items-center justify-start font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold p-4'>Vocabulary Recommendation</h1>
       
-      <div className=" w-full flex flex-col bg-violet-400 border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins text-nowrap">
+      <div className=" w-full flex flex-wrap flex-col bg-violet-400 border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins">
           <div className='flex flex-col text-sm md:text-lg justify-start text-pink-200 font-bold'>
 
           <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
               <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>"place word here" </span>
+              <span className='m-1 break-words text-left'>"place word here asdkjagsdhjagsd hjasgdjahs gdahjsg dahjsgd ahjsgd ajshgda jhsgd ajhsgd ahjsgda jhsgdhjasg dhjg" </span>
                 
               </div>
-              <div className="flex flex-col items-start text-nowrap w-full sm:w-1/2">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1 text-nowrap'>"place word hereas asdgjk ahsgdjahsgdajshdg ajshdgashjgdasjhgdajshgd "</span>
+              <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+              
+              <span className='flex m-1 break-words text-left'>"place word hereas asdgjk ahsgdjahsgdajshdg djga hsagd ahsdg hasgdhasg "</span>
             
                 {/* <ProgressBar completed="60" className="w-full p-2" /> */}
-              </div>
+              
               </div>
              
           </div>
 
-          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>"place word here" </span>
-                
-              </div>
-              <div className="flex flex-col items-start text-nowrap w-full sm:w-1/2">
-              <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className='m-1'>"place word here"</span>
-            
-                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
-              </div>
-              </div>
-             
-          </div>
+          
 
           </div>
         </div>
