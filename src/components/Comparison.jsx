@@ -451,7 +451,7 @@ const Comparison = () => {
 
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4 mb-4">On sentence : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg mr-4 mb-4">Understadning Improvements : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="text-lg mr-4"> <span className='text-green-600'> Corrected Sentence:</span> {match_obj.replacements}</div> {/* Align this to Error type: Verb Tense */}
