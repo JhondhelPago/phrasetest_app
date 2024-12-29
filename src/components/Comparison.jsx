@@ -432,9 +432,8 @@ const Comparison = () => {
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
           </div>
         
-          {Result && Result.langtool_suggestion.map((match_obj, index) => (
-          <>
-           <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
+        
+          <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
             <div className={` ${styles.paddingY} w-full px-6`}>
                 <div className="flex flex-row justify-start text-lg text-dark mb-4">
 
@@ -452,7 +451,7 @@ const Comparison = () => {
 
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4 mb-4">Understadning Improvements : {match_obj.sentence}</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg mr-4 mb-4">Understadning Improvements :</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
                   <div className="text-lg mr-4"> <span className='text-green-600'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
@@ -460,8 +459,35 @@ const Comparison = () => {
                 
             </div>
           </div>
-          </>      
-          ))}
+          
+
+          <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
+            <div className={` ${styles.paddingY} w-full px-6`}>
+                <div className="flex flex-row justify-start text-lg text-dark mb-4">
+
+                  {/* Dito boi pa fix lang */}
+                  {/* comment sana mag run  */}
+                  
+                  <div className="text-lg mr-6"> <span className='text-green-600'> Your Sentence: </span> </div> 
+                  <div className="text-lg"> <span className='text-green-600'> Understanding Improvements: </span></div>
+
+                  {/* 1. Improvements message*/}
+                  {/* 2. Improvements message*/}
+                  {/* 3. Improvements message*/}
+                  {/* 4. Improvements message*/}
+                  {/* 5. Improvements message*/}
+
+                </div>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
+                  <div className="text-lg mr-4 mb-4">Understadning Improvements :</div> {/* Align this to Error type: Verb Tense */}
+                </div>
+                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
+                  <div className="text-lg mr-4"> <span className='text-green-600'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
+                </div>
+                
+            </div>
+          </div>
+          
 
           
 
