@@ -314,24 +314,24 @@ const Comparison = () => {
           </div>
           
 
-          {/* {Result && Result.vocab_recom.map((VocabRecomObj) => ( */}
+          {Result && Result.vocab_recom.map((VocabRecomObj) => (
 
-              {/* <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2"> */}
-                {/* <div className="flex flex-col items-start w-full sm:w-1/2"> */}
-                  {/* <span className='m-1 break-words text-left'>"{VocabRecomObj.word}"</span> */}
+              <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
+                <div className="flex flex-col items-start w-full sm:w-1/2">
+                  <span className='m-1 break-words text-left'>"{VocabRecomObj.word}"</span>
                   
-                {/* </div> */}
-                {/* <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2"> */}
+                </div>
+                <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
 
-                  {/* <span className='flex m-1 break-words text-left'>{VocabRecomObj.suggestion.join(", ")}</span> */}
+                  <span className='flex m-1 break-words text-left'>{VocabRecomObj.suggestion.join(", ")}</span>
 
                   {/* <ProgressBar completed="60" className="w-full p-2" /> */}
 
-                {/* </div> */}
+                </div>
 
-              {/* </div> */}
+              </div>
 
-          {/* ))} */}
+          ))} 
 
           </div>
         </div>
@@ -432,49 +432,6 @@ const Comparison = () => {
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Contextual Understanding</h1>
           </div>
         
-        
-          <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
-            <div className={` ${styles.paddingY} w-full px-6`}>
-                <div className="flex flex-row justify-start text-lg text-dark mb-4">
-
-                  {/* Dito boi pa fix lang */}
-                  {/* comment sana mag run  */}
-                  
-                  <div className="text-lg mr-6"> <span className='text-green-600 font-semibold'> Your Sentence </span> </div> 
-                
-
-                  {/* 1. Improvements message*/}
-                  {/* 2. Improvements message*/}
-                  {/* 3. Improvements message*/}
-                  {/* 4. Improvements message*/}
-                  {/* 5. Improvements message*/}
-
-                </div>
-                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg ">(sentence will be here)</div> {/* Align this to Error type: Verb Tense */}
-                </div>
-                <div className='flex flex-row justify-start items-center text-lg text-primary'>
-                  <div className="text-lg font-semibold mb-4 text-green-600">Understanding Improvements</div> {/* Align this to Error type: Verb Tense */}
-                </div>
-                <div className='flex flex-col justify-start items-start text-lg text-primary'>
-                  <ul className="text-lg font-semibold mb-4">1. </ul>
-                  <ul className="text-lg font-semibold mb-4">2. </ul> 
-                  <ul className="text-lg font-semibold mb-4">3. </ul>
-                  <ul className="text-lg font-semibold mb-4">4. </ul>
-                  <ul className="text-lg font-semibold mb-4">5. </ul>
-
-                </div>
-
-                <div className='flex flex-row justify-start items-center text-lg text-primary '>
-                  <div className="text-lg mr-4"> <span className='text-green-600 font-semibold'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
-                </div>
-
-                <div className='flex flex-row justify-start items-center text-lg text-primary mt-2'>
-                  <div className="text-lg ">(sentence will be here)</div> {/* Align this to Error type: Verb Tense */}
-                </div>
-                
-            </div>
-          </div>
 
 
           {Result && Result.langtool_suggestion.map((langtool_obj) => (
@@ -504,11 +461,17 @@ const Comparison = () => {
                     </div>
                     <div className='flex flex-col justify-start items-start text-lg text-primary'>
 
-                      <ul className="text-lg mb-4">1. {langtool_obj.messages}</ul>
+                      {langtool_obj.messages.map((message, index) => (
+                        <>
+                          <ul className="text-lg mb-4">{index+1}. {message}</ul>
+                        </>
+                      ))}
+
+                      {/* <ul className="text-lg mb-4">1. message here</ul>
                       <ul className="text-lg mb-4">2. </ul> 
                       <ul className="text-lg mb-4">3. </ul>
                       <ul className="text-lg mb-4">4. </ul>
-                      <ul className="text-lg mb-4">5. </ul>
+                      <ul className="text-lg mb-4">5. </ul> */}
 
                     </div>
 
@@ -524,37 +487,6 @@ const Comparison = () => {
               </div>
             </>
           ))}
-
-
-          
-
-          <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
-            <div className={` ${styles.paddingY} w-full px-6`}>
-                <div className="flex flex-row justify-start text-lg text-dark mb-4">
-
-                  {/* Dito boi pa fix lang */}
-                  {/* comment sana mag run  */}
-                  
-                  <div className="text-lg mr-6"> <span className='text-green-600'> Your Sentence: </span> </div> 
-                  
-
-                  {/* 1. Improvements message*/}
-                  {/* 2. Improvements message*/}
-                  {/* 3. Improvements message*/}
-                  {/* 4. Improvements message*/}
-                  {/* 5. Improvements message*/}
-
-                </div>
-                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4 mb-4">Understadning Improvements :</div> {/* Align this to Error type: Verb Tense */}
-                </div>
-                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4"> <span className='text-green-600'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
-                </div>
-                
-            </div>
-          </div>
-          
 
           <div className=" flex md:flex md:items-center text-center justify-center mt-6">
             <button type="submit" className="bg-green-600 text-primary dark:text-white font-semibold px-[60px] py-2 rounded-lg" onClick={RouteToHome}>
