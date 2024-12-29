@@ -429,7 +429,7 @@ const Comparison = () => {
             {/* </p> */}
           </div>
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
-            <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Analysis</h1>
+            <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Contextual Understanding</h1>
           </div>
         
         
@@ -475,6 +475,57 @@ const Comparison = () => {
                 
             </div>
           </div>
+
+
+          {Result && Result.langtool_suggestion.map((langtool_obj) => (
+            <>
+              <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
+                <div className={` ${styles.paddingY} w-full px-6`}>
+                    <div className="flex flex-row justify-start text-lg text-dark mb-4">
+
+                      {/* Dito boi pa fix lang */}
+                      {/* comment sana mag run  */}
+                      
+                      <div className="text-lg mr-6"> <span className='text-green-600 font-semibold'> Your Sentence:</span> </div> 
+                    
+
+                      {/* 1. Improvements message*/}
+                      {/* 2. Improvements message*/}
+                      {/* 3. Improvements message*/}
+                      {/* 4. Improvements message*/}
+                      {/* 5. Improvements message*/}
+
+                    </div>
+                    <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
+                      <div className="text-lg ">"{langtool_obj.sentence_orig}"</div> {/* Align this to Error type: Verb Tense */}
+                    </div>
+                    <div className='flex flex-row justify-start items-center text-lg text-primary'>
+                      <div className="text-lg font-semibold mb-4 text-green-600">Understanding Improvements</div> {/* Align this to Error type: Verb Tense */}
+                    </div>
+                    <div className='flex flex-col justify-start items-start text-lg text-primary'>
+
+                      <ul className="text-lg mb-4">1. {langtool_obj.messages}</ul>
+                      <ul className="text-lg mb-4">2. </ul> 
+                      <ul className="text-lg mb-4">3. </ul>
+                      <ul className="text-lg mb-4">4. </ul>
+                      <ul className="text-lg mb-4">5. </ul>
+
+                    </div>
+
+                    <div className='flex flex-row justify-start items-center text-lg text-primary '>
+                      <div className="text-lg mr-4"> <span className='text-green-600 font-semibold'> Corrected Sentence</span></div> {/* Align this to Error type: Verb Tense */}
+                    </div>
+
+                    <div className='flex flex-row justify-start items-center text-lg text-primary mt-2'>
+                      <div className="text-lg ">"{langtool_obj.sentence_modif}"</div> {/* Align this to Error type: Verb Tense */}
+                    </div>
+                    
+                </div>
+              </div>
+            </>
+          ))}
+
+
           
 
           <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
@@ -503,8 +554,6 @@ const Comparison = () => {
                 
             </div>
           </div>
-          
-
           
 
           <div className=" flex md:flex md:items-center text-center justify-center mt-6">
