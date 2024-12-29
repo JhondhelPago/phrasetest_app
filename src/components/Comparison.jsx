@@ -439,6 +439,7 @@ const Comparison = () => {
                 <div className="flex flex-row justify-start text-lg text-dark mb-4">
 
                   {/* Dito boi pa fix lang */}
+                  {/* comment sana mag run  */}
                   <div className="text-lg mr-6"> <span className='text-green-600'> Your Sentence: </span> {match_obj.sentence_index+1}</div> 
                   <div className="text-lg"> <span className='text-green-600'> Understanding Improvements: </span>{match_obj.message}</div>
 
