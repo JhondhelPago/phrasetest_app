@@ -440,8 +440,8 @@ const Comparison = () => {
                   {/* Dito boi pa fix lang */}
                   {/* comment sana mag run  */}
                   
-                  <div className="text-lg mr-6"> <span className='text-green-600'> Your Sentence: </span> </div> 
-                  <div className="text-lg"> <span className='text-green-600'> Understanding Improvements: </span></div>
+                  <div className="text-lg mr-6"> <span className='text-green-600 font-semibold'> Your Sentence </span> </div> 
+                
 
                   {/* 1. Improvements message*/}
                   {/* 2. Improvements message*/}
@@ -451,10 +451,26 @@ const Comparison = () => {
 
                 </div>
                 <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4 mb-4">Understadning Improvements :</div> {/* Align this to Error type: Verb Tense */}
+                  <div className="text-lg ">(sentence will be here)</div> {/* Align this to Error type: Verb Tense */}
                 </div>
-                <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                  <div className="text-lg mr-4"> <span className='text-green-600'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
+                <div className='flex flex-row justify-start items-center text-lg text-primary'>
+                  <div className="text-lg font-semibold mb-4 text-green-600">Understanding Improvements</div> {/* Align this to Error type: Verb Tense */}
+                </div>
+                <div className='flex flex-col justify-start items-start text-lg text-primary'>
+                  <ul className="text-lg font-semibold mb-4">1. </ul>
+                  <ul className="text-lg font-semibold mb-4">2. </ul> 
+                  <ul className="text-lg font-semibold mb-4">3. </ul>
+                  <ul className="text-lg font-semibold mb-4">4. </ul>
+                  <ul className="text-lg font-semibold mb-4">5. </ul>
+
+                </div>
+
+                <div className='flex flex-row justify-start items-center text-lg text-primary '>
+                  <div className="text-lg mr-4"> <span className='text-green-600 font-semibold'> Corrected Sentence:</span></div> {/* Align this to Error type: Verb Tense */}
+                </div>
+
+                <div className='flex flex-row justify-start items-center text-lg text-primary mt-2'>
+                  <div className="text-lg ">(sentence will be here)</div> {/* Align this to Error type: Verb Tense */}
                 </div>
                 
             </div>
@@ -469,7 +485,7 @@ const Comparison = () => {
                   {/* comment sana mag run  */}
                   
                   <div className="text-lg mr-6"> <span className='text-green-600'> Your Sentence: </span> </div> 
-                  <div className="text-lg"> <span className='text-green-600'> Understanding Improvements: </span></div>
+                  
 
                   {/* 1. Improvements message*/}
                   {/* 2. Improvements message*/}
