@@ -324,7 +324,7 @@ const Comparison = () => {
           {Result && Result.vocab_recom.map((VocabRecomObj, index) => (
 
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
-                <div className="flex flex-col items-start w-full sm:w-1/2">
+                <div className="flex flex-col items-start w-full sm:w-1/6">
                   <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{VocabRecomObj.word}"</span>
                   
                 </div>
