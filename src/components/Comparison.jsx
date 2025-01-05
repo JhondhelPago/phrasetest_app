@@ -223,23 +223,25 @@ const Comparison = () => {
           
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Ideas</span>
-              <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
+              <span className="mb-1 text-yellow-200">Lexical Density :</span>
+              {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" /> */}
+              <p class='ml-6'> {Result && Result.difficulty_assessment.lexical_density}</p>
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1">Punctuation</span>
-              <ProgressBar completed={Result && Result.rubrics.gram_punc} className="w-full p-2" />
+              <span className="mb-1 text-yellow-200">Readability Ease:</span>
+              {/* <ProgressBar completed={Result && Result.rubrics.gram_punc} className="w-full p-2" /> */}
+              <p class='ml-6'> {Result && Result.difficulty_assessment.readability_ease}</p>
             </div>
          </div>
 
         <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1">Transitions</span>
-            <ProgressBar completed={Result && Result.rubrics.transition} className="w-full p-2" />
+            <span className="mb-1 text-yellow-200">Context Relevance</span>
+           <p class='m-1'> {Result && Result.difficulty_assessment.topic_relevance}</p>
           </div>
           <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1">Clarity</span>
-            <ProgressBar completed={parseInt(Result && Result.features.readability_score)} className="w-full p-2" />
+            <span className="mb-1 text-yellow-200">Vocabulary Score</span>
+            <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" />
           </div>
         </div>
 
@@ -250,12 +252,18 @@ const Comparison = () => {
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1'>Word Choice</span>
-              <ProgressBar completed={Result && Result.rubrics.word_choice} className="w-full  p-2" />
+            <span className='m-1 text-yellow-200'>Difficulty/Improvement Area</span>
+              
+              {Result && Result.difficulty_assessment.difficulty_summary.map((object, index) => (
+                <>
+                  <p class='ml-2'>{index+1}. {object[0]}</p>
+                </>
+              ))}
+
             </div>
             <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1'>Structure</span>
-              <ProgressBar completed={Result && Result.rubrics.structure} className="w-full p-2" />
+           
+             
             </div>
          </div>
 
@@ -269,8 +277,7 @@ const Comparison = () => {
 
         <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
           <div className="flex flex-col items-start w-full">
-          <span className='m-1'>Vocabulary Score</span>
-            <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" />
+          
           </div>
   
         </div>
@@ -314,16 +321,17 @@ const Comparison = () => {
           </div>
           
 
-          {Result && Result.vocab_recom.map((VocabRecomObj) => (
+          {Result && Result.vocab_recom.map((VocabRecomObj, index) => (
 
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
                 <div className="flex flex-col items-start w-full sm:w-1/2">
-                  <span className='m-1 break-words text-left'>"{VocabRecomObj.word}"</span>
+                  <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{ VocabRecomObj.word}"</span>
                   
                 </div>
+
                 <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
 
-                  <span className='flex m-1 break-words text-left'>{VocabRecomObj.suggestion.join(", ")}</span>
+                  <span className='flex m-1 break-words text-left'>{index+1}. {VocabRecomObj.suggestion.join(", ")}</span>
 
                   {/* <ProgressBar completed="60" className="w-full p-2" /> */}
 
@@ -331,7 +339,16 @@ const Comparison = () => {
 
               </div>
 
-          ))} 
+          ))}
+
+          <div className="mt-4">
+            <span className='text-lg'>Common Terms: </span>
+            {Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
+              <>
+                {word}
+              </>
+            )) }  
+          </div> 
 
           </div>
         </div>
@@ -340,72 +357,7 @@ const Comparison = () => {
 
 
 
-      <div className=" w-full flex flex-col bg-violet-400 border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins">
-          <div className='flex flex-col text-sm md:text-lg justify-start text-pink-200 font-bold'>
-
-          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-8/12">
-              <span className='m-1'>Words: {Result && Result.features.word_count}</span>
-                <ProgressBar completed={parseInt(Result && Result.features.word_count).toString()} className="w-full  p-2" />
-              </div>
-              <div className="flex flex-col items-center text-nowrap w-full sm:w-3/12">
-              <div className="flex flex-col items-center justify-center w-full sm:w-1/3">
-              <span className='m-1'>Simple Sentences</span>
-              <div className='text-3xl'>
-              {Result && Result.features.sentence_simple}
-              </div>
-                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
-              </div>
-              </div>
-             
-          </div>
-
-          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-8/12">
-              <span className='m-1'>Readability Score</span>
-                <ProgressBar completed={parseInt((Result && Result.features.readability_score))} className="w-full  p-2" />
-              </div>
-              <div className="flex flex-col items-center justify-center text-nowrap w-full sm:w-3/12">
-              <div className="flex flex-col items-center justify-center w-1/2 sm:w-1/3">
-              <span className='m-1'>Compound Sentence</span>
-              <div className='text-3xl'>
-              {Result && Result.features.sentence_compound}
-              </div>
-                {/* <ProgressBar completed="60" className="w-full  p-2" /> */}
-              </div>
-              </div>
-              
-          </div>
-          
-
-          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-              <div className="flex flex-col items-start w-full sm:w-8/12">
-              <span className='m-1'>Topic Relevance</span>
-                <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" />
-              </div>
-
-              <div className="flex flex-col items-center text-nowrap w-full sm:w-3/12">
-              <div className="flex flex-col items-center justify-center w-full sm:w-1/3">
-              <span className='m-1'>Complex Sentence</span>
-                {/* <ProgressBar completed="60" className="w-full p-2" /> */}
-                <div className='text-3xl'>
-                {Result && Result.features.sentence_complex}
-                </div>
-              </div>
-              </div>
-              
-          </div>
-
-          </div>
-        </div>
-
-        <div className="flex sm:hidden w-full items-center justify-center bg-violet-400 bg-opacity-70 border border-violet-500 rounded-lg mt-4 p-4 font-poppins">
-              <div className="flex flex-col text-4xl font-bold justify-start text-yellow-200">
-                <p>{Result && Result.rubrics.label}</p>
-              </div>
-          </div>
-
-
+     
       <h2 className='flex items-center justify-center  text-center font-poppins text-dark dark:text-white text-2xl font-semibold p-4'>Question : {Result && Result.question_composition.question}</h2>
     </div> 
     <div className="w-full flex-col justify-evenly items-center md:flex-col sm:flex-col mb-6 relative mt-14">
@@ -422,11 +374,11 @@ const Comparison = () => {
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
               {Result && Result.question_composition.composition}
             </p>
-            {/* <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div>  */}
-            {/* <p className="text-lg font-poppins text-dark dark:text-white w-5/12"> */}
+            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> 
+            <p className="text-lg font-poppins text-dark dark:text-white w-5/12">
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
             {/* essay composition here {Result && Result.question_composition.composition} */}
-            {/* </p> */}
+            </p>
           </div>
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Contextual Understanding</h1>
