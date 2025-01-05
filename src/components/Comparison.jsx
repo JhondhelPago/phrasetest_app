@@ -414,20 +414,21 @@ const Comparison = () => {
         <div>
           <div className="flex flex-row justify-around items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Composition</h1> {/* Fix margin : DONE */}
-            {/* <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1> */}
+            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1>
           </div>
           
           <div className="flex flex-row justify-evenly text-justify relative"> 
-            <p className="text-lg font-poppins text-dark dark:text-white w-10/12">
+            <p className="text-lg font-poppins text-dark dark:text-white w-10/12 p-6">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
               {Result && Result.question_composition.composition}
             </p>
-            {/* <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div>  */}
-            {/* <p className="text-lg font-poppins text-dark dark:text-white w-5/12"> */}
+            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> 
+            <p className="text-lg font-poppins text-dark dark:text-white w-10/12 p-6"> 
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-            {/* essay composition here {Result && Result.question_composition.composition} */}
-            {/* </p> */}
+             {Result && Result.question_composition.composition} 
+            </p> 
           </div>
+
           <div className="flex flex-row justify-evenly items-start relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-3xl font-poppins text-green-500 mt-14 font-semibold">Contextual Understanding</h1>
           </div>
