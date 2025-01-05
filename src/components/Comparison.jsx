@@ -252,7 +252,7 @@ const Comparison = () => {
           
         <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
             <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1 text-yellow-200'>Difficulty/Improvement Area</span>
+            <span className='m-1 text-yellow-200'>Difficulty and Improvement Area</span>
               
               {Result && Result.difficulty_assessment.difficulty_summary.map((object, index) => (
                 <>
