@@ -325,7 +325,7 @@ const Comparison = () => {
 
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
                 <div className="flex flex-col items-start w-full sm:w-1/2">
-                  <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{ VocabRecomObj.word}"</span>
+                  <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{VocabRecomObj.word}"</span>
                   
                 </div>
 
@@ -342,12 +342,39 @@ const Comparison = () => {
           ))}
 
           <div className="mt-4">
-            <span className='text-lg'>Common Terms: </span>
-            {Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
+            <span className='ml-2 text-lg text-yellow-200'>Common Terms: </span>
+            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
               <>
-                {word}
+                {word + ', '}
               </>
-            )) }  
+            ))}</span>  
+          </div> 
+
+          <div className="mt-4">
+            <span className='ml-2 text-lg text-yellow-200'>Generalized term: </span>
+            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.generalized_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div>
+
+          <div className="mt-4">
+            <span className='ml-2 text-lg text-yellow-200'>Specialized Terms: </span>
+            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.specialized_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div>
+
+          <div className="mt-4">
+            <span className='ml-2 text-lg text-yellow-200'>Specific Terms: </span>
+            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.specific_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
           </div> 
 
           </div>
