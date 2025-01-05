@@ -409,13 +409,13 @@ const Comparison = () => {
      
             <p className="text-lg font-poppins text-dark dark:text-white w-10/12 p-6"> 
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-             {Result && Result.question_composition.composition} 
+             {Result && Result.Suggested_Fix} 
             </p> 
           </div>
 
 
           {Result && Result.langtool_suggestion.map((langtool_obj) => (
-            <>
+            langtool_obj.messages[0] != ''  && (<>
               <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
                 <div className={` ${styles.paddingY} w-full px-6`}>
                     <div className="flex flex-row justify-start text-lg text-dark mb-4">
@@ -465,7 +465,7 @@ const Comparison = () => {
                     
                 </div>
               </div>
-            </>
+            </>)
           ))}
 
           <div className=" flex md:flex md:items-center text-center justify-center mt-6">
