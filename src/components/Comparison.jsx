@@ -391,23 +391,27 @@ const Comparison = () => {
       
       <div className="relative">
         <div>
-        <div className="flex flex-row justify-around items-start relative mb-4 text-center xs:text-center md:text-center">
+        <div className="flex flex-row justify-around items-start  relative mb-4 text-center xs:text-center md:text-center">
             <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Composition</h1> {/* Fix margin : DONE */}
-            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold">Suggested Result</h1>
+            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold hidden sm:block">Suggested Result</h1>
           </div>
           
-          <div className="flex flex-row justify-evenly text-justify relative"> 
+          <div className="flex flex-col sm:flex-row justify-evenly text-justify items-center relative"> 
             <p className="text-lg font-poppins text-dark dark:text-white w-10/12 p-6">
               {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={true}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
               {Result && Result.question_composition.composition}
             </p>
-            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div> 
+            <div className="border-l-2 border-violet-900 absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 hidden sm:block"></div>
+
+            <div className="flex flex-row justify-around items-start relative mb-4 text-center xs:text-center md:text-center">
+            <h1 className="text-2xl font-poppins text-dark dark:text-white font-semibold block sm:hidden">Suggested Result</h1>
+          </div>
+     
             <p className="text-lg font-poppins text-dark dark:text-white w-10/12 p-6"> 
             {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
              {Result && Result.question_composition.composition} 
             </p> 
           </div>
-        
 
 
           {Result && Result.langtool_suggestion.map((langtool_obj) => (
