@@ -327,7 +327,7 @@ const TeacherViewComparison2 = () => {
 
           {Result && Result.vocab_recom.map((VocabRecomObj, index) => (
 
-              <div>
+              <div className="flex flex-col">
 
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
                 <div className="flex flex-col items-start w-full sm:w-2/12">
@@ -342,10 +342,9 @@ const TeacherViewComparison2 = () => {
                   {/* <ProgressBar completed="60" className="w-full p-2" /> */}
 
                 </div>
-
-              
-
               </div>
+
+
               </div>
 
           ))}
