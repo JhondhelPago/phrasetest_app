@@ -327,13 +327,15 @@ const TeacherViewComparison2 = () => {
 
           {Result && Result.vocab_recom.map((VocabRecomObj, index) => (
 
+              <div>
+
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
-                <div className="flex flex-col items-start w-full sm:w-1/6">
+                <div className="flex flex-col items-start w-full sm:w-2/12">
                   <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{VocabRecomObj.word}"</span>
                   
                 </div>
 
-                <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+                <div className="flex flex-col items-start text-wrap w-full">
 
                   <span className='flex m-1 break-words text-left'>{index+1}. {VocabRecomObj.suggestion.join(", ")}</span>
 
@@ -341,6 +343,9 @@ const TeacherViewComparison2 = () => {
 
                 </div>
 
+              
+
+              </div>
               </div>
 
           ))}
