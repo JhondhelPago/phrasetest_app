@@ -243,64 +243,64 @@ const TeacherViewComparison2 = () => {
           </div>
           <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Vocabulary Score</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.unique_word_ratio}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
           <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Word Count</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.word_count}</p>
           </div>
           <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Noun</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.noun_count}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Adjective</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.adj_count}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Adverb</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.adv_count}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Pronoun</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.pronoun_count}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Verb</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.verb_count}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Subordinating Clauses</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.subordinating_clauses_count}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Cohesive Devices</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.cohesive_device_count}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Readability Score</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.readability_score}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Simple Sentence</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.sentence_simple}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Compound Sentence</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.sentence_compound}</p>
           </div>
           <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Complex Sentence</span>
-            <p>9999999999</p>
+            <p>{Result && Result.features.sentence_complex}</p>
           </div>
         </div>
 
