@@ -223,109 +223,91 @@ const TeacherViewComparison2 = () => {
 
                 
             <div className='w-full'>
-      <div className="w-full flex flex-col  bg-transparent border-4 border-violet-500 bg-opacity-70 rounded-xl mb-4 p-4 font-poppins">
+      <div className="w-full flex flex-col  bg-transparent dark:bg-white border-4 border-violet-500 bg-opacity-70 rounded-xl mb-4 p-4 font-poppins">
         
         <div className='flex flex-col text-sm md:text-lg  text-blue-500 font-medium'>
 
           
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1 text-primary">Lexical Density</span>
-              {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" /> */}
-              <p class=''> {Result && Result.difficulty_assessment.lexical_density}</p>
-            </div>
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1 text-primary">Readability Ease</span>
-              {/* <ProgressBar completed={Result && Result.rubrics.gram_punc} className="w-full p-2" /> */}
-              <p class=''> {Result && Result.difficulty_assessment.readability_ease}</p>
-            </div>
-         </div>
-
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+          <div className="flex flex-col items-start">
+            <span className="mb-1 text-primary">Lexical Density</span>
+            <p>{Result && Result.difficulty_assessment.lexical_density}</p>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="mb-1 text-primary">Readability Ease</span>
+            <p>{Result && Result.difficulty_assessment.readability_ease}</p>
+          </div>
+          <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Context Relevance</span>
-           <p class='m-1'> {Result && Result.difficulty_assessment.topic_relevance}</p>
+            <p>{Result && Result.difficulty_assessment.topic_relevance}</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Vocabulary Score</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+          <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Word Count</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start">
             <span className="mb-1 text-primary">Noun</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Adjective</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Adverb</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Pronoun</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Verb</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Subordinating Clauses</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Cohesive Devices</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Readability Score</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Simple Sentence</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Compound Sentence</span>
-           <p class='m-1'>999999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
+            <p>9999999999</p>
           </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
+          <div className="flex flex-col items-start text-start">
             <span className="mb-1 text-primary">Complex Sentence</span>
-            <p class='m-1'>9999999999</p>                                              {/* HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE*/}
-            {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" /> */}
+            <p>9999999999</p>
           </div>
         </div>
 
+
         </div>
+        
+        
 
         <div className='flex flex-col text-sm md:text-lg  text-orange-500 font-medium'>
 
@@ -370,19 +352,18 @@ const TeacherViewComparison2 = () => {
         </div>
                 
             
-            <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-transparent bg-opacity-70 border-4 border-violet-500 rounded-xl ml-0 sm:ml-4 mb-4 p-4 font-poppins">
-                <div className='flex flex-col text-4xl font-bold justify-start  text-primary'> {/* HEREEEEEEEEEEEEEEEEEEEE CHANGE COLOR WHEN RUBRICS IS ASSIGNED */}
-                <p className=''>{Result && Result.rubrics.label}</p>
-                </div>
-            </div>
+           
 
           </div>
 
           <h1 className='flex items-center justify-start font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-semibold p-4'>Vocabulary Recommendation</h1>
 
 
-        <div className='flex flex-col sm:flex-row  text-start justify-center'>
-        <div className=" w-full sm:w-10/12 flex flex-col bg-white border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins">
+          <div className='w-full'>
+
+          
+        <div className='flex flex-col lg:flex-row  text-center justify-center'>
+        <div className=" w-full lg:w-8/12 flex flex-col bg-white border-4 text-center border-violet-500 rounded-xl mb-4 p-4 font-poppins mr-4 text-nowrap">
           <div className='flex flex-col text-sm md:text-lg justify-start text-green-700 font-medium'>
 
           
@@ -393,7 +374,7 @@ const TeacherViewComparison2 = () => {
 
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
                 <div className="flex flex-col items-start w-full sm:w-4/12">
-                  <span className='m-1 break-words text-left text-primary'>{index+1}. "{VocabRecomObj.word}"</span>
+                  <span className='m-1 break-words text-left text-primary text-wrap'>{index+1}. "{VocabRecomObj.word}"</span>
                   
                 </div>
 
@@ -415,11 +396,19 @@ const TeacherViewComparison2 = () => {
           </div>
         </div>
 
-        <div className="sm:flex w-3/12 sm:w-1/2 items-start justify-center bg-white bg-opacity-70 border-4 border-violet-500 rounded-xl ml-0 sm:ml-4 mb-4 p-4 font-poppins">
+
+        
+
+        <div className='w-full lg:w-4/12'>
+
+        <div className='w-full'>
+
+        <div className="w-full flex flex-row md:flex-col bg-white border-4 text-start border-violet-500 rounded-xl mb-4 p-4 font-poppins">
+                 
                 
-                
-                
-                <div className='flex flex-col text-sm md:text-lg justify-start text-orange-700 font-bold'>
+        <div className='w-full'>
+                    
+                <div className='w-full flex flex-col text-sm md:text-lg justify-start text-orange-700 font-bold'>
                 <div className="mt-4">
             <span className='text-lg text-primary'>Common Terms: </span>
             <span className='ml-2 text-blue-500'>{Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
@@ -456,15 +445,30 @@ const TeacherViewComparison2 = () => {
             ))}</span>  
           </div> 
                 </div>
-                
+                </div>
 
                 
             </div>
+            <div className='w-full'>
+                <div className="hidden lg:block w-full flex-col bg-white border-4 text-center border-violet-500 rounded-xl mb-4 p-4 font-poppins">
+                
+                  <div className='flex flex-col text-4xl font-bold justify-center text-primary p-24'> {/* HEREEEEEEEEEEEEEEEEEEEE CHANGE COLOR WHEN RUBRICS IS ASSIGNED */}
+                    <p className='flex items-center justify-center '>{Result && Result.rubrics.label}</p>
+                  </div>
+            
+                </div>
+            </div>
+            
+            </div>
+            </div>
+            
+            
 
         </div>
+        </div>
 
-                <div className="flex sm:hidden w-full items-center justify-center bg-violet-400 bg-opacity-70 border border-violet-500 rounded-lg mt-4 p-4 font-poppins">
-                    <div className="flex flex-col text-4xl font-bold justify-start text-yellow-200">
+                <div className="flex lg:hidden w-full items-center justify-center bg-white  border-4 border-violet-500 rounded-lg mt-4 p-16 font-poppins ">
+                    <div className="flex flex-col text-4xl font-bold justify-start text-primary">
                         <p>{Result && Result.rubrics.label}</p>
                     </div>
                 </div>
@@ -502,7 +506,7 @@ const TeacherViewComparison2 = () => {
                 
                 {Result && Result.langtool_suggestion.map((langtool_obj) => (
                   langtool_obj.messages[0] != ''  && (<>
-                    <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-start sm:text-start bg-transparent border-2 border-primary rounded-lg font-poppins mb-10">
+                    <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-start sm:text-start bg-transparent dark:bg-white border-2 border-primary rounded-lg font-poppins mb-10">
                       <div className={` ${styles.paddingY} w-full px-6`}>
                           <div className="flex flex-row justify-start text-lg text-dark mb-4">
 
