@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../style';
 import NormalSpan from './SpanComponent';
+import SuggestSpan from './SuggestedSpan';
 import { StudentAPICalls, TeacherApiCalls, ReqAccessTokenSuperScope } from '../module/APIcalls';
 import { useNavigate } from 'react-router-dom';
 
@@ -498,7 +499,7 @@ const TeacherViewComparison2 = () => {
           
                   <p className="text-xl font-medium font-poppins text-dark dark:text-white w-10/12 p-6"> 
                   {/* {result ? (<NormalSpan Sents={result && result.Original_Composition} errors_array={result && result.spelling_errors} original={false}></NormalSpan>) : (<span>Loading Please Wait..</span>)} */}
-                  {Result && Result.Suggested_Fix} 
+                    <SuggestSpan Composition={Result && Result.question_composition.composition} langtool_suggestion={Result && Result.langtool_suggestion}></SuggestSpan>
                   </p> 
                 </div>
               
