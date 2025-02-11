@@ -212,10 +212,10 @@ const TeacherViewComparison2 = () => {
 
 
 
-            <div className=" w-full flex flex-col bg-white dark:bg-primary border-2 border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-                <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
-                <p>Teacher's comment : {Comment}</p>
-                </div>
+            <div className=" w-full flex flex-col bg-white dark:bg-white border-2 border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+                    <div className='flex flex-start text-xl justify-start text-primary dark:text-primary'>
+                      <p> Teacher's comment :  {Result && Result.question_composition.comment}</p>
+                    </div>
             </div>
             <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-semibold'>Examined Result</h1>
 

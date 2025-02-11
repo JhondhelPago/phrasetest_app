@@ -205,8 +205,8 @@ const Comparison = () => {
 
 
 
-    <div className=" w-full flex flex-col bg-white dark:bg-primary border-2 border-violet-500 rounded-lg mb-4 p-4 font-poppins">
-        <div className='flex flex-start text-xl justify-start text-primary dark:text-white'>
+    <div className=" w-full flex flex-col bg-white dark:bg-white border-2 border-violet-500 rounded-lg mb-4 p-4 font-poppins">
+        <div className='flex flex-start text-xl justify-start text-primary dark:text-primary'>
           <p> Teacher's comment :  {Result && Result.question_composition.comment}</p>
         </div>
     </div>
