@@ -210,175 +210,262 @@ const Comparison = () => {
           <p> Teacher's comment :  {Result && Result.question_composition.comment}</p>
         </div>
     </div>
-      <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold'>Examine Result</h1>
+    <h1 className='flex items-center justify-center font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-semibold'>Examined Result</h1>
 
-      <div className='flex flex-col sm:flex-row  text-center justify-center'>
+    <div className='flex flex-col sm:flex-row  text-center justify-center'>
 
-        
-      <div className='w-full'>
-      <div className="w-full flex flex-col  bg-violet-400 border-4 border-violet-500 bg-opacity-70 rounded-xl mb-4 p-4 font-poppins">
-        
-        <div className='flex flex-col text-sm md:text-lg  text-pink-200 font-bold'>
+                
+<div className='w-full'>
+<div className="w-full flex flex-col  bg-transparent dark:bg-white border-4 border-violet-500 bg-opacity-70 rounded-xl mb-4 p-4 font-poppins">
 
-          
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1 text-yellow-200">Lexical Density :</span>
-              {/* <ProgressBar completed={continuousScorePercetile(Result && Result.features.topic_relevance_score)} className="w-full  p-2" /> */}
-              <p class='ml-6'> {Result && Result.difficulty_assessment.lexical_density}</p>
-            </div>
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-              <span className="mb-1 text-yellow-200">Readability Ease:</span>
-              {/* <ProgressBar completed={Result && Result.rubrics.gram_punc} className="w-full p-2" /> */}
-              <p class='ml-6'> {Result && Result.difficulty_assessment.readability_ease}</p>
-            </div>
-         </div>
+<div className='flex flex-col text-sm md:text-lg  text-blue-500 font-medium'>
 
-        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1 text-yellow-200">Context Relevance</span>
-           <p class='m-1'> {Result && Result.difficulty_assessment.topic_relevance}</p>
-          </div>
-          <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className="mb-1 text-yellow-200">Vocabulary Score</span>
-            <ProgressBar completed={continuousScorePercetile(Result && Result.features.unique_word_ratio)} className="w-full p-2" />
-          </div>
-        </div>
 
-        </div>
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Lexical Density</span>
+<p>{Result && Result.difficulty_assessment.lexical_density}</p>
+</div>
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Readability Ease</span>
+<p>{Result && Result.difficulty_assessment.readability_ease}</p>
+</div>
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Context Relevance</span>
+<p>{Result && Result.difficulty_assessment.topic_relevance}</p>
+</div>
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Vocabulary Score</span>
+<p>{Result && Result.features.unique_word_ratio}</p>
+</div>
+</div>
 
-        <div className='flex flex-col text-sm md:text-lg  text-pink-200 font-bold'>
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Word Count</span>
+<p>{Result && Result.features.word_count}</p>
+</div>
+<div className="flex flex-col items-start">
+<span className="mb-1 text-primary">Noun</span>
+<p>{Result && Result.features.noun_count}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Adjective</span>
+<p>{Result && Result.features.adj_count}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Adverb</span>
+<p>{Result && Result.features.adv_count}</p>
+</div>
+</div>
 
-          
-        <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-            <span className='m-1 text-yellow-200'>Difficulty and Improvement Area</span>
-              
-              {Result && Result.difficulty_assessment.difficulty_summary.map((object, index) => (
-                <>
-                  <p class='ml-2'>{index+1}. {object[0]}</p>
-                </>
-              ))}
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Pronoun</span>
+<p>{Result && Result.features.pronoun_count}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Verb</span>
+<p>{Result && Result.features.verb_count}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Subordinating Clauses</span>
+<p>{Result && Result.features.subordinating_clauses_count}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Cohesive Devices</span>
+<p>{Result && Result.features.cohesive_device_count}</p>
+</div>
+</div>
 
-            </div>
-            <div className="flex flex-col items-start w-full sm:w-1/2">
-           
-             
-            </div>
-         </div>
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Readability Score</span>
+<p>{Result && Result.features.readability_score}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Simple Sentence</span>
+<p>{Result && Result.features.sentence_simple}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Compound Sentence</span>
+<p>{Result && Result.features.sentence_compound}</p>
+</div>
+<div className="flex flex-col items-start text-start">
+<span className="mb-1 text-primary">Complex Sentence</span>
+<p>{Result && Result.features.sentence_complex}</p>
+</div>
+</div>
 
-        {/* <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full">
-          <span className='m-1'>Language Mechanics</span>
-            <ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.lang_mechs)} className="w-full p-2" />
-          </div>
+
+</div>
+
+
+
+<div className='flex flex-col text-sm md:text-lg  text-orange-500 font-medium'>
+
+
+<div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
+<div className="flex flex-col items-start w-full sm:w-1/2">
+<span className='m-1 text-primary'>Difficulty and Improvement Area</span>
   
-        </div> */}
+  {Result && Result.difficulty_assessment.difficulty_summary.map((object, index) => (
+    <>
+      <p class='ml-2'>{index+1}. {object[0]}</p>
+    </>
+  ))}
 
-        <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
-          <div className="flex flex-col items-start w-full">
-          
-          </div>
-  
-        </div>
+</div>
+<div className="flex flex-col items-start w-full sm:w-1/2">
 
-        </div>
-      </div>
+ 
+</div>
+</div>
+
+{/* <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
+<div className="flex flex-col items-start w-full">
+<span className='m-1'>Language Mechanics</span>
+<ProgressBar completed={rubricsScorePercentile(Result && Result.rubrics.lang_mechs)} className="w-full p-2" />
+</div>
+
+</div> */}
+
+{/* <div className="flex flex-row justify-start sm:justify-around items-start sm:items-start text-center mb-2">
+<div className="flex flex-col items-start w-full">
+
+</div>
+
+</div> */}
+
+</div>
+</div>
 
 
-        
-        </div>
-        
-      
-      <div className="hidden sm:flex w-full sm:w-1/2 items-center justify-center bg-violet-400 bg-opacity-70 border-4 border-violet-500 rounded-xl ml-0 sm:ml-4 mb-4 p-4 font-poppins">
-        <div className='flex flex-col text-4xl font-bold justify-start  text-yellow-200'>
-          <p className=''>{Result && Result.rubrics.label}</p>
-        </div>
-      </div>
+    
+</div>
+    
 
-      </div>
+
+
+</div>
 
 
 
       <h1 className='flex items-center justify-start font-poppins text-dark dark:text-white text-3xl mb-4 text-center font-bold p-4'>Vocabulary Recommendation</h1>
       
-      <div className=" w-full flex flex-wrap flex-col bg-violet-400 border-4 bg-opacity-70  border-violet-500 rounded-xl mb-4 p-4 font-poppins">
-          <div className='flex flex-col text-sm md:text-lg justify-start text-pink-200 font-bold'>
+      <div className='w-full'>
 
-          <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
-                <div className="flex flex-col items-start w-full sm:w-1/2">
-                  <span className='m-1 break-words text-left'></span>
-                  
-                </div>
-                <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+          
+        <div className='flex flex-col lg:flex-row  text-center justify-center'>
+        <div className=" w-full lg:w-8/12 flex flex-col bg-white border-4 text-center border-violet-500 rounded-xl mb-4 p-4 font-poppins mr-4 text-nowrap">
+          <div className='flex flex-col text-sm md:text-lg justify-start text-green-700 font-medium'>
 
-                  <span className='flex m-1 break-words text-left'></span>
-
-                  {/* <ProgressBar completed="60" className="w-full p-2" /> */}
-
-                </div>
-
-          </div>
           
 
           {Result && Result.vocab_recom.map((VocabRecomObj, index) => (
 
+              <div className="flex flex-col">
+
               <div className="flex  flex-col sm:flex-row justify-start sm:justify-around items-start sm:items-start text-center p-2">
-                <div className="flex flex-col items-start w-full sm:w-1/6">
-                  <span className='m-1 break-words text-left text-yellow-200'>{index+1}. "{VocabRecomObj.word}"</span>
+                <div className="flex flex-col items-start w-full sm:w-4/12">
+                  <span className='m-1 break-words text-left text-primary text-wrap'>{index+1}. "{VocabRecomObj.word}"</span>
                   
                 </div>
 
-                <div className="flex flex-col items-start text-wrap w-auto sm:w-1/2">
+                <div className="flex flex-col items-start text-wrap w-full">
 
                   <span className='flex m-1 break-words text-left'>{index+1}. {VocabRecomObj.suggestion.join(", ")}</span>
 
                   {/* <ProgressBar completed="60" className="w-full p-2" /> */}
 
                 </div>
+              </div>
+
 
               </div>
 
           ))}
 
-          <div className="mt-4">
-            <span className='ml-2 text-lg text-yellow-200'>Common Terms: </span>
-            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
-              <>
-                {word + ', '}
-              </>
-            ))}</span>  
-          </div> 
-
-          <div className="mt-4">
-            <span className='ml-2 text-lg text-yellow-200'>Generalized term: </span>
-            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.generalized_term.map((word) => (
-              <>
-                {word + ', '}
-              </>
-            ))}</span>  
-          </div>
-
-          <div className="mt-4">
-            <span className='ml-2 text-lg text-yellow-200'>Specialized Terms: </span>
-            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.specialized_term.map((word) => (
-              <>
-                {word + ', '}
-              </>
-            ))}</span>  
-          </div>
-
-          <div className="mt-4">
-            <span className='ml-2 text-lg text-yellow-200'>Specific Terms: </span>
-            <span className='ml-2'>{Result && Result.difficulty_assessment.depth_words.specific_term.map((word) => (
-              <>
-                {word + ', '}
-              </>
-            ))}</span>  
-          </div> 
 
           </div>
         </div>
+
+
+        
+
+        <div className='w-full lg:w-4/12'>
+
+        <div className='w-full'>
+
+        <div className="w-full flex flex-row md:flex-col bg-white border-4 text-start border-violet-500 rounded-xl mb-4 p-4 font-poppins">
+                 
+                
+        <div className='w-full'>
+                    
+                <div className='w-full flex flex-col text-sm md:text-lg justify-start text-orange-700 font-bold'>
+                <div className="mt-4">
+            <span className='text-lg text-primary'>Common Terms: </span>
+            <span className='ml-2 text-blue-500'>{Result && Result.difficulty_assessment.depth_words.common_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div> 
+
+          <div className="mt-4">
+            <span className='text-lg text-primary'>Generalized term: </span>
+            <span className='ml-2 text-blue-500'>{Result && Result.difficulty_assessment.depth_words.generalized_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div>
+
+          <div className="mt-4">
+            <span className='text-lg text-primary'>Specialized Terms: </span>
+            <span className='ml-2 text-blue-500'>{Result && Result.difficulty_assessment.depth_words.specialized_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div>
+
+          <div className="mt-4">
+            <span className='text-lg text-primary'>Specific Terms: </span>
+            <span className='ml-2 text-blue-500'>{Result && Result.difficulty_assessment.depth_words.specific_term.map((word) => (
+              <>
+                {word + ', '}
+              </>
+            ))}</span>  
+          </div> 
+                </div>
+                </div>
+
+                
+            </div>
+            <div className='w-full'>
+                <div className="hidden lg:block w-full flex-col bg-white border-4 text-center border-violet-500 rounded-xl mb-4 p-4 font-poppins">
+                
+                  <div className='flex flex-col text-4xl font-bold justify-center text-primary p-24'> {/* HEREEEEEEEEEEEEEEEEEEEE CHANGE COLOR WHEN RUBRICS IS ASSIGNED */}
+                    <p className='flex items-center justify-center '>{Result && Result.rubrics.label}</p>
+                  </div>
+            
+                </div>
+            </div>
+            
+            </div>
+            </div>
+            
+            
+
+        </div>
+        </div>
+
+        <div className="flex lg:hidden w-full items-center justify-center bg-white  border-4 border-violet-500 rounded-lg mt-4 p-16 font-poppins ">
+                    <div className="flex flex-col text-4xl font-bold justify-start text-primary">
+                        <p>{Result && Result.rubrics.label}</p>
+                    </div>
+                </div>
 
 
 
@@ -416,55 +503,56 @@ const Comparison = () => {
 
           {Result && Result.langtool_suggestion.map((langtool_obj) => (
             langtool_obj.messages[0] != ''  && (<>
-              <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-center sm:text-start bg-violet-300 rounded-lg font-poppins mb-10">
-                <div className={` ${styles.paddingY} w-full px-6`}>
-                    <div className="flex flex-row justify-start text-lg text-dark mb-4">
+                                 <div className=" h-full flex flex-row sm:flex-row justify-evenly items-center text-start sm:text-start bg-transparent dark:bg-white border-2 border-primary rounded-lg font-poppins mb-10">
+                      <div className={` ${styles.paddingY} w-full px-6`}>
+                          <div className="flex flex-row justify-start text-lg text-dark mb-4">
 
-                      {/* Dito boi pa fix lang */}
-                      {/* comment sana mag run  */}
-                      
-                      <div className="text-lg mr-6"> <span className='text-green-600 font-semibold'> Your Sentence:</span> </div> 
-                    
+                            {/* Dito boi pa fix lang */}
+                            {/* comment sana mag run  */}
+                            
+                            <div className="text-lg mr-6"> <span className='text-primary font-medium'> Your Sentence:</span> </div> 
+                          
 
-                      {/* 1. Improvements message*/}
-                      {/* 2. Improvements message*/}
-                      {/* 3. Improvements message*/}
-                      {/* 4. Improvements message*/}
-                      {/* 5. Improvements message*/}
+                            {/* 1. Improvements message*/}
+                            {/* 2. Improvements message*/}
+                            {/* 3. Improvements message*/}
+                            {/* 4. Improvements message*/}
+                            {/* 5. Improvements message*/}
 
+                          </div>
+                          <div className='flex flex-row justify-start items-start text-lg text-primary mb-4'>
+                            <div className="text-lg text-red-700 ">"{langtool_obj.sentence_orig}"</div> {/* Align this to Error type: Verb Tense */}
+                          </div>
+                          
+                          <div className='flex flex-row justify-start items-start text-lg text-primary'>
+                            <div className="text-lg font-medium mb-4 text-primary">Understanding Improvements</div> {/* Align this to Error type: Verb Tense */}
+                          </div>
+                          <div className='flex flex-col justify-start items-start text-lg text-blue-500'>
+
+                            {langtool_obj.messages.map((message, index) => (
+                              <>
+                                <ul className="text-lg mb-4">{index+1}. {message}</ul>
+                              </>
+                            ))}
+
+                            {/* <ul className="text-lg mb-4">1. message here</ul>
+                            <ul className="text-lg mb-4">2. </ul> 
+                            <ul className="text-lg mb-4">3. </ul>
+                            <ul className="text-lg mb-4">4. </ul>
+                            <ul className="text-lg mb-4">5. </ul> */}
+
+                          </div>
+
+                          <div className='flex flex-row justify-start items-center text-lg text-primary '>
+                            <div className="text-lg mr-4"> <span className='text-primary font-medium'> Corrected Sentence</span></div> {/* Align this to Error type: Verb Tense */}
+                          </div>
+
+                          <div className='flex flex-row justify-start items-center text-lg text-primary mt-2'>
+                            <div className="text-lg text-green-700">"{langtool_obj.sentence_modif}"</div> {/* Align this to Error type: Verb Tense */}
+                          </div>
+                          
+                      </div>
                     </div>
-                    <div className='flex flex-row justify-start items-center text-lg text-primary mb-4'>
-                      <div className="text-lg ">"{langtool_obj.sentence_orig}"</div> {/* Align this to Error type: Verb Tense */}
-                    </div>
-                    <div className='flex flex-row justify-start items-center text-lg text-primary'>
-                      <div className="text-lg font-semibold mb-4 text-green-600">Understanding Improvements</div> {/* Align this to Error type: Verb Tense */}
-                    </div>
-                    <div className='flex flex-col justify-start items-start text-lg text-primary'>
-
-                      {langtool_obj.messages.map((message, index) => (
-                        <>
-                          <ul className="text-lg mb-4">{index+1}. {message}</ul>
-                        </>
-                      ))}
-
-                      {/* <ul className="text-lg mb-4">1. message here</ul>
-                      <ul className="text-lg mb-4">2. </ul> 
-                      <ul className="text-lg mb-4">3. </ul>
-                      <ul className="text-lg mb-4">4. </ul>
-                      <ul className="text-lg mb-4">5. </ul> */}
-
-                    </div>
-
-                    <div className='flex flex-row justify-start items-center text-lg text-primary '>
-                      <div className="text-lg mr-4"> <span className='text-green-600 font-semibold'> Corrected Sentence</span></div> {/* Align this to Error type: Verb Tense */}
-                    </div>
-
-                    <div className='flex flex-row justify-start items-center text-lg text-primary mt-2'>
-                      <div className="text-lg ">"{langtool_obj.sentence_modif}"</div> {/* Align this to Error type: Verb Tense */}
-                    </div>
-                    
-                </div>
-              </div>
             </>)
           ))}
 
